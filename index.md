@@ -8,7 +8,10 @@ description: "Портфолио — геймдизайн, сценаристи�
   <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Аватар" class="avatar">
   <h1>Привет — я Терун</h1>
   <p>Коротко: геймдизайнер, сценарист и программист. Работаю с системами L5R, D&D, Pathfinder, VtM. Разрабатываю фэнтези-сеты и игровые механики.</p>
-
+  <h3>Контакты</h3>
+  <p>Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  <p>Telegram: <a href="https://t.me/BrotherTerun" target="_blank">@BrotherTerun</a></p>
+  <p>ВКонтакте: <a href="https://vk.com/leonid_ter" target="_blank">Терещенко Леонид</a></p>
   <div class="cta">
     <a class="btn" href="{{ '/gamedesign/' | relative_url }}">Геймдизайн</a>
     <a class="btn" href="{{ '/development/' | relative_url }}">Разработка</a>
