@@ -46,7 +46,7 @@ body{
 }
 
 .hero {
-  display:flex;
+  display:block;
   gap:20px;
   align-items:center;
 }
