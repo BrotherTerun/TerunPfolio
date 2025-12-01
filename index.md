@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 title: "Главная"
 description: "Портфолио — геймдизайн, сценаристика, разработка и визуал"
 ---
