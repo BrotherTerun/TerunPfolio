@@ -1,0 +1,31 @@
+---
+---
+{% include header.html %}
+
+<div class="section-container wrap">
+
+  <!-- Боковая панель -->
+  <aside class="sidebar">
+    <h3>Разделы</h3>
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">Главная</a></li>
+      <li><a href="{{ '/gamedesign/' | relative_url }}">Геймдизайн</a></li>
+      <li><a href="{{ '/development/' | relative_url }}">Разработка</a></li>
+      <li><a href="{{ '/writing/' | relative_url }}">Сценаристика</a></li>
+      <li><a href="{{ '/art/' | relative_url }}">Визуал</a></li>
+      <li><a href="{{ '/projects/' | relative_url }}">Проекты</a></li>
+    </ul>
+
+    <h3>Контакты</h3>
+    <p>Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    <p>Telegram: <a href="https://t.me/username" target="_blank">@username</a></p>
+  </aside>
+
+  <!-- Основной контент -->
+  <main class="section-content">
+    {{ content }}
+  </main>
+
+</div>
+
+{% include footer.html %}
