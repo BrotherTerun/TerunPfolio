@@ -1,0 +1,165 @@
+:root{
+  --max-width: 980px;
+  --accent: #2b90d9;
+  --text: #222;
+  --muted: #666;
+  --bg: #fff;
+  font-size: 16px;
+}
+
+body{
+  font-family: Inter, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap {
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:24px;
+}
+
+.site-header {
+  border-bottom:1px solid #eee;
+  padding:12px 0;
+}
+
+.brand{
+  font-weight:700;
+  text-decoration:none;
+  color:var(--text);
+}
+
+.main-nav ul {
+  list-style:none;
+  display:flex;
+  gap:12px;
+  margin:0;
+  padding:0;
+}
+
+.main-nav a {
+  text-decoration:none;
+  color:var(--muted);
+}
+
+.hero {
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+.avatar {
+  width:120px;
+  height:120px;
+  border-radius:8px;
+  object-fit:cover;
+}
+
+.btn {
+  display:inline-block;
+  padding:8px 14px;
+  margin-right:8px;
+  background:var(--accent);
+  color:#fff;
+  border-radius:6px;
+  text-decoration:none;
+}
+
+.projects-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  padding:0;
+  list-style:none;
+}
+
+.project-card img {
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:6px;
+}
+
+.project-card h3 {
+  margin:8px 0 4px;
+}
+
+.site-footer {
+  border-top:1px solid #eee;
+  padding:18px 0;
+  margin-top:40px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* Контейнер раздела с боковой панелью */
+.section-container {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Сайдбар */
+.sidebar {
+  flex: 0 0 220px;
+  background: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.03);
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: var(--accent);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.sidebar a:hover {
+  color: var(--accent);
+}
+
+/* Основной контент */
+.section-content {
+  flex: 1;
+  padding: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .section-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .section-content {
+    width: 100%;
+  }
+}
+
