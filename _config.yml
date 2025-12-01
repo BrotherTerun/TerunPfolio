@@ -1,6 +1,6 @@
 # _config.yml
-title: "Твоё Имя — Портфолио"
-email: "mail@example.com"
+title: "Терещенко Леонид — разработчик, геймдизайнер, сценарист"
+email: "leonrobot34@ya.ru"
 description: "Геймдизайнер, сценарист, программист — портфолио и кейсы"
 baseurl: "https://brotherterun.github.io/TerunPfolio/"       # если используешь https://username.github.io/repo, ставь "/repo"
 url: "https://brotherterun.github.io/TerunPfolio/" # или твой кастомный домен
