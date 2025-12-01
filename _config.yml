@@ -2,8 +2,8 @@
 title: "Терещенко Леонид — разработчик, геймдизайнер, сценарист"
 email: "leonrobot34@ya.ru"
 description: "Геймдизайнер, сценарист, программист — портфолио и кейсы"
-baseurl: "https://brotherterun.github.io/TerunPfolio/"       # если используешь https://username.github.io/repo, ставь "/repo"
-url: "https://brotherterun.github.io/TerunPfolio/" # или твой кастомный домен
+baseurl: "/TerunPfolio"       # путь к сайту от корня домена
+url: "https://brotherterun.github.io" # основной домен сайта, нужен для OpenGraph, RSS, sitemap и абсолютных ссылок (можно оставить для SEO, но для внутренних ссылок можно ориентироваться на relative_url)
 theme: minima     # можно использовать собственную верстку; minima — лёгкий старт
 plugins: []
 collections:
