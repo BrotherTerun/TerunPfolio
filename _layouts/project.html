@@ -1,0 +1,18 @@
+---
+---
+{% include header.html %}
+<article class="project wrap">
+  <h1>{{ page.title }}</h1>
+  <p class="meta">Роли: {{ page.roles | join: ", " }} · Технологии: {{ page.tech | join: ", " }}</p>
+  {% if page.thumb %}
+    <img src="{{ page.thumb | relative_url }}" alt="{{ page.title }} thumbnail" class="project-thumb">
+  {% endif %}
+  <div class="project-content">
+    {{ content }}
+  </div>
+  <p class="links">
+    {% if page.live_demo %}<a href="{{ page.live_demo }}">Демо</a>{% endif %}
+    {% if page.repository %} · <a href="{{ page.repository }}">Repo</a>{% endif %}
+  </p>
+</article>
+{% include footer.html %}
