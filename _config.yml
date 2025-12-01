@@ -1,0 +1,13 @@
+# _config.yml
+title: "Твоё Имя — Портфолио"
+email: "mail@example.com"
+description: "Геймдизайнер, сценарист, программист — портфолио и кейсы"
+baseurl: "https://brotherterun.github.io/TerunPfolio/"       # если используешь https://username.github.io/repo, ставь "/repo"
+url: "https://brotherterun.github.io/TerunPfolio/" # или твой кастомный домен
+theme: minima     # можно использовать собственную верстку; minima — лёгкий старт
+plugins: []
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+paginate: 6
