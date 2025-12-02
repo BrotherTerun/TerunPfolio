@@ -21,10 +21,20 @@ body{
   padding:24px;
 }
 
+/* === ШАПКА === */
 .site-header {
   border-bottom:1px solid #eee;
   padding:12px 0;
 }
+
+.site-header .wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;      /* вертикальное выравнивание */
+  justify-content: space-between; /* бренд слева, меню справа */
+}
+
+/* === === === */
 
 .brand{
   font-weight:700;
