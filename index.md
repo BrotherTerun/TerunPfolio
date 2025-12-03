@@ -5,14 +5,22 @@ description: "Портфолио — геймдизайн, сценаристи�
 ---
 
 <section class="hero">
-  <img src="{{ '/assets/images/avatar.png' | relative_url }}" alt="Аватар" class="avatar">
-  <h1>Терещенко Леонид</h1>
-  <p>junior геймдизайнер, разработчик, сценарист. Создаю прототипы IT-решений, пишу интерактивные истории и разрабатываю игры.</p>
-  <div class="cta">
-    <a class="btn" href="{{ '/gamedesign/' | relative_url }}">Геймдизайн</a>
-    <a class="btn" href="{{ '/development/' | relative_url }}">Разработка</a>
-    <a class="btn" href="{{ '/writing/' | relative_url }}">Сценаристика</a>
-    <a class="btn" href="{{ '/art/' | relative_url }}">Визуальный дизайн</a>
+  <div class="hero-text">
+    <h1>Терещенко Леонид</h1>
+    <p>junior геймдизайнер, разработчик, сценарист. Создаю прототипы IT-решений, пишу интерактивные истории и разрабатываю игры.</p>
+
+    <div class="cta">
+      <a class="btn" href="{{ '/gamedesign/' | relative_url }}">Геймдизайн</a>
+      <a class="btn" href="{{ '/development/' | relative_url }}">Разработка</a>
+      <a class="btn" href="{{ '/writing/' | relative_url }}">Сценаристика</a>
+      <a class="btn" href="{{ '/art/' | relative_url }}">Визуальный дизайн</a>
+    </div>
+  </div>
+
+  <div class="hero-avatar-container">
+    <img src="{{ '/assets/images/avatar.png' | relative_url }}" 
+         alt="Аватар" 
+         class="avatar">
   </div>
 </section>
 
