@@ -57,7 +57,9 @@ body{
 
 /* === ОСНОВНАЯ СТРАНИЦА === */
 .hero {
-  display:block;
+  display:grid;
+  grid-template-columns: 3fr 2fr; /* 60% — 40% */
+  position: relative;             /* <— это важно! */
   gap:20px;
   align-items:center;
   padding-top:100px;
@@ -65,13 +67,19 @@ body{
   border-bottom:1px solid #eee;
 }
 
-.avatar {
-  width:120px;
-  height:120px;
-  border-radius:8px;
-  object-fit:cover;
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+.hero-avatar-container {
+  position: relative; /* локальная система координат */
+  display: flex;
+  justify-content: center; /* аватар в центре колонки */
+  align-items: center;
+}
+/* === === === */
 .btn {
   display:inline-block;
   padding:8px 14px;
