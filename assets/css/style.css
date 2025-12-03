@@ -63,7 +63,6 @@ body{
   gap:20px;
   align-items:center;
   padding-top:100px;
-  padding-bottom:300px;
   border-bottom:1px solid #eee;
 }
 
@@ -79,7 +78,14 @@ body{
   justify-content: center; /* аватар в центре колонки */
   align-items: center;
 }
+
+.avatar {
+  width:712px;
+  height:706px;
+  object-fit:cover;
+}
 /* === === === */
+
 .btn {
   display:inline-block;
   padding:8px 14px;
