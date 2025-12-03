@@ -55,10 +55,14 @@ body{
   color:var(--muted);
 }
 
+/* === ОСНОВНАЯ СТРАНИЦА === */
 .hero {
   display:block;
   gap:20px;
   align-items:center;
+  padding-top:100px;
+  padding-bottom:300px;
+  border-bottom:1px solid #eee;
 }
 
 .avatar {
