@@ -1,5 +1,5 @@
 :root{
-  --max-width: 980px;
+  --max-width: 100vw;
   --accent: #2b90d9;
   --text: #222;
   --muted: #666;
@@ -25,6 +25,7 @@ body{
 .site-header {
   border-bottom:1px solid #eee;
   padding:12px 0;
+  max-width: 980px;
 }
 
 .site-header .wrap {
@@ -57,12 +58,12 @@ body{
 
 /* === ОСНОВНАЯ СТРАНИЦА === */
 .hero {
+  width: var(--max-width);
   display:grid;
   grid-template-columns: 3fr 2fr; /* 60% — 40% */
   position: relative;             /* <— это важно! */
   gap:20px;
   align-items:center;
-  padding-top:100px;
   border-bottom:1px solid #eee;
 }
 
@@ -83,6 +84,10 @@ body{
   width:712px;
   height:706px;
   object-fit:cover;
+}
+
+.sammary {
+  width: 980px;
 }
 /* === === === */
 
