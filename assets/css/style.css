@@ -57,6 +57,10 @@ body{
 }
 
 /* === ОСНОВНАЯ СТРАНИЦА === */
+.home-intro wrap {
+  padding: 0px !important;
+}
+
 .hero {
   width: var(--max-width);
   display:grid;
