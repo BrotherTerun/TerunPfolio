@@ -26,6 +26,7 @@ body{
   border-bottom:1px solid #eee;
   padding:12px 0;
   max-width: 980px;
+  align-items: center;
 }
 
 .site-header .wrap {
@@ -88,6 +89,7 @@ body{
 
 .sammary {
   width: 980px;
+  align-items: center;
 }
 /* === === === */
 
