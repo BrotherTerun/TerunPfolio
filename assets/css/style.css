@@ -18,7 +18,6 @@ body{
 .wrap {
   max-width:var(--max-width);
   margin:0 auto;
-  padding:24px;
 }
 
 /* === ШАПКА === */
@@ -67,6 +66,7 @@ body{
   grid-template-columns: 3fr 2fr; /* 60% — 40% */
   position: relative;             /* <— это важно! */
   gap:20px;
+  padding-left:24px;
   align-items:center;
   border-top:1px solid #eee;
   border-bottom:1px solid #eee;
