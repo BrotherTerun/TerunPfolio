@@ -92,6 +92,180 @@ body{
 }
 
 /* === ОСНОВНАЯ СТРАНИЦА === */
+
+/*#region ГЛАВНАЯ СТРАНИЦА - ПАНЕЛЬ СЛЕВА */
+/* ---- контейнер и базовые стили ---- */
+.content-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* Высота окна просмотра контента — подгони под дизайн */
+}
+
+/* панели */
+.content {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 80%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* вертикальный центр */
+  align-items: center;
+
+  padding: 1.2rem;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(100%); /* по умолчанию скрыта снизу */
+  transition: none; /* выключаем transition, используем keyframes */
+  pointer-events: none; /* чтобы скрытые панели не ловили клики */
+}
+
+/* активная панель — видимая и на месте */
+.content.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ---- анимации входа/ухода ---- */
+@keyframes slideInFromBelow {
+  from {
+    transform: translateY(100%) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToAbove {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%) scale(0.97);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInFromAbove {
+  from {
+    transform: translateY(-100%) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToBelow {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%) scale(0.97);
+    opacity: 0;
+  }
+}
+
+/* классы, которые JS будет ставить при анимации */
+.slide-in {
+  animation: slideInFromBelow 1200ms cubic-bezier(.22,1,.36,1) forwards;
+  z-index: 20;
+  pointer-events: auto;
+}
+.slide-out {
+  animation: slideOutToAbove 1200ms cubic-bezier(.22,1,.36,1) forwards;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.slide-in-down {
+  animation: slideInFromAbove 1200ms cubic-bezier(.22,1,.36,1) forwards;
+  z-index: 20;
+}
+
+.slide-out-down {
+  animation: slideOutToBelow 1200ms cubic-bezier(.22,1,.36,1) forwards;
+  z-index: 10;
+}
+
+/* небольшая эстетика */
+.menu { margin-top: 1rem; }
+.nav-btn {
+  background-color: transparent;
+  border: none;
+
+  margin-top: 1rem;
+  height: auto;
+  width: 100px;
+
+  font-size: 40px;
+  color: var(--muted);
+}
+
+.nav-btn:hover {
+  color: var(--text);
+  text-shadow: 0px 0px 6px var(--text);
+}
+
+/* аккуратное фокусирование — чтобы видно было клавиатурой */
+/* .content :focus { outline: 2px solid rgba(0,255,213,0.2); outline-offset: 2px; } */
+
+/*#endregion*/
+
+/*#region БЛОК КОНТАКТОВ*/
+.contacts {
+  position: absolute;
+  top:50vh;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  color: var(--muted);
+  gap: 60px;
+  padding-left: 1.2rem;
+}
+
+.contacts a {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contacts .email-icon {
+  color: var(--muted)
+}
+
+.contacts a:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
+}
+
+.contacts svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--muted);
+}
+
+.contacts a:hover {
+  transform: translateY(-3px);
+  color: var(--text);
+  filter: drop-shadow(0 0 6px var(--text));
+}
+/*#endregion*/
+
 .home-intro.wrap{
   min-height: 100vh;
   display: flex;
@@ -129,12 +303,12 @@ body{
 }
 
 .hero {
-  width: calc(var(--max-width) - 24px);
+  width: var(--max-width);
   display:grid;
   grid-template-columns: 3fr 2fr; /* 60% — 40% */
   position: relative;             /* <— это важно! */
   gap:20px;
-  padding-left:24px;
+  /* padding-left:24px; */
   align-items:center;
   /* border-top:1px solid #eee;
   border-bottom:1px solid #eee; */
@@ -169,43 +343,9 @@ body{
   object-fit:cover;
 }
 
-.contacts {
-  display: flex;
-  justify-content: center;
-  color: var(--muted);
-  gap: 60px;
-}
 
-.contacts a {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
 
-.contacts .email-icon {
-  color: var(--muted)
-}
-
-.contacts a:hover {
-  transform: scale(1.15);
-  opacity: 0.8;
-}
-
-.contacts svg {
-  width: 100%;
-  height: 100%;
-  fill: var(--muted);
-}
-
-.contacts a:hover {
-  transform: translateY(-3px);
-  color: var(--text);
-  filter: drop-shadow(0 0 6px var(--text));
-}
-
+/*#region МЕНЮ ПОРТФОЛИО*/
 /* Контейнер */
 .menu-deck {
   position: relative;
@@ -244,7 +384,7 @@ body{
 .menu-deck .card:hover ~ .card {
   transform: translateX(calc(30px * var(--i))) ; /* сохраняем базовый отступ */
 }
-
+/*#endregion*/
 .sammary {
   width: 980px;
   margin: 0 auto;
