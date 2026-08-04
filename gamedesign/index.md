@@ -642,4 +642,15 @@ description: "Портфолио геймдизайнера: игровые си
       </a>
     </div>
   </div>
+
+  <footer class="gd-contact-footer gd-container">
+    <span>
+      Copyright © {{ 'now' | date: '%Y' }} Tereshenko Leonid.
+      All rights reserved.
+    </span>
+
+    <a href="{{ '/' | relative_url }}">
+      Вернуться на главную
+    </a>
+  </footer>
 </section>

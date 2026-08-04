@@ -4728,3 +4728,361 @@ button.gd-contact-card {
     padding-left: var(--gd-gutter);
   }
 }
+
+
+/* =================================================================
+   GLOBAL HEADER + EMBEDDED CONTACT FOOTER
+   ================================================================= */
+
+/* -----------------------------
+   Header structure
+   ----------------------------- */
+
+.gd-header__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(190px, 0.9fr)
+    minmax(240px, 1fr)
+    minmax(430px, 1.45fr);
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 42px);
+}
+
+.gd-header__brand {
+  min-width: 0;
+  margin-right: 0;
+
+  display: grid;
+  gap: 2px;
+
+  opacity: 0.88;
+}
+
+.gd-header__brand strong {
+  overflow: hidden;
+
+  color: var(--gd-text-secondary);
+
+  font-family: var(--gd-font-display);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gd-header__brand span {
+  color: var(--gd-accent-secondary);
+
+  font-family: var(--gd-font-mono);
+  font-size: 0.59rem;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.gd-header__brand:hover strong,
+.gd-header__brand:focus-visible strong {
+  color: var(--gd-text);
+}
+
+.gd-header__context {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  color: var(--gd-text-muted);
+
+  font-family: var(--gd-font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gd-header__context a {
+  color: var(--gd-text-muted);
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.gd-header__context a:hover,
+.gd-header__context a:focus-visible {
+  color: var(--gd-matrix);
+  transform: translateX(-2px);
+}
+
+.gd-header__context strong {
+  overflow: hidden;
+
+  color: var(--gd-text-secondary);
+
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gd-header__actions {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(14px, 1.5vw, 24px);
+}
+
+.gd-header__contacts {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* -----------------------------
+   Header contact icons
+   ----------------------------- */
+
+.gd-header-contact {
+  position: relative;
+
+  width: 38px;
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+
+  padding: 0;
+
+  border: 1px solid rgba(150, 196, 164, 0.16);
+  border-radius: 9px;
+
+  color: var(--gd-text-muted);
+  background: rgba(12, 23, 16, 0.26);
+
+  font: inherit;
+  text-decoration: none;
+
+  cursor: pointer;
+  opacity: 0.78;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+button.gd-header-contact {
+  appearance: none;
+}
+
+.gd-header-contact svg {
+  width: 18px;
+  height: 18px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.gd-header-contact svg.gd-header-contact__icon--fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.gd-header-contact:hover,
+.gd-header-contact:focus-visible {
+  color: var(--gd-matrix);
+
+  border-color: rgba(98, 245, 138, 0.62);
+  background: var(--gd-matrix-soft);
+
+  box-shadow:
+    0 0 15px var(--gd-matrix-glow);
+
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.gd-header-contact__toast {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -4px;
+  z-index: 220;
+
+  width: max-content;
+
+  padding: 7px 10px;
+
+  border: 1px solid var(--gd-matrix);
+  border-radius: 7px;
+
+  color: var(--gd-matrix);
+  background: rgba(8, 17, 11, 0.98);
+
+  box-shadow:
+    0 0 16px var(--gd-matrix-glow);
+
+  font-family: var(--gd-font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-4px);
+
+  transition:
+    opacity 50ms linear,
+    transform 120ms ease;
+}
+
+.gd-header-contact--copy.is-copied .gd-header-contact__toast {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gd-header-contact--copy.is-copy-failed .gd-header-contact__toast {
+  border-color: var(--gd-text-secondary);
+  color: var(--gd-text);
+}
+
+/* The old page-section nav is no longer used in the header. */
+.gd-header__nav {
+  display: none !important;
+}
+
+/* -----------------------------
+   Footer inside Contacts
+   ----------------------------- */
+
+.gd-contact-screen {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  row-gap: clamp(16px, 2vh, 26px);
+}
+
+.gd-contact-footer {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding-top: 15px;
+  padding-left:
+    calc(
+      var(--gd-gutter) +
+      var(--gd-section-nav-safe-space)
+    );
+
+  border-top: 1px solid var(--gd-accent-border);
+
+  color: var(--gd-text-muted);
+
+  font-family: var(--gd-font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.025em;
+}
+
+.gd-contact-footer a {
+  color: var(--gd-text-muted);
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.gd-contact-footer a:hover,
+.gd-contact-footer a:focus-visible {
+  color: var(--gd-matrix);
+  transform: translateX(-3px);
+}
+
+/* The standalone layout footer has been removed. */
+.gd-footer {
+  display: none;
+}
+
+/* -----------------------------
+   Responsive header/footer
+   ----------------------------- */
+
+@media (max-width: 1180px) {
+  .gd-header__inner {
+    grid-template-columns:
+      minmax(170px, 1fr)
+      auto;
+  }
+
+  .gd-header__context {
+    display: none;
+  }
+
+  .gd-header__actions {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .gd-header__inner {
+    grid-template-columns: minmax(120px, 1fr) auto;
+    gap: 12px;
+  }
+
+  .gd-header__brand span {
+    display: none;
+  }
+
+  .gd-header__contacts {
+    gap: 5px;
+  }
+
+  .gd-header-contact {
+    width: 34px;
+    height: 34px;
+
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .gd-header-contact svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .gd-header__actions {
+    gap: 8px;
+  }
+
+  .gd-contact-footer {
+    padding-left: var(--gd-gutter);
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  .gd-header__brand strong {
+    font-size: 0.78rem;
+  }
+
+  .gd-header-contact {
+    width: 30px;
+  }
+}
