@@ -1,37 +1,570 @@
 document.addEventListener("DOMContentLoaded", () => {
-  setupProjectRail();
+  setupProjectCarousel();
+  setupContactCopy();
   setupSegmentedScroll();
 });
 
-function setupProjectRail() {
-  const rail = document.querySelector("[data-project-rail]");
-  const controls = document.querySelectorAll("[data-rail-direction]");
 
-  if (!rail || controls.length === 0) {
+function setupContactCopy() {
+  const copyButtons = document.querySelectorAll("[data-copy-contact]");
+
+  if (copyButtons.length === 0) {
     return;
   }
 
-  const getStep = () => {
-    const card = rail.querySelector(".gd-project-card");
-
-    if (!card) {
-      return rail.clientWidth * 0.8;
+  async function copyText(value) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+      return;
     }
 
-    const styles = window.getComputedStyle(rail);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || "0");
+    const fallback = document.createElement("textarea");
 
-    return card.getBoundingClientRect().width + gap;
-  };
+    fallback.value = value;
+    fallback.setAttribute("readonly", "");
+    fallback.style.position = "fixed";
+    fallback.style.opacity = "0";
+    fallback.style.pointerEvents = "none";
 
-  controls.forEach((button) => {
-    button.addEventListener("click", () => {
-      const direction = Number(button.dataset.railDirection);
+    document.body.append(fallback);
+    fallback.select();
+    fallback.setSelectionRange(0, fallback.value.length);
 
-      rail.scrollBy({
-        left: getStep() * direction,
-        behavior: "smooth"
+    const copied = document.execCommand("copy");
+
+    fallback.remove();
+
+    if (!copied) {
+      throw new Error("Copy command failed.");
+    }
+  }
+
+  copyButtons.forEach((button) => {
+    let hideTimer = null;
+    let cleanupTimer = null;
+
+    button.addEventListener("click", async () => {
+      const value = button.dataset.copyContact;
+      const toast = button.querySelector("[data-copy-toast]");
+
+      if (!value || !toast) {
+        return;
+      }
+
+      window.clearTimeout(hideTimer);
+      window.clearTimeout(cleanupTimer);
+
+      button.classList.remove("is-copied", "is-copy-failed");
+      void button.offsetWidth;
+
+      try {
+        await copyText(value);
+
+        toast.textContent = "Скопировано!";
+        button.classList.add("is-copied");
+      } catch (error) {
+        toast.textContent = "Не удалось скопировать";
+        button.classList.add("is-copied", "is-copy-failed");
+      }
+
+      /*
+        Keep the message visible for 1.75 seconds, then remove the
+        visible state. CSS fades opacity over the requested 50ms.
+      */
+      hideTimer = window.setTimeout(() => {
+        button.classList.remove("is-copied");
+
+        cleanupTimer = window.setTimeout(() => {
+          button.classList.remove("is-copy-failed");
+        }, 60);
+      }, 1750);
+    });
+  });
+}
+
+function setupProjectCarousel() {
+  const root = document.querySelector("[data-project-carousel]");
+  const viewport = root?.querySelector("[data-carousel-viewport]");
+  const track = root?.querySelector("[data-carousel-track]");
+  const previousButton = root?.querySelector("[data-carousel-prev]");
+  const nextButton = root?.querySelector("[data-carousel-next]");
+  const pagination = root?.querySelector("[data-carousel-pagination]");
+  const status = root?.querySelector("[data-carousel-status]");
+
+  if (
+    !root ||
+    !viewport ||
+    !track ||
+    !previousButton ||
+    !nextButton ||
+    !pagination
+  ) {
+    return;
+  }
+
+  const originalSlides = Array.from(
+    track.querySelectorAll("[data-project-slide]")
+  );
+
+  if (originalSlides.length === 0) {
+    return;
+  }
+
+  const progress = document.createElement("div");
+  const progressFill = document.createElement("div");
+
+  progress.className = "gd-project-progress";
+  progress.setAttribute("aria-hidden", "true");
+
+  progressFill.className = "gd-project-progress__fill";
+
+  progress.append(progressFill);
+  viewport.append(progress);
+
+  const transitionDuration = 1200;
+  const dwellDuration = 7000;
+  const interactionDelay = 18000;
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  let trackIndex = 1;
+  let logicalIndex = 0;
+  let isAnimating = false;
+  let autoplayTimer = null;
+  let progressAnimation = null;
+  let pendingAutoplayDelay = dwellDuration;
+  let pointerStartX = null;
+  let resizeFrame = null;
+
+  const firstClone = originalSlides[0].cloneNode(true);
+  const lastClone =
+    originalSlides[originalSlides.length - 1].cloneNode(true);
+
+  firstClone.dataset.carouselClone = "true";
+  lastClone.dataset.carouselClone = "true";
+
+  firstClone.setAttribute("aria-hidden", "true");
+  lastClone.setAttribute("aria-hidden", "true");
+
+  firstClone
+    .querySelectorAll("a, button, input, select, textarea, [tabindex]")
+    .forEach((element) => element.setAttribute("tabindex", "-1"));
+
+  lastClone
+    .querySelectorAll("a, button, input, select, textarea, [tabindex]")
+    .forEach((element) => element.setAttribute("tabindex", "-1"));
+
+  track.prepend(lastClone);
+  track.append(firstClone);
+
+  const allSlides = () =>
+    Array.from(track.querySelectorAll(".gd-project-card"));
+
+  function normalizeLogicalIndex(index) {
+    const count = originalSlides.length;
+
+    return ((index % count) + count) % count;
+  }
+
+  function getSlideName(index) {
+    return (
+      originalSlides[index]?.getAttribute("aria-label") ||
+      `Проект ${index + 1}`
+    );
+  }
+
+  function updateAccessibility() {
+    allSlides().forEach((slide, index) => {
+      slide.classList.toggle("is-active", index === trackIndex);
+    });
+
+    originalSlides.forEach((slide, index) => {
+      const isActive = index === logicalIndex;
+
+      slide.setAttribute("aria-hidden", String(!isActive));
+
+      slide
+        .querySelectorAll("a, button, input, select, textarea, [tabindex]")
+        .forEach((element) => {
+          if (isActive) {
+            element.removeAttribute("tabindex");
+          } else {
+            element.setAttribute("tabindex", "-1");
+          }
+        });
+    });
+
+    pagination
+      .querySelectorAll("[data-carousel-dot]")
+      .forEach((dot, index) => {
+        const isActive = index === logicalIndex;
+
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-current", isActive ? "true" : "false");
       });
+
+    if (status) {
+      status.textContent =
+        `${getSlideName(logicalIndex)}. ` +
+        `${logicalIndex + 1} из ${originalSlides.length}.`;
+    }
+  }
+
+  function setTransform(index, animate = true) {
+    track.classList.toggle("is-jumping", !animate);
+    track.style.transform =
+      `translate3d(-${index * 100}%, 0, 0)`;
+
+    if (!animate) {
+      void track.offsetWidth;
+      track.classList.remove("is-jumping");
+    }
+  }
+
+  function stopProgress() {
+    progressAnimation?.cancel();
+    progressAnimation = null;
+
+    progressFill.style.transform = "scaleX(0)";
+  }
+
+  function restartProgress(duration) {
+    stopProgress();
+
+    progressAnimation = progressFill.animate(
+      [
+        { transform: "scaleX(0)" },
+        { transform: "scaleX(1)" }
+      ],
+      {
+        duration,
+        easing: "linear",
+        fill: "forwards"
+      }
+    );
+  }
+
+  function clearAutoplay() {
+    window.clearTimeout(autoplayTimer);
+    autoplayTimer = null;
+    stopProgress();
+  }
+
+  function canAutoplay() {
+    return (
+      !reducedMotion.matches &&
+      !document.hidden &&
+      !isAnimating
+    );
+  }
+
+  function scheduleAutoplay(delay = dwellDuration) {
+    clearAutoplay();
+
+    if (!canAutoplay()) {
+      root.classList.add("is-paused");
+      return;
+    }
+
+    root.classList.remove("is-paused");
+    restartProgress(delay);
+
+    autoplayTimer = window.setTimeout(() => {
+      stopProgress();
+      pendingAutoplayDelay = dwellDuration;
+      moveBy(1, false);
+    }, delay);
+  }
+
+  /*
+    Any deliberate activity postpones the next automatic transition.
+    The timer does not die: it restarts for 18 seconds and remains
+    visible through the progress line.
+  */
+  function registerInteraction() {
+    pendingAutoplayDelay = interactionDelay;
+    clearAutoplay();
+
+    if (!isAnimating) {
+      scheduleAutoplay(interactionDelay);
+    }
+  }
+
+  function finishInfiniteLoopJump() {
+    const count = originalSlides.length;
+    let jumpTarget = null;
+
+    if (trackIndex === 0) {
+      jumpTarget = count;
+    }
+
+    if (trackIndex === count + 1) {
+      jumpTarget = 1;
+    }
+
+    if (jumpTarget === null) {
+      return;
+    }
+
+    /*
+      Disable both track and card transitions before swapping the
+      active clone for the matching original slide.
+    */
+    track.classList.add("is-loop-jumping");
+    track.classList.add("is-jumping");
+
+    trackIndex = jumpTarget;
+    logicalIndex = normalizeLogicalIndex(trackIndex - 1);
+
+    track.style.transform =
+      `translate3d(-${trackIndex * 100}%, 0, 0)`;
+
+    updateAccessibility();
+
+    void track.offsetWidth;
+
+    track.classList.remove("is-jumping");
+
+    window.requestAnimationFrame(() => {
+      track.classList.remove("is-loop-jumping");
+    });
+  }
+
+  function moveToTrackIndex(nextTrackIndex, userInitiated = true) {
+    if (isAnimating || originalSlides.length < 2) {
+      return;
+    }
+
+    if (userInitiated) {
+      pendingAutoplayDelay = interactionDelay;
+    }
+
+    clearAutoplay();
+
+    trackIndex = nextTrackIndex;
+    logicalIndex = normalizeLogicalIndex(trackIndex - 1);
+    isAnimating = true;
+
+    setTransform(trackIndex, true);
+    updateAccessibility();
+  }
+
+  function moveBy(direction, userInitiated = true) {
+    moveToTrackIndex(trackIndex + direction, userInitiated);
+  }
+
+  function moveToLogicalIndex(index) {
+    const nextLogicalIndex = normalizeLogicalIndex(index);
+
+    if (nextLogicalIndex === logicalIndex || isAnimating) {
+      registerInteraction();
+      return;
+    }
+
+    moveToTrackIndex(nextLogicalIndex + 1, true);
+  }
+
+  function fitViewport() {
+    const sectionRect = root.getBoundingClientRect();
+    const desktop = window.matchMedia(
+      "(min-width: 961px) and (min-height: 761px)"
+    ).matches;
+
+    if (!desktop) {
+      viewport.style.removeProperty("--gd-carousel-width");
+      viewport.style.removeProperty("--gd-carousel-height");
+      return;
+    }
+
+    const sidePreview = 70;
+    const horizontalReserve = sidePreview * 2;
+    const verticalReserve = 2;
+
+    const availableWidth = Math.max(
+      320,
+      sectionRect.width - horizontalReserve
+    );
+    const availableHeight = Math.max(
+      180,
+      sectionRect.height - verticalReserve
+    );
+
+    const width = Math.min(
+      availableWidth,
+      availableHeight * (16 / 9),
+      1600
+    );
+    const height = width * (9 / 16);
+
+    viewport.style.setProperty(
+      "--gd-carousel-width",
+      `${Math.round(width)}px`
+    );
+    viewport.style.setProperty(
+      "--gd-carousel-height",
+      `${Math.round(height)}px`
+    );
+  }
+
+  originalSlides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = "gd-project-dot";
+    dot.dataset.carouselDot = String(index);
+    dot.setAttribute(
+      "aria-label",
+      `Показать проект ${getSlideName(index)}`
+    );
+
+    dot.addEventListener("click", () => {
+      moveToLogicalIndex(index);
+    });
+
+    pagination.append(dot);
+  });
+
+  track.classList.add("is-loop-jumping");
+  setTransform(trackIndex, false);
+  updateAccessibility();
+  void track.offsetWidth;
+  track.classList.remove("is-loop-jumping");
+
+  fitViewport();
+  progress.hidden = reducedMotion.matches;
+  scheduleAutoplay(dwellDuration);
+
+  previousButton.addEventListener("click", () => {
+    moveBy(-1, true);
+  });
+
+  nextButton.addEventListener("click", () => {
+    moveBy(1, true);
+  });
+
+  track.addEventListener("transitionend", (event) => {
+    if (
+      event.propertyName !== "transform" ||
+      event.target !== track
+    ) {
+      return;
+    }
+
+    finishInfiniteLoopJump();
+    isAnimating = false;
+
+    const delay = pendingAutoplayDelay;
+    pendingAutoplayDelay = dwellDuration;
+
+    scheduleAutoplay(delay);
+  });
+
+  root.addEventListener("pointerdown", () => {
+    registerInteraction();
+  });
+
+  root.addEventListener("focusin", () => {
+    registerInteraction();
+  });
+
+  viewport.addEventListener("keydown", (event) => {
+    registerInteraction();
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      moveBy(-1, true);
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      moveBy(1, true);
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      moveToLogicalIndex(0);
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      moveToLogicalIndex(originalSlides.length - 1);
+    }
+  });
+
+  viewport.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    pointerStartX = event.clientX;
+  });
+
+  viewport.addEventListener("pointerup", (event) => {
+    if (pointerStartX === null) {
+      return;
+    }
+
+    const distance = event.clientX - pointerStartX;
+    pointerStartX = null;
+
+    if (Math.abs(distance) >= 48) {
+      moveBy(distance > 0 ? -1 : 1, true);
+    }
+  });
+
+  viewport.addEventListener("pointercancel", () => {
+    pointerStartX = null;
+    registerInteraction();
+  });
+
+  root.addEventListener(
+    "wheel",
+    (event) => {
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      moveBy(event.deltaX > 0 ? 1 : -1, true);
+    },
+    { passive: false }
+  );
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      clearAutoplay();
+      return;
+    }
+
+    scheduleAutoplay(pendingAutoplayDelay);
+  });
+
+  reducedMotion.addEventListener?.("change", () => {
+    progress.hidden = reducedMotion.matches;
+
+    if (reducedMotion.matches) {
+      clearAutoplay();
+      return;
+    }
+
+    scheduleAutoplay(pendingAutoplayDelay);
+  });
+
+  window.addEventListener("resize", () => {
+    window.cancelAnimationFrame(resizeFrame);
+
+    resizeFrame = window.requestAnimationFrame(() => {
+      fitViewport();
+
+      track.classList.add("is-loop-jumping");
+      setTransform(trackIndex, false);
+      updateAccessibility();
+      void track.offsetWidth;
+      track.classList.remove("is-loop-jumping");
     });
   });
 }
@@ -44,7 +577,6 @@ function setupSegmentedScroll() {
   const page = document.querySelector(".gd-page");
   const sections = Array.from(document.querySelectorAll(".gd-screen"));
   const sideNav = document.querySelector("[data-side-nav]");
-  const sideNavToggle = document.querySelector("[data-side-nav-toggle]");
   const sideLinks = Array.from(
     document.querySelectorAll("[data-side-nav-link]")
   );
@@ -61,39 +593,6 @@ function setupSegmentedScroll() {
   const scrollDuration = 1200;
 
   updateNavigation(activeIndex);
-
-  if (sideNav && sideNavToggle) {
-    sideNavToggle.addEventListener("click", () => {
-      const isOpen = sideNav.classList.toggle("is-pinned-open");
-
-      sideNavToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      sideNavToggle.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Закрыть навигацию по разделам"
-          : "Открыть навигацию по разделам"
-      );
-    });
-
-    sideNav.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") {
-        return;
-      }
-
-      sideNav.classList.remove("is-pinned-open");
-      sideNavToggle.setAttribute("aria-expanded", "false");
-      sideNavToggle.setAttribute(
-        "aria-label",
-        "Открыть навигацию по разделам"
-      );
-      sideNavToggle.focus();
-    });
-  }
-
 
   function getHeaderHeight() {
     const value = window
@@ -308,17 +807,6 @@ function setupSegmentedScroll() {
         return;
       }
 
-      const projectRail = event.target.closest("[data-project-rail]");
-
-      // Preserve deliberate horizontal trackpad scrolling in the rail.
-      if (
-        projectRail &&
-        Math.abs(event.deltaX) > Math.abs(event.deltaY)
-      ) {
-        projectRail.scrollLeft += event.deltaX;
-        return;
-      }
-
       const direction = event.deltaY > 0 ? 1 : -1;
       goToSection(activeIndex + direction);
     },
@@ -374,15 +862,6 @@ function setupSegmentedScroll() {
         }
 
         event.preventDefault();
-
-        if (sideNav && sideNavToggle) {
-          sideNav.classList.remove("is-pinned-open");
-          sideNavToggle.setAttribute("aria-expanded", "false");
-          sideNavToggle.setAttribute(
-            "aria-label",
-            "Открыть навигацию по разделам"
-          );
-        }
 
         if (index === activeIndex) {
           return;
