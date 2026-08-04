@@ -2981,3 +2981,118 @@
     display: none;
   }
 }
+
+
+/* =================================================================
+   PROJECTLEGEND TEST CONTENT
+   Replace dashed placeholders with compact proof-oriented content.
+   ================================================================= */
+
+.pc-proof-content {
+  flex: 1;
+
+  padding: clamp(18px, 1.8vw, 26px);
+
+  border: 1px solid rgba(150, 196, 164, 0.22);
+  border-radius: calc(var(--gd-radius) - 3px);
+
+  color: var(--gd-text-secondary);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(9, 19, 12, 0.34),
+      rgba(13, 26, 17, 0.21)
+    );
+
+  font-size: clamp(0.86rem, 0.9vw, 0.98rem);
+  line-height: 1.48;
+}
+
+.pc-proof-content > p {
+  margin: 0;
+}
+
+.pc-proof-content > p + p {
+  margin-top: 1em;
+}
+
+.pc-proof-groups {
+  display: grid;
+  align-content: center;
+  gap: 0;
+}
+
+.pc-proof-group {
+  display: grid;
+  grid-template-columns: minmax(108px, 0.31fr) minmax(0, 0.69fr);
+  gap: clamp(12px, 1.2vw, 20px);
+
+  padding-block: clamp(9px, 1.05vh, 13px);
+
+  border-top: 1px solid rgba(150, 196, 164, 0.14);
+}
+
+.pc-proof-group:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.pc-proof-group:last-child {
+  padding-bottom: 0;
+}
+
+.pc-proof-group strong {
+  color: var(--gd-matrix);
+
+  font-family: var(--gd-font-mono);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.pc-proof-group p {
+  margin: 0;
+}
+
+.pc-metric strong.pc-metric__status {
+  font-size: clamp(1.25rem, 2vw, 2.25rem);
+  letter-spacing: -0.035em;
+}
+
+.pc-metric span {
+  line-height: 1.35;
+}
+
+/* Compact desktop: keep four design/build rows inside one screen. */
+@media (max-height: 820px) and (min-width: 961px) {
+  .pc-proof-content {
+    padding: 15px;
+
+    font-size: 0.79rem;
+    line-height: 1.39;
+  }
+
+  .pc-proof-group {
+    grid-template-columns: minmax(96px, 0.29fr) minmax(0, 0.71fr);
+    gap: 11px;
+
+    padding-block: 7px;
+  }
+
+  .pc-proof-group strong {
+    font-size: 0.59rem;
+  }
+
+  .pc-metric strong.pc-metric__status {
+    font-size: clamp(1.08rem, 1.65vw, 1.72rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .pc-proof-group {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
