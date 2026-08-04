@@ -1,0 +1,59 @@
+<div class="pc-endcap">
+  <div class="pc-endcap__contact">
+    <div>
+      <p class="pc-section-index">CONTACT</p>
+      <h3>Нужны подробности по проекту?</h3>
+      <p>
+        На основном экране портфолио собраны все способы связи
+        и остальные кейсы.
+      </p>
+    </div>
+
+    <a
+      class="gd-button"
+      href="{{ '/gamedesign/#contacts' | relative_url }}"
+    >
+      Перейти к контактам
+    </a>
+  </div>
+
+  {% if page.previous_project or page.next_project %}
+    <nav
+      class="pc-project-switcher"
+      aria-label="Другие проекты"
+    >
+      {% if page.previous_project %}
+        <a
+          class="pc-project-switcher__item"
+          href="{{ page.previous_project.url | relative_url }}"
+        >
+          <span>Предыдущий кейс</span>
+          <strong>← {{ page.previous_project.title }}</strong>
+        </a>
+      {% else %}
+        <span></span>
+      {% endif %}
+
+      {% if page.next_project %}
+        <a
+          class="pc-project-switcher__item pc-project-switcher__item--next"
+          href="{{ page.next_project.url | relative_url }}"
+        >
+          <span>Следующий кейс</span>
+          <strong>{{ page.next_project.title }} →</strong>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+
+  <footer class="pc-footer">
+    <span>
+      Copyright © {{ 'now' | date: '%Y' }} Tereshenko Leonid.
+      All rights reserved.
+    </span>
+
+    <a href="{{ '/gamedesign/#projects' | relative_url }}">
+      Вернуться ко всем проектам
+    </a>
+  </footer>
+</div>

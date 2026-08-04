@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link
+    rel="icon"
+    href="{{ '/favicon.ico' | relative_url }}"
+    sizes="any"
+  >
+
+  <title>{{ page.title | default: site.title }}</title>
+  <meta
+    name="description"
+    content="{{ page.description | default: site.description }}"
+  >
+
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/style.css' | relative_url }}"
+  >
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/gamedesign.css' | relative_url }}"
+  >
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/project-case.css' | relative_url }}"
+  >
+</head>
+
+<body class="gd-page pc-page" data-project-case>
+  <a class="gd-skip-link" href="#main-content">
+    Перейти к содержанию
+  </a>
+
+  {% include gamedesign-header.html %}
+
+  {% if page.case_nav %}
+    <aside
+      class="gd-side-nav pc-side-nav is-visible"
+      data-case-nav
+      aria-label="Разделы кейса"
+    >
+      <button
+        class="pc-side-nav__toggle"
+        type="button"
+        data-case-nav-toggle
+        aria-expanded="false"
+        aria-controls="case-navigation"
+      >
+        <span>Разделы кейса</span>
+        <span aria-hidden="true">⌄</span>
+      </button>
+
+      <nav
+        class="gd-side-nav__panel pc-side-nav__panel"
+        id="case-navigation"
+        aria-label="Навигация по кейсу"
+      >
+        {% for item in page.case_nav %}
+          <a
+            href="#{{ item.id }}"
+            data-case-nav-link
+          >
+            <strong>{{ item.label }}</strong>
+
+            <span
+              class="gd-side-nav__marker"
+              aria-hidden="true"
+            ></span>
+          </a>
+        {% endfor %}
+      </nav>
+    </aside>
+  {% endif %}
+
+  <main id="main-content" class="pc-main">
+    <article class="pc-case">
+      <header
+        class="pc-screen pc-overview"
+        id="overview"
+        data-case-screen
+      >
+        {% if page.hero_image %}
+          <img
+            class="pc-overview__background"
+            src="{{ page.hero_image | relative_url }}"
+            alt=""
+            aria-hidden="true"
+          >
+        {% endif %}
+
+        <div
+          class="pc-overview__background-overlay"
+          aria-hidden="true"
+        ></div>
+
+        <div class="pc-screen__inner pc-overview__inner gd-container">
+          <div class="pc-overview__copy">
+            <p class="pc-eyebrow">
+              {{ page.project_index | default: 'CASE' }}
+
+              {% if page.project_type %}
+                <span aria-hidden="true">/</span>
+                {{ page.project_type }}
+              {% endif %}
+            </p>
+
+            <h1>
+              {{ page.project_title | default: page.title }}
+            </h1>
+
+            {% if page.project_summary %}
+              <p class="pc-overview__summary">
+                {{ page.project_summary }}
+              </p>
+            {% endif %}
+
+            {% if page.project_stack %}
+              <div
+                class="pc-tag-list"
+                aria-label="Технологии и инструменты"
+              >
+                {% for item in page.project_stack %}
+                  <span>{{ item }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if page.project_links %}
+              <div class="pc-overview__actions">
+                {% for link in page.project_links %}
+                  <a
+                    class="gd-button{% unless link.primary %} gd-button--ghost{% endunless %}"
+                    href="{{ link.url }}"
+                    {% if link.external %}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    {% endif %}
+                  >
+                    {{ link.label }}
+                  </a>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if page.project_facts %}
+              <dl class="pc-fact-strip">
+                {% for fact in page.project_facts %}
+                  <div>
+                    <dt>{{ fact.label }}</dt>
+                    <dd>{{ fact.value }}</dd>
+                  </div>
+                {% endfor %}
+              </dl>
+            {% endif %}
+          </div>
+
+          <div
+            class="pc-overview__evidence"
+            aria-label="Материалы проекта"
+          >
+            {% assign main_media = page.project_media_main %}
+
+            <figure class="pc-evidence-tile pc-evidence-tile--main">
+              {% if main_media.src %}
+                <img
+                  src="{{ main_media.src | relative_url }}"
+                  alt="{{ main_media.alt | default: main_media.label }}"
+                >
+              {% elsif page.hero_image %}
+                <img
+                  src="{{ page.hero_image | relative_url }}"
+                  alt="{{ page.hero_alt | default: page.project_title }}"
+                >
+              {% endif %}
+
+              <figcaption>
+                <span>
+                  {{ main_media.label | default: 'Основной материал' }}
+                </span>
+
+                <strong>
+                  {{ main_media.caption | default: 'Ключевой кадр проекта' }}
+                </strong>
+              </figcaption>
+            </figure>
+
+            <figure
+              class="pc-evidence-tile pc-evidence-tile--carousel"
+              data-case-carousel
+              aria-label="{{ page.project_gallery_label | default: 'Галерея проекта' }}"
+            >
+              <div
+                class="pc-media-carousel__viewport"
+                data-case-carousel-viewport
+              >
+                <div
+                  class="pc-media-carousel__track"
+                  data-case-carousel-track
+                >
+                  {% for slide in page.project_gallery %}
+                    <div
+                      class="pc-media-carousel__slide{% if forloop.first %} is-active{% endif %}{% if slide.available == false %} is-missing{% endif %}"
+                      data-case-carousel-slide
+                      aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+                    >
+                      <div class="pc-media-carousel__missing">
+                        <span>Ожидается файл</span>
+                        <strong>
+                          {{ slide.filename | default: slide.src }}
+                        </strong>
+                      </div>
+
+                      {% unless slide.available == false %}
+                        <img
+                          src="{{ slide.src | relative_url }}"
+                          alt="{{ slide.alt | default: slide.label }}"
+                          loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                          data-case-carousel-image
+                        >
+                      {% endunless %}
+
+                      {% if slide.label or slide.caption %}
+                        <div class="pc-media-carousel__caption">
+                          {% if slide.label %}
+                            <span>{{ slide.label }}</span>
+                          {% endif %}
+
+                          {% if slide.caption %}
+                            <strong>{{ slide.caption }}</strong>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              {% if page.project_gallery.size > 1 %}
+                <button
+                  class="pc-media-carousel__arrow pc-media-carousel__arrow--previous"
+                  type="button"
+                  data-case-carousel-previous
+                  aria-label="Предыдущий материал"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+
+                <button
+                  class="pc-media-carousel__arrow pc-media-carousel__arrow--next"
+                  type="button"
+                  data-case-carousel-next
+                  aria-label="Следующий материал"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
+
+                <div class="pc-media-carousel__footer">
+                  <div
+                    class="pc-media-carousel__dots"
+                    role="tablist"
+                    aria-label="Выбор материала"
+                  >
+                    {% for slide in page.project_gallery %}
+                      <button
+                        class="pc-media-carousel__dot{% if forloop.first %} is-active{% endif %}"
+                        type="button"
+                        data-case-carousel-dot="{{ forloop.index0 }}"
+                        aria-label="Показать материал {{ forloop.index }}"
+                        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                        role="tab"
+                      ></button>
+                    {% endfor %}
+                  </div>
+
+                  <span class="pc-media-carousel__counter">
+                    <span data-case-carousel-current>01</span>
+                    /
+                    <span>
+                      {% if page.project_gallery.size < 10 %}0{% endif %}{{ page.project_gallery.size }}
+                    </span>
+                  </span>
+                </div>
+
+                <div
+                  class="pc-media-carousel__autoplay"
+                  aria-hidden="true"
+                >
+                  <span data-case-carousel-progress></span>
+                </div>
+              {% endif %}
+            </figure>
+
+            {% assign video = page.project_video %}
+
+            <figure
+              class="pc-evidence-tile pc-evidence-tile--video"
+              data-case-video-player
+            >
+              <video
+                class="pc-case-video"
+                preload="none"
+                playsinline
+                {% if video.src %}
+                  data-case-video-src="{{ video.src | relative_url }}?build={{ site.time | date: '%s' }}"
+                  data-case-video-mime="{{ video.mime | default: 'video/mp4' }}"
+                {% endif %}
+                {% if video.poster %}
+                  poster="{{ video.poster | relative_url }}"
+                {% endif %}
+                data-case-video
+              ></video>
+
+              <span
+                class="pc-case-video__loader"
+                data-case-video-loader
+                aria-hidden="true"
+              ></span>
+
+
+              <button
+                class="pc-case-video__center-play"
+                type="button"
+                data-case-video-play
+                aria-label="Воспроизвести видео"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 7 8 5-8 5Z"></path>
+                </svg>
+              </button>
+
+              <div class="pc-case-video__controls">
+                <button
+                  class="pc-case-video__button pc-case-video__button--play"
+                  type="button"
+                  data-case-video-play
+                  aria-label="Воспроизвести видео"
+                >
+                  <svg
+                    class="pc-case-video__icon pc-case-video__icon--play"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="m9 7 8 5-8 5Z"></path>
+                  </svg>
+
+                  <svg
+                    class="pc-case-video__icon pc-case-video__icon--pause"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 7v10M15 7v10"></path>
+                  </svg>
+                </button>
+
+                <label class="pc-case-video__timeline">
+                  <input
+                    type="range"
+                    min="0"
+                    max="1000"
+                    value="0"
+                    step="1"
+                    aria-label="Позиция воспроизведения"
+                    data-case-video-progress
+                  >
+                </label>
+
+                <span
+                  class="pc-case-video__time"
+                  data-case-video-time
+                >
+                  0:00 / −0:00
+                </span>
+
+                <label class="pc-case-video__volume">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 10v4h3l4 3V7l-4 3Z"></path>
+                    <path d="M15 9a4 4 0 0 1 0 6"></path>
+                  </svg>
+
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    value="0.8"
+                    step="0.05"
+                    aria-label="Громкость"
+                    data-case-video-volume
+                  >
+                </label>
+
+                <button
+                  class="pc-case-video__button"
+                  type="button"
+                  data-case-video-fullscreen
+                  aria-label="Развернуть видео на весь экран"
+                >
+                  <svg
+                    class="pc-case-video__icon pc-case-video__icon--expand"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 4H4v4M16 4h4v4M8 20H4v-4M16 20h4v-4"></path>
+                  </svg>
+
+                  <svg
+                    class="pc-case-video__icon pc-case-video__icon--collapse"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"></path>
+                  </svg>
+                </button>
+              </div>
+            </figure>
+          </div>
+        </div>
+
+
+      </header>
+
+      {{ content }}
+    </article>
+  </main>
+
+  <script src="{{ '/assets/js/project-case.js' | relative_url }}"></script>
+</body>
+</html>

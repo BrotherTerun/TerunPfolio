@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link
+    rel="icon"
+    href="{{ '/favicon.ico' | relative_url }}"
+    sizes="any"
+  >
+
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
 
@@ -14,116 +20,7 @@
 <body class="gd-page">
   <a class="gd-skip-link" href="#main-content">Перейти к содержанию</a>
 
-  <header class="gd-header">
-    <div class="gd-container gd-header__inner">
-      <a
-        class="gd-header__brand"
-        href="{{ '/' | relative_url }}"
-        aria-label="Перейти на главную страницу портфолио"
-      >
-        <strong>Терещенко Леонид</strong>
-        <span>Game Design Portfolio</span>
-      </a>
-
-      <div class="gd-header__context" aria-label="Текущий раздел портфолио">
-        {% if page.header_back_url %}
-          <a href="{{ page.header_back_url | relative_url }}">
-            ← {{ page.header_parent | default: 'Все проекты' }}
-          </a>
-        {% else %}
-          <span>{{ page.header_parent | default: 'Portfolio' }}</span>
-        {% endif %}
-
-        <span aria-hidden="true">/</span>
-        <strong>{{ page.header_current | default: 'Game Design' }}</strong>
-      </div>
-
-      <div class="gd-header__actions">
-        <nav
-          class="gd-header__contacts"
-          aria-label="Быстрые способы связи"
-        >
-          <a
-            class="gd-header-contact"
-            href="https://t.me/BrotherTerun"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegram: BrotherTerun"
-            title="Telegram — @BrotherTerun"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22 2 11 13"></path>
-              <path d="m22 2-7 20-4-9-9-4Z"></path>
-            </svg>
-          </a>
-
-          <a
-            class="gd-header-contact"
-            href="https://vk.ru/leonid_ter"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="ВКонтакте: leonid_ter"
-            title="ВКонтакте — leonid_ter"
-          >
-            <svg
-              class="gd-header-contact__icon--fill"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path d="M2.5 6.5h3.2c.3 0 .5.2.7.5 1.3 3.3 2.6 5.4 3.5 6.3.5.5.8.4.8-.4V7.8c0-.8-.3-1.1-1-1.3V6h5.1c.5 0 .8.3.8.8v5.5c0 .5.2.7.4.7.4 0 .8-.3 1.5-1.1 1.1-1.3 1.9-3 2.4-4.5.1-.4.4-.6.8-.6h3.1c.6 0 .8.3.6.9-.7 2-2.2 4.1-3.3 5.3-.4.4-.5.7-.1 1.1.3.4 1.3 1.2 2 2 .8.8 1.4 1.6 1.6 2.1.2.5-.1.8-.7.8h-3.4c-.5 0-.8-.2-1.1-.6-.6-.8-1.2-1.5-1.8-2.1-.5-.5-.8-.6-1-.6-.3 0-.5.2-.5.7v1.7c0 .6-.3.9-.9.9h-1.5c-2.8 0-5.6-1.7-7.7-4.8C3.7 11.3 2.8 8.6 2.2 7.3c-.2-.5 0-.8.3-.8Z"></path>
-            </svg>
-          </a>
-
-          <a
-            class="gd-header-contact"
-            href="https://github.com/BrotherTerun"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub: BrotherTerun"
-            title="GitHub — BrotherTerun"
-          >
-            <svg
-              class="gd-header-contact__icon--fill"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.2 11.2 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.4 11.4 0 0 0 12 .8Z"></path>
-            </svg>
-          </a>
-
-          <button
-            class="gd-header-contact gd-header-contact--copy"
-            type="button"
-            data-copy-contact="leonrob34@ya.ru"
-            aria-label="Скопировать email leonrob34@ya.ru"
-            title="Скопировать email — leonrob34@ya.ru"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-              <path d="m4 7 8 6 8-6"></path>
-            </svg>
-
-            <span
-              class="gd-header-contact__toast"
-              data-copy-toast
-              role="status"
-              aria-live="polite"
-            >
-              Скопировано!
-            </span>
-          </button>
-        </nav>
-
-        <span
-          class="gd-button gd-button--small gd-button--disabled"
-          aria-disabled="true"
-          title="PDF-резюме находится в подготовке"
-        >
-          PDF — готовится
-        </span>
-      </div>
-    </div>
-  </header>
+  {% include gamedesign-header.html %}
 
 
   <aside class="gd-side-nav" data-side-nav aria-label="Разделы страницы">
