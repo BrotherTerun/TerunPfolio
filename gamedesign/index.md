@@ -27,55 +27,58 @@ description: "Портфолио геймдизайнера: игровые си
     </div>
   </aside>
 
-  <div class="gd-hero__content">
-    <p class="gd-eyebrow">Геймдизайнер · Технический геймдизайн</p>
+  <div class="gd-hero__stage">
+    <div class="gd-hero__content">
+      <p class="gd-eyebrow">Терещенко Леонид · Геймдизайнер</p>
 
-    <h1>Проектирую игровые системы и превращаю их в работающие прототипы, инструменты и понятную документацию.</h1>
+      <h1>Проектирую игровые системы и довожу их до рабочего прототипа.</h1>
 
-    <p class="gd-hero__lead">
-      Работаю на стыке системного и нарративного дизайна. Могу самостоятельно описать механику,
-      проверить гипотезу в Unity, подготовить инструменты для контента и зафиксировать решение
-      для передачи команде.
-    </p>
+      <p class="gd-hero__lead">
+        Работаю на стыке системного и технического геймдизайна:
+        проектирую и балансирую игровые системы, проверяю решения в Unity,
+        создаю инструменты для контента и готовлю понятную документацию для команды.
+      </p>
 
-    <div class="gd-hero__meta" aria-label="Краткий профессиональный профиль">
-      <span>Системный дизайн</span>
-      <span>Unity / C#</span>
-      <span>Data-driven системы</span>
+      <div class="gd-hero__meta" aria-label="Технические компетенции">
+        <span>Unity · C# · Python</span>
+        <span>Data-driven systems</span>
+        <span>Editor tooling · Validation</span>
+      </div>
+
+      <div class="gd-actions">
+        <a class="gd-button" href="#projects">Посмотреть проекты</a>
+        <a class="gd-button gd-button--ghost" href="mailto:{{ site.email }}">Связаться</a>
+      </div>
     </div>
 
-    <div class="gd-actions">
-      <a class="gd-button" href="#projects">Посмотреть проекты</a>
-      <a class="gd-button gd-button--ghost" href="mailto:{{ site.email }}">Связаться</a>
+    <div class="gd-hero__visual">
+      <img
+        src="{{ '/assets/images/avatar_1_1.png' | relative_url }}"
+        alt="Терещенко Леонид"
+        class="gd-hero__avatar"
+      >
     </div>
-  </div>
-
-  <div class="gd-hero__visual">
-    <img
-      src="{{ '/assets/images/avatar_1_1.png' | relative_url }}"
-      alt="Терещенко Леонид"
-      class="gd-hero__avatar"
-    >
   </div>
 </section>
 
 <section class="gd-screen gd-screen--with-sidebar gd-section gd-container" id="skills" aria-labelledby="skills-title">
   <div class="gd-section__header gd-section__header--compact">
-    <p class="gd-section-index">01 / Компетенции</p>
-    <h2 id="skills-title">Ключевые направления работы</h2>
+    <p class="gd-section-index">01 / HARD SKILLS</p>
+    <h2 id="skills-title">Мои компетенции</h2>
   </div>
 
   <div class="gd-skill-grid">
     <article class="gd-skill-card">
       <span class="gd-skill-card__index">01</span>
       <h3>Системный дизайн</h3>
-      <p>Проектирую игровые правила, состояния, роли и сценарии взаимодействия.</p>
+
       <ul>
-        <li>Механики и игровые циклы</li>
-        <li>Способности и контрплей</li>
-        <li>Ресурсы и ограничения</li>
-        <li>Граничные случаи</li>
+        <li>Системы, механики и игровые циклы</li>
+        <li>Состояния, зависимости и ограничения</li>
+        <li>Способности, роли и контрплей</li>
+        <li>Декомпозиция систем и граничные случаи</li>
       </ul>
+
       <div class="gd-skill-card__cases">
         <span>Кейсы</span>
         <a href="{{ '/projects/tactical-agents/' | relative_url }}">Tactical Agents</a>
@@ -85,52 +88,55 @@ description: "Портфолио геймдизайнера: игровые си
 
     <article class="gd-skill-card">
       <span class="gd-skill-card__index">02</span>
-      <h3>Прототипирование</h3>
-      <p>Перевожу дизайн-документ в рабочую механику и проверяю гипотезу в игровом окружении.</p>
+      <h3>Баланс и игровая экономика</h3>
+
       <ul>
-        <li>Unity и C#</li>
-        <li>Компонентный подход</li>
-        <li>Игровые состояния</li>
-        <li>Короткие итерации</li>
+        <li>Баланс игровых механик и параметров</li>
+        <li>Прогрессия и игровая экономика</li>
+        <li>Моделирование и проверка изменений</li>
+        <li>Метрики, события и поиск дисбаланса</li>
       </ul>
+
       <div class="gd-skill-card__cases">
         <span>Кейсы</span>
-        <a href="{{ '/projects/project-bonfire/' | relative_url }}">ProjectBonfire</a>
-        <a href="{{ '/projects/project-legend/' | relative_url }}">ProjectLegend</a>
+        <a href="{{ '/projects/balance-craft/' | relative_url }}">BalanceCraft</a>
+        <a href="{{ '/projects/tactical-agents/' | relative_url }}">Tactical Agents</a>
       </div>
     </article>
 
     <article class="gd-skill-card">
       <span class="gd-skill-card__index">03</span>
-      <h3>Инструменты и data-driven-системы</h3>
-      <p>Разрабатываю пайплайны, которые упрощают наполнение, проверку и поддержку контента.</p>
+      <h3>Технический геймдизайн и прототипирование</h3>
+
       <ul>
-        <li>JSON-структуры</li>
-        <li>Импорт и валидация</li>
-        <li>Визуальные редакторы</li>
-        <li>Автоматизация ошибок</li>
+        <li>Прототипирование механик в Unity</li>
+        <li>C#, Python и компонентный подход</li>
+        <li>Конфиги, JSON и data-driven-системы</li>
+        <li>Интеграция механик и редакторские инструменты</li>
       </ul>
+
       <div class="gd-skill-card__cases">
         <span>Кейсы</span>
         <a href="{{ '/projects/project-legend/' | relative_url }}">ProjectLegend</a>
-        <a href="{{ '/projects/balance-craft/' | relative_url }}">BalanceCraft</a>
+        <a href="{{ '/projects/project-bonfire/' | relative_url }}">ProjectBonfire</a>
       </div>
     </article>
 
     <article class="gd-skill-card">
       <span class="gd-skill-card__index">04</span>
-      <h3>Аналитика и алгоритмы</h3>
-      <p>Использую данные и алгоритмы для проверки корректности и качества игровых систем.</p>
+      <h3>Документация и сопровождение фич</h3>
+
       <ul>
-        <li>Процедурная генерация</li>
-        <li>A* и BFS</li>
-        <li>Проектирование метрик</li>
-        <li>Обработка событий</li>
+        <li>Концепт-документы, GDD и спецификации</li>
+        <li>Технические задания для разработки</li>
+        <li>Сценарии, состояния и критерии приёмки</li>
+        <li>Сопровождение реализации и итерации по фидбеку</li>
       </ul>
+
       <div class="gd-skill-card__cases">
         <span>Кейсы</span>
-        <a href="{{ '/projects/project-maze/' | relative_url }}">ProjectMaze</a>
-        <a href="{{ '/projects/balance-craft/' | relative_url }}">BalanceCraft</a>
+        <a href="{{ '/projects/project-legend/' | relative_url }}">ProjectLegend</a>
+        <a href="{{ '/projects/tactical-agents/' | relative_url }}">Tactical Agents</a>
       </div>
     </article>
   </div>
@@ -139,7 +145,7 @@ description: "Портфолио геймдизайнера: игровые си
 <section class="gd-screen gd-screen--with-sidebar gd-section gd-section--projects" id="projects" aria-labelledby="projects-title">
   <div class="gd-container gd-section__header gd-section__header--row gd-section__header--compact">
     <div>
-      <p class="gd-section-index">02 / Проекты</p>
+      <p class="gd-section-index">02 / PROJECTS</p>
       <h2 id="projects-title">Проектная лента</h2>
     </div>
 
@@ -224,7 +230,7 @@ description: "Портфолио геймдизайнера: игровые си
 
 <section class="gd-screen gd-screen--with-sidebar gd-section gd-container" id="professional-profile" aria-labelledby="about-title">
   <div class="gd-section__header">
-    <p class="gd-section-index">03 / Профиль</p>
+    <p class="gd-section-index">03 / PROFILE</p>
     <h2 id="about-title">Не только описываю механику — довожу её до проверяемого результата</h2>
   </div>
 
@@ -245,7 +251,7 @@ description: "Портфолио геймдизайнера: игровые си
 
 <section class="gd-screen gd-screen--with-sidebar gd-section gd-container" id="workflow" aria-labelledby="workflow-title">
   <div class="gd-section__header gd-section__header--compact">
-    <p class="gd-section-index">04 / Подход</p>
+    <p class="gd-section-index">04 / WORKFLOW</p>
     <h2 id="workflow-title">Как я работаю</h2>
   </div>
 
@@ -280,7 +286,7 @@ description: "Портфолио геймдизайнера: игровые си
 
 <section class="gd-screen gd-screen--with-sidebar gd-section gd-container" id="tools" aria-labelledby="tools-title">
   <div class="gd-section__header gd-section__header--compact">
-    <p class="gd-section-index">05 / Инструменты</p>
+    <p class="gd-section-index">05 / TOOLS</p>
     <h2 id="tools-title">Технологии и рабочие форматы</h2>
   </div>
 
@@ -306,7 +312,7 @@ description: "Портфолио геймдизайнера: игровые си
 
 <section class="gd-screen gd-screen--with-sidebar gd-section gd-container" id="experience" aria-labelledby="experience-title">
   <div class="gd-section__header gd-section__header--compact">
-    <p class="gd-section-index">06 / Дополнительно</p>
+    <p class="gd-section-index">06 / BACKGROUND</p>
     <h2 id="experience-title">Образование и настольный геймдизайн</h2>
   </div>
 
@@ -336,7 +342,7 @@ description: "Портфолио геймдизайнера: игровые си
 <section class="gd-screen gd-screen--with-sidebar gd-contact-screen" id="contacts" aria-labelledby="contacts-title">
   <div class="gd-contact gd-container">
     <div>
-      <p class="gd-section-index">07 / Контакты</p>
+      <p class="gd-section-index">07 / CONTACTS</p>
       <h2 id="contacts-title">Обсудим проект?</h2>
       <p>
         Готов выполнить тестовое задание, подробнее рассказать о любом кейсе
