@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/gamedesign.css' | relative_url }}">
+</head>
+
+<body class="gd-page">
+  <a class="gd-skip-link" href="#main-content">Перейти к содержанию</a>
+
+  <header class="gd-header">
+    <div class="gd-container gd-header__inner">
+      <a class="gd-header__brand" href="{{ '/' | relative_url }}">
+        Терещенко Леонид
+      </a>
+
+      <nav class="gd-header__nav" aria-label="Навигация по странице">
+        <a href="#profile">Профиль</a>
+        <a href="#skills">Компетенции</a>
+        <a href="#projects">Проекты</a>
+        <a href="#workflow">Подход</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <span class="gd-button gd-button--small gd-button--disabled" aria-disabled="true">
+        PDF — готовится
+      </span>
+    </div>
+  </header>
+
+
+  <aside class="gd-side-nav" data-side-nav aria-label="Разделы страницы">
+    <div
+      class="gd-side-nav__panel"
+      id="gd-side-nav-panel"
+      data-side-nav-panel
+    >
+      <span class="gd-side-nav__title">Разделы</span>
+
+      <nav>
+        <a href="#skills" data-side-nav-link>
+          <span>01</span>
+          <strong>Компетенции</strong>
+        </a>
+
+        <a href="#projects" data-side-nav-link>
+          <span>02</span>
+          <strong>Проекты</strong>
+        </a>
+
+        <a href="#professional-profile" data-side-nav-link>
+          <span>03</span>
+          <strong>Профиль</strong>
+        </a>
+
+        <a href="#workflow" data-side-nav-link>
+          <span>04</span>
+          <strong>Подход</strong>
+        </a>
+
+        <a href="#tools" data-side-nav-link>
+          <span>05</span>
+          <strong>Инструменты</strong>
+        </a>
+
+        <a href="#experience" data-side-nav-link>
+          <span>06</span>
+          <strong>Дополнительно</strong>
+        </a>
+
+        <a href="#contacts" data-side-nav-link>
+          <span>07</span>
+          <strong>Контакты</strong>
+        </a>
+      </nav>
+    </div>
+
+    <button
+      class="gd-side-nav__handle"
+      type="button"
+      data-side-nav-toggle
+      aria-controls="gd-side-nav-panel"
+      aria-expanded="false"
+      aria-label="Открыть навигацию по разделам"
+    >
+      <span aria-hidden="true">&gt;</span>
+    </button>
+  </aside>
+
+
+  <main id="main-content" class="gd-main">
+    {{ content }}
+  </main>
+
+  <footer class="gd-footer">
+    <div class="gd-container gd-footer__inner">
+      <span>© {{ 'now' | date: '%Y' }} Терещенко Леонид</span>
+      <a href="{{ '/' | relative_url }}">Вернуться на главную</a>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/gamedesign.js' | relative_url }}"></script>
+</body>
+</html>
