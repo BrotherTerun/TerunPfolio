@@ -1,82 +1,82 @@
 ---
 layout: project-case
-published: true
+published: false
 case_draft: true
 
-title: "ProjectLegend — кейс геймдизайнера"
-description: "Разбор проектирования систем, контентной архитектуры и инструментов визуальной новеллы ProjectLegend."
+title: "ProjectBonfire — кейс геймдизайнера"
+description: "Разбор полного цикла проектирования и прототипирования игровых систем ProjectBonfire."
 
 header_parent: "Все проекты"
-header_current: "ProjectLegend"
+header_current: "ProjectBonfire"
 header_back_url: "/gamedesign/#projects"
 
-project_index: "01 / 05"
-project_title: "ProjectLegend"
-project_type: "Визуальная новелла"
-project_summary: "Краткий питч проекта и основной вклад будут сформулированы на этапе наполнения кейса."
+project_index: "03 / 05"
+project_title: "ProjectBonfire"
+project_type: "Игровой прототип"
+project_summary: "Кейс о превращении игровой идеи в проверяемый прототип: от системной модели и core loop до реализации в Unity."
 
-hero_image: "/assets/images/projects/project-legend.jpg"
-hero_alt: "ProjectLegend — визуальная новелла"
+hero_image: "/assets/images/projects/project-bonfire.jpg"
+hero_alt: "ProjectBonfire — игровой прототип"
 
 project_facts:
   - label: "Роль"
-    value: "Уточнить при наполнении"
+    value: "Game Designer / Developer"
   - label: "Статус"
     value: "В разработке"
   - label: "Период"
     value: "Уточнить при наполнении"
   - label: "Формат"
-    value: "Собственный проект"
+    value: "Собственный прототип"
 
 project_stack:
   - "Unity"
   - "C#"
-  - "JSON"
-  - "XNode"
-  - "TextMeshPro"
+  - "Prototyping"
+  - "System Design"
+  - "Git"
 
 project_media_main:
-  src: "/assets/images/projects/project-legend.jpg"
-  alt: "ProjectLegend — основной визуальный материал"
+  src: "/assets/images/projects/project-bonfire.jpg"
+  alt: "ProjectBonfire — игровой прототип"
   label: "Основной материал"
-  caption: "Обложка или ключевой экран проекта"
+  caption: "Ключевой кадр проекта"
 
-project_gallery_label: "Скриншоты интерфейса и инструментов"
+project_gallery_label: "Скриншоты проекта"
 
 project_gallery:
-  - src: "/assets/images/projects/project-legend/case01_media02.png"
-    available: false
-    filename: "case01_media02.png"
-    alt: "ProjectLegend — материал 02"
-    label: "MEDIA 02"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-bonfire/case03_media02.png"
+  available: false
+  filename: "case03_media02.png"
+  alt: "ProjectBonfire — материал 02"
+  label: "MEDIA 02"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media03.png"
-    available: false
-    filename: "case01_media03.png"
-    alt: "ProjectLegend — материал 03"
-    label: "MEDIA 03"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-bonfire/case03_media03.png"
+  available: false
+  filename: "case03_media03.png"
+  alt: "ProjectBonfire — материал 03"
+  label: "MEDIA 03"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media04.png"
-    available: false
-    filename: "case01_media04.png"
-    alt: "ProjectLegend — материал 04"
-    label: "MEDIA 04"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-bonfire/case03_media04.png"
+  available: false
+  filename: "case03_media04.png"
+  alt: "ProjectBonfire — материал 04"
+  label: "MEDIA 04"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media05.png"
-    available: false
-    filename: "case01_media05.png"
-    alt: "ProjectLegend — материал 05"
-    label: "MEDIA 05"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-bonfire/case03_media05.png"
+  available: false
+  filename: "case03_media05.png"
+  alt: "ProjectBonfire — материал 05"
+  label: "MEDIA 05"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
 project_video:
-  src: "/assets/video/projects/project-legend/case01_video01.mp4"
-  filename: "case01_video01.mp4"
+  src: "/assets/video/projects/project-bonfire/case03_video01.mp4"
+  filename: "case03_video01.mp4"
   mime: "video/mp4"
-  poster: "/assets/images/projects/project-legend.jpg"
+  poster: "/assets/images/projects/project-bonfire.jpg"
 
 case_nav:
   - id: "overview"
@@ -88,9 +88,13 @@ case_nav:
   - id: "result"
     label: "Результат"
 
-next_project:
+previous_project:
   title: "Tactical Agents"
   url: "/projects/tactical-agents/"
+
+next_project:
+  title: "ProjectMaze"
+  url: "/projects/project-maze/"
 ---
 
 <section
@@ -103,8 +107,7 @@ next_project:
       <p class="pc-section-index">01 / CONTEXT</p>
       <h2>Контекст и моя роль</h2>
       <p>
-        Что требовалось создать, для кого предназначено решение
-        и за какую часть результата отвечал лично я.
+        Какую игровую гипотезу проверяет прототип, какие ограничения были приняты и за что отвечал лично я.
       </p>
     </header>
 
@@ -115,8 +118,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь появятся формат проекта, ожидаемый опыт игрока,
-            исходные ограничения и критерии успешного решения.
+            Здесь появятся целевой игровой опыт, core loop, ограничения масштаба и критерии работоспособности прототипа.
           </p>
         </div>
       </article>
@@ -127,8 +129,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь фиксируются личный вклад, принятые решения,
-            реализованные системы и границы ответственности.
+            Здесь будут зафиксированы системный дизайн, реализация, тестирование и организация полного цикла разработки.
           </p>
         </div>
       </article>
@@ -160,7 +161,7 @@ next_project:
 >
   <div class="pc-screen__inner gd-container">
     <header class="pc-screen__heading">
-      <p class="pc-section-index">02 / DESIGN & BUILD</p>
+      <p class="pc-section-index">02 / DESIGN &amp; BUILD</p>
       <h2>Проектирование и реализация</h2>
       <p>
         Дизайн-решение и его рабочая реализация показываются
@@ -175,8 +176,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут правила, состояния, зависимости,
-            пользовательский поток и ключевые дизайн-решения.
+            Здесь будут основные системы, взаимодействия, состояния, ресурсные зависимости и пользовательский поток.
           </p>
         </div>
       </article>
@@ -187,8 +187,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут архитектура прототипа, данные, инструменты,
-            валидация и конкретные рабочие элементы.
+            Здесь будут Unity-прототип, архитектура компонентов, data-driven элементы и рабочие инструменты.
           </p>
         </div>
       </article>
@@ -230,8 +229,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут готовые функции, состояние прототипа,
-            ограничения текущей версии и следующий практический шаг.
+            Здесь появятся готовый игровой цикл, рабочие системы, состояние прототипа и подтверждение проверенных гипотез.
           </p>
         </div>
       </article>
@@ -243,12 +241,12 @@ next_project:
         <div class="pc-metric-grid">
           <div class="pc-metric">
             <strong>—</strong>
-            <span>метрика или объём</span>
+            <span>рабочие системы</span>
           </div>
 
           <div class="pc-metric">
             <strong>—</strong>
-            <span>готовая система</span>
+            <span>проверенный core loop</span>
           </div>
         </div>
       </article>

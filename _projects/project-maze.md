@@ -1,82 +1,82 @@
 ---
 layout: project-case
-published: true
+published: false
 case_draft: true
 
-title: "ProjectLegend — кейс геймдизайнера"
-description: "Разбор проектирования систем, контентной архитектуры и инструментов визуальной новеллы ProjectLegend."
+title: "ProjectMaze — кейс геймдизайнера"
+description: "Разбор алгоритмов генерации, проверки связности и валидации процедурных уровней ProjectMaze."
 
 header_parent: "Все проекты"
-header_current: "ProjectLegend"
+header_current: "ProjectMaze"
 header_back_url: "/gamedesign/#projects"
 
-project_index: "01 / 05"
-project_title: "ProjectLegend"
-project_type: "Визуальная новелла"
-project_summary: "Краткий питч проекта и основной вклад будут сформулированы на этапе наполнения кейса."
+project_index: "04 / 05"
+project_title: "ProjectMaze"
+project_type: "Процедурная генерация"
+project_summary: "Кейс о процедурной генерации уровней: алгоритмы, контроль связности, ограничения и автоматическая проверка результата."
 
-hero_image: "/assets/images/projects/project-legend.jpg"
-hero_alt: "ProjectLegend — визуальная новелла"
+hero_image: "/assets/images/projects/project-maze.jpg"
+hero_alt: "ProjectMaze — процедурная генерация лабиринтов"
 
 project_facts:
   - label: "Роль"
-    value: "Уточнить при наполнении"
+    value: "Technical Game Designer"
   - label: "Статус"
-    value: "В разработке"
+    value: "Прототип"
   - label: "Период"
     value: "Уточнить при наполнении"
   - label: "Формат"
-    value: "Собственный проект"
+    value: "Учебный / портфолийный проект"
 
 project_stack:
-  - "Unity"
+  - "Algorithms"
+  - "Procedural Generation"
+  - "Validation"
   - "C#"
-  - "JSON"
-  - "XNode"
-  - "TextMeshPro"
+  - "Unity"
 
 project_media_main:
-  src: "/assets/images/projects/project-legend.jpg"
-  alt: "ProjectLegend — основной визуальный материал"
+  src: "/assets/images/projects/project-maze.jpg"
+  alt: "ProjectMaze — процедурная генерация лабиринтов"
   label: "Основной материал"
-  caption: "Обложка или ключевой экран проекта"
+  caption: "Ключевой кадр проекта"
 
-project_gallery_label: "Скриншоты интерфейса и инструментов"
+project_gallery_label: "Скриншоты проекта"
 
 project_gallery:
-  - src: "/assets/images/projects/project-legend/case01_media02.png"
-    available: false
-    filename: "case01_media02.png"
-    alt: "ProjectLegend — материал 02"
-    label: "MEDIA 02"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-maze/case04_media02.png"
+  available: false
+  filename: "case04_media02.png"
+  alt: "ProjectMaze — материал 02"
+  label: "MEDIA 02"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media03.png"
-    available: false
-    filename: "case01_media03.png"
-    alt: "ProjectLegend — материал 03"
-    label: "MEDIA 03"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-maze/case04_media03.png"
+  available: false
+  filename: "case04_media03.png"
+  alt: "ProjectMaze — материал 03"
+  label: "MEDIA 03"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media04.png"
-    available: false
-    filename: "case01_media04.png"
-    alt: "ProjectLegend — материал 04"
-    label: "MEDIA 04"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-maze/case04_media04.png"
+  available: false
+  filename: "case04_media04.png"
+  alt: "ProjectMaze — материал 04"
+  label: "MEDIA 04"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media05.png"
-    available: false
-    filename: "case01_media05.png"
-    alt: "ProjectLegend — материал 05"
-    label: "MEDIA 05"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/project-maze/case04_media05.png"
+  available: false
+  filename: "case04_media05.png"
+  alt: "ProjectMaze — материал 05"
+  label: "MEDIA 05"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
 project_video:
-  src: "/assets/video/projects/project-legend/case01_video01.mp4"
-  filename: "case01_video01.mp4"
+  src: "/assets/video/projects/project-maze/case04_video01.mp4"
+  filename: "case04_video01.mp4"
   mime: "video/mp4"
-  poster: "/assets/images/projects/project-legend.jpg"
+  poster: "/assets/images/projects/project-maze.jpg"
 
 case_nav:
   - id: "overview"
@@ -88,9 +88,13 @@ case_nav:
   - id: "result"
     label: "Результат"
 
+previous_project:
+  title: "ProjectBonfire"
+  url: "/projects/project-bonfire/"
+
 next_project:
-  title: "Tactical Agents"
-  url: "/projects/tactical-agents/"
+  title: "BalanceCraft"
+  url: "/projects/balance-craft/"
 ---
 
 <section
@@ -103,8 +107,7 @@ next_project:
       <p class="pc-section-index">01 / CONTEXT</p>
       <h2>Контекст и моя роль</h2>
       <p>
-        Что требовалось создать, для кого предназначено решение
-        и за какую часть результата отвечал лично я.
+        Какую задачу генерации требовалось решить, какие свойства уровня были обязательными и за что отвечал лично я.
       </p>
     </header>
 
@@ -115,8 +118,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь появятся формат проекта, ожидаемый опыт игрока,
-            исходные ограничения и критерии успешного решения.
+            Здесь будут требования к структуре лабиринта, связности, вариативности и предсказуемости результата.
           </p>
         </div>
       </article>
@@ -127,8 +129,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь фиксируются личный вклад, принятые решения,
-            реализованные системы и границы ответственности.
+            Здесь будут описаны выбор алгоритмов, реализация генератора, проверки корректности и визуализация результатов.
           </p>
         </div>
       </article>
@@ -160,7 +161,7 @@ next_project:
 >
   <div class="pc-screen__inner gd-container">
     <header class="pc-screen__heading">
-      <p class="pc-section-index">02 / DESIGN & BUILD</p>
+      <p class="pc-section-index">02 / DESIGN &amp; BUILD</p>
       <h2>Проектирование и реализация</h2>
       <p>
         Дизайн-решение и его рабочая реализация показываются
@@ -175,8 +176,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут правила, состояния, зависимости,
-            пользовательский поток и ключевые дизайн-решения.
+            Здесь будут правила построения, ограничения пространства, параметры генерации и критерии допустимого уровня.
           </p>
         </div>
       </article>
@@ -187,8 +187,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут архитектура прототипа, данные, инструменты,
-            валидация и конкретные рабочие элементы.
+            Здесь будут алгоритмы, проверка связности, валидация и инструменты анализа сгенерированных карт.
           </p>
         </div>
       </article>
@@ -230,8 +229,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут готовые функции, состояние прототипа,
-            ограничения текущей версии и следующий практический шаг.
+            Здесь появятся рабочий генератор, примеры уровней, проверяемые свойства и ограничения текущей реализации.
           </p>
         </div>
       </article>
@@ -243,12 +241,12 @@ next_project:
         <div class="pc-metric-grid">
           <div class="pc-metric">
             <strong>—</strong>
-            <span>метрика или объём</span>
+            <span>варианты генерации</span>
           </div>
 
           <div class="pc-metric">
             <strong>—</strong>
-            <span>готовая система</span>
+            <span>автовалидация</span>
           </div>
         </div>
       </article>

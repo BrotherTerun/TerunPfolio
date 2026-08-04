@@ -1,82 +1,82 @@
 ---
 layout: project-case
-published: true
+published: false
 case_draft: true
 
-title: "ProjectLegend — кейс геймдизайнера"
-description: "Разбор проектирования систем, контентной архитектуры и инструментов визуальной новеллы ProjectLegend."
+title: "BalanceCraft — кейс геймдизайнера"
+description: "Разбор инструмента моделирования, анализа и балансировки игровой экономики BalanceCraft."
 
 header_parent: "Все проекты"
-header_current: "ProjectLegend"
+header_current: "BalanceCraft"
 header_back_url: "/gamedesign/#projects"
 
-project_index: "01 / 05"
-project_title: "ProjectLegend"
-project_type: "Визуальная новелла"
-project_summary: "Краткий питч проекта и основной вклад будут сформулированы на этапе наполнения кейса."
+project_index: "05 / 05"
+project_title: "BalanceCraft"
+project_type: "Игровая экономика и аналитика"
+project_summary: "Кейс об аналитическом инструменте для игровой экономики: модель ресурсов, метрики, сценарии и what-if анализ."
 
-hero_image: "/assets/images/projects/project-legend.jpg"
-hero_alt: "ProjectLegend — визуальная новелла"
+hero_image: "/assets/images/projects/balance-craft.jpg"
+hero_alt: "BalanceCraft — аналитика игровой экономики"
 
 project_facts:
   - label: "Роль"
-    value: "Уточнить при наполнении"
+    value: "System Designer / Analyst"
   - label: "Статус"
-    value: "В разработке"
+    value: "Завершённая ВКР"
   - label: "Период"
     value: "Уточнить при наполнении"
   - label: "Формат"
-    value: "Собственный проект"
+    value: "Дипломный проект"
 
 project_stack:
-  - "Unity"
-  - "C#"
-  - "JSON"
-  - "XNode"
-  - "TextMeshPro"
+  - "Python"
+  - "SQL"
+  - "Data Analysis"
+  - "Economy Design"
+  - "Simulation"
 
 project_media_main:
-  src: "/assets/images/projects/project-legend.jpg"
-  alt: "ProjectLegend — основной визуальный материал"
+  src: "/assets/images/projects/balance-craft.jpg"
+  alt: "BalanceCraft — аналитика игровой экономики"
   label: "Основной материал"
-  caption: "Обложка или ключевой экран проекта"
+  caption: "Ключевой кадр проекта"
 
-project_gallery_label: "Скриншоты интерфейса и инструментов"
+project_gallery_label: "Скриншоты проекта"
 
 project_gallery:
-  - src: "/assets/images/projects/project-legend/case01_media02.png"
-    available: false
-    filename: "case01_media02.png"
-    alt: "ProjectLegend — материал 02"
-    label: "MEDIA 02"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/balance-craft/case05_media02.png"
+  available: false
+  filename: "case05_media02.png"
+  alt: "BalanceCraft — материал 02"
+  label: "MEDIA 02"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media03.png"
-    available: false
-    filename: "case01_media03.png"
-    alt: "ProjectLegend — материал 03"
-    label: "MEDIA 03"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/balance-craft/case05_media03.png"
+  available: false
+  filename: "case05_media03.png"
+  alt: "BalanceCraft — материал 03"
+  label: "MEDIA 03"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media04.png"
-    available: false
-    filename: "case01_media04.png"
-    alt: "ProjectLegend — материал 04"
-    label: "MEDIA 04"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/balance-craft/case05_media04.png"
+  available: false
+  filename: "case05_media04.png"
+  alt: "BalanceCraft — материал 04"
+  label: "MEDIA 04"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
-  - src: "/assets/images/projects/project-legend/case01_media05.png"
-    available: false
-    filename: "case01_media05.png"
-    alt: "ProjectLegend — материал 05"
-    label: "MEDIA 05"
-    caption: "Интерфейс или редактор"
+- src: "/assets/images/projects/balance-craft/case05_media05.png"
+  available: false
+  filename: "case05_media05.png"
+  alt: "BalanceCraft — материал 05"
+  label: "MEDIA 05"
+  caption: "Скриншот интерфейса, системы или инструмента"
 
 project_video:
-  src: "/assets/video/projects/project-legend/case01_video01.mp4"
-  filename: "case01_video01.mp4"
+  src: "/assets/video/projects/balance-craft/case05_video01.mp4"
+  filename: "case05_video01.mp4"
   mime: "video/mp4"
-  poster: "/assets/images/projects/project-legend.jpg"
+  poster: "/assets/images/projects/balance-craft.jpg"
 
 case_nav:
   - id: "overview"
@@ -88,9 +88,10 @@ case_nav:
   - id: "result"
     label: "Результат"
 
-next_project:
-  title: "Tactical Agents"
-  url: "/projects/tactical-agents/"
+previous_project:
+  title: "ProjectMaze"
+  url: "/projects/project-maze/"
+
 ---
 
 <section
@@ -103,8 +104,7 @@ next_project:
       <p class="pc-section-index">01 / CONTEXT</p>
       <h2>Контекст и моя роль</h2>
       <p>
-        Что требовалось создать, для кого предназначено решение
-        и за какую часть результата отвечал лично я.
+        Какие задачи балансировки должен был решать инструмент, для кого он предназначен и какой объём работы выполнен лично.
       </p>
     </header>
 
@@ -115,8 +115,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь появятся формат проекта, ожидаемый опыт игрока,
-            исходные ограничения и критерии успешного решения.
+            Здесь будут описаны проблемы ручной балансировки, требования инди-команд и критерии полезности аналитики.
           </p>
         </div>
       </article>
@@ -127,8 +126,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь фиксируются личный вклад, принятые решения,
-            реализованные системы и границы ответственности.
+            Здесь будут зафиксированы модель экономики, архитектура данных, метрики, интерфейс и аналитические сценарии.
           </p>
         </div>
       </article>
@@ -160,7 +158,7 @@ next_project:
 >
   <div class="pc-screen__inner gd-container">
     <header class="pc-screen__heading">
-      <p class="pc-section-index">02 / DESIGN & BUILD</p>
+      <p class="pc-section-index">02 / DESIGN &amp; BUILD</p>
       <h2>Проектирование и реализация</h2>
       <p>
         Дизайн-решение и его рабочая реализация показываются
@@ -175,8 +173,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут правила, состояния, зависимости,
-            пользовательский поток и ключевые дизайн-решения.
+            Здесь будут ресурсы, источники и стоки, коэффициенты, метрики устойчивости и сценарии изменения баланса.
           </p>
         </div>
       </article>
@@ -187,8 +184,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут архитектура прототипа, данные, инструменты,
-            валидация и конкретные рабочие элементы.
+            Здесь будут расчётный модуль, база данных, визуализация результатов и what-if моделирование.
           </p>
         </div>
       </article>
@@ -230,8 +226,7 @@ next_project:
 
         <div class="pc-placeholder">
           <p>
-            Здесь будут готовые функции, состояние прототипа,
-            ограничения текущей версии и следующий практический шаг.
+            Здесь появятся готовый инструмент, подтверждённые сценарии, результаты ВКР и практические возможности анализа.
           </p>
         </div>
       </article>
@@ -243,12 +238,12 @@ next_project:
         <div class="pc-metric-grid">
           <div class="pc-metric">
             <strong>—</strong>
-            <span>метрика или объём</span>
+            <span>метрики экономики</span>
           </div>
 
           <div class="pc-metric">
             <strong>—</strong>
-            <span>готовая система</span>
+            <span>what-if сценарии</span>
           </div>
         </div>
       </article>
