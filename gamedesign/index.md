@@ -4,7 +4,7 @@ title: "Терещенко Леонид — геймдизайнер"
 description: "Портфолио геймдизайнера: игровые системы, прототипирование, редакторские инструменты, алгоритмы и аналитика."
 ---
 
-<section class="gd-screen gd-hero gd-container" id="profile">
+<section class="gd-screen gd-screen--with-sidebar gd-hero gd-container" id="profile">
   <aside class="gd-profile-card gd-hero__profile" aria-label="Профессиональный профиль">
     <div class="gd-profile-card__item">
       <span class="gd-label">Специализация</span>
@@ -46,14 +46,27 @@ description: "Портфолио геймдизайнера: игровые си
       </div>
 
       <div class="gd-actions">
-        <a class="gd-button" href="#projects">Посмотреть проекты</a>
-        <a class="gd-button gd-button--ghost" href="mailto:{{ site.email }}">Связаться</a>
+        <a
+          class="gd-button"
+          href="#projects"
+          data-section-link
+        >
+          Посмотреть проекты
+        </a>
+
+        <a
+          class="gd-button gd-button--ghost"
+          href="#contacts"
+          data-section-link
+        >
+          Связаться
+        </a>
       </div>
     </div>
 
     <div class="gd-hero__visual">
       <img
-        src="{{ '/assets/images/avatar_1_1.png' | relative_url }}"
+        src="{{ '/assets/images/avatar_1_2.png' | relative_url }}"
         alt="Терещенко Леонид"
         class="gd-hero__avatar"
       >

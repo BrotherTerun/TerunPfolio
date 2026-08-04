@@ -589,6 +589,8 @@ function setupSegmentedScroll() {
   let isAnimating = false;
   let unlockTimer = null;
   let scrollFrame = null;
+  let fixedUpButton = null;
+  let fixedDownButton = null;
 
   const scrollDuration = 1200;
 
@@ -641,7 +643,30 @@ function setupSegmentedScroll() {
     activeIndex = Math.max(0, Math.min(index, sections.length - 1));
 
     if (sideNav) {
-      sideNav.classList.toggle("is-visible", activeIndex > 0);
+      sideNav.classList.toggle(
+        "is-visible",
+        desktopMode.matches
+      );
+    }
+
+    if (fixedUpButton && fixedDownButton) {
+      fixedUpButton.disabled = activeIndex === 0;
+      fixedDownButton.disabled =
+        activeIndex === sections.length - 1;
+
+      fixedUpButton.setAttribute(
+        "aria-label",
+        activeIndex === 0
+          ? "Предыдущего раздела нет"
+          : "Перейти к предыдущему разделу"
+      );
+
+      fixedDownButton.setAttribute(
+        "aria-label",
+        activeIndex === sections.length - 1
+          ? "Следующего раздела нет"
+          : "Перейти к следующему разделу"
+      );
     }
 
     sideLinks.forEach((link) => {
@@ -744,53 +769,42 @@ function setupSegmentedScroll() {
 
 
   function createSectionStepControls() {
-    sections.forEach((section, index) => {
-      if (section.querySelector(".gd-section-step")) {
-        return;
-      }
+    if (document.querySelector("[data-page-step-controls]")) {
+      return;
+    }
 
-      const upButton = document.createElement("button");
-      upButton.type = "button";
-      upButton.className =
-        "gd-section-step gd-section-step--up";
-      upButton.setAttribute(
-        "aria-label",
-        index === 0
-          ? "Предыдущего раздела нет"
-          : "Перейти к предыдущему разделу"
-      );
-      upButton.innerHTML =
-        '<span aria-hidden="true">⌃</span>';
-      upButton.disabled = index === 0;
+    const controls = document.createElement("div");
+    controls.className = "gd-page-step-controls";
+    controls.dataset.pageStepControls = "";
 
-      const downButton = document.createElement("button");
-      downButton.type = "button";
-      downButton.className =
-        "gd-section-step gd-section-step--down";
-      downButton.setAttribute(
-        "aria-label",
-        index === sections.length - 1
-          ? "Следующего раздела нет"
-          : "Перейти к следующему разделу"
-      );
-      downButton.innerHTML =
-        '<span aria-hidden="true">⌄</span>';
-      downButton.disabled = index === sections.length - 1;
+    fixedUpButton = document.createElement("button");
+    fixedUpButton.type = "button";
+    fixedUpButton.className =
+      "gd-section-step gd-section-step--up";
+    fixedUpButton.innerHTML =
+      '<span aria-hidden="true">‹</span>';
 
-      upButton.addEventListener("click", () => {
-        goToSection(index - 1);
-      });
+    fixedDownButton = document.createElement("button");
+    fixedDownButton.type = "button";
+    fixedDownButton.className =
+      "gd-section-step gd-section-step--down";
+    fixedDownButton.innerHTML =
+      '<span aria-hidden="true">›</span>';
 
-      downButton.addEventListener("click", () => {
-        goToSection(index + 1);
-      });
-
-      section.prepend(upButton);
-      section.append(downButton);
+    fixedUpButton.addEventListener("click", () => {
+      goToSection(activeIndex - 1);
     });
+
+    fixedDownButton.addEventListener("click", () => {
+      goToSection(activeIndex + 1);
+    });
+
+    controls.append(fixedUpButton, fixedDownButton);
+    document.body.append(controls);
   }
 
   createSectionStepControls();
+  updateNavigation(activeIndex);
 
   window.addEventListener(
     "wheel",
@@ -851,7 +865,8 @@ function setupSegmentedScroll() {
 
   document
     .querySelectorAll(
-      '.gd-header__nav a[href^="#"], [data-side-nav-link]'
+      '.gd-header__nav a[href^="#"], ' +
+      '[data-side-nav-link], [data-section-link]'
     )
     .forEach((link) => {
       link.addEventListener("click", (event) => {

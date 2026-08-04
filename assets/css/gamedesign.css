@@ -4462,3 +4462,269 @@ button.gd-contact-card {
     font-size: clamp(1.45rem, 2vw, 2.25rem);
   }
 }
+
+
+/* =================================================================
+   FINAL PAGE NAVIGATION POLISH
+   ================================================================= */
+
+:root {
+  --gd-section-step-height: 46px;
+}
+
+/* Exact anchor positioning outside desktop segmented-scroll mode. */
+.gd-screen {
+  scroll-margin-top: var(--gd-header-height);
+}
+
+/* Hero now participates in the same left-side navigation layout. */
+.gd-hero.gd-screen--with-sidebar {
+  padding-left:
+    calc(
+      var(--gd-gutter) +
+      var(--gd-section-nav-safe-space)
+    );
+}
+
+/* =================================================================
+   FIXED UP / DOWN PAGE CONTROLS
+   ================================================================= */
+
+.gd-page-step-controls {
+  position: fixed;
+  top: var(--gd-header-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+
+  pointer-events: none;
+}
+
+.gd-page-step-controls .gd-section-step {
+  position: absolute;
+  right: 0;
+  left: var(--gd-section-nav-safe-space);
+
+  width: auto;
+  height: var(--gd-section-step-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  color: var(--gd-text-muted);
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(63, 120, 87, 0.035) 18%,
+      rgba(63, 120, 87, 0.085) 50%,
+      rgba(63, 120, 87, 0.035) 82%,
+      transparent 100%
+    );
+
+  box-shadow: none;
+
+  font-family: var(--gd-font-mono);
+  font-size: clamp(2rem, 2.5vw, 2.8rem);
+  line-height: 1;
+
+  cursor: pointer;
+  opacity: 0.34;
+  pointer-events: auto;
+
+  transition:
+    opacity 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease,
+    text-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.gd-page-step-controls .gd-section-step::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  right: 11%;
+  left: 11%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gd-accent-border),
+      transparent
+    );
+
+  opacity: 0.58;
+
+  pointer-events: none;
+}
+
+.gd-page-step-controls .gd-section-step > span {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  text-shadow: 0 0 7px rgba(98, 245, 138, 0.08);
+}
+
+.gd-page-step-controls .gd-section-step--up {
+  top: 0;
+}
+
+.gd-page-step-controls .gd-section-step--down {
+  bottom: 0;
+}
+
+.gd-page-step-controls .gd-section-step--up > span {
+  transform: rotate(90deg);
+}
+
+.gd-page-step-controls .gd-section-step--down > span {
+  transform: rotate(90deg);
+}
+
+.gd-page-step-controls .gd-section-step:hover,
+.gd-page-step-controls .gd-section-step:focus-visible {
+  opacity: 1;
+
+  color: var(--gd-matrix);
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(63, 120, 87, 0.07) 18%,
+      var(--gd-matrix-soft) 50%,
+      rgba(63, 120, 87, 0.07) 82%,
+      transparent 100%
+    );
+
+  text-shadow: 0 0 13px var(--gd-matrix-glow);
+}
+
+.gd-page-step-controls .gd-section-step--up:hover,
+.gd-page-step-controls .gd-section-step--up:focus-visible {
+  transform: translateY(-2px);
+}
+
+.gd-page-step-controls .gd-section-step--down:hover,
+.gd-page-step-controls .gd-section-step--down:focus-visible {
+  transform: translateY(2px);
+}
+
+.gd-page-step-controls .gd-section-step:disabled {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/*
+  Old per-section positioning rules remain in the historical stylesheet,
+  but only the controls inside this fixed wrapper are now created.
+*/
+.gd-screen > .gd-section-step {
+  display: none !important;
+}
+
+/* =================================================================
+   BACKGROUND EXTERNAL LINKS
+   ================================================================= */
+
+.gd-background-card__school-link,
+.gd-background-card__inline-link {
+  position: relative;
+
+  color: var(--gd-text);
+
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 -0.16em 0 rgba(98, 245, 138, 0.16);
+
+  transition:
+    color 180ms ease,
+    box-shadow 180ms ease,
+    text-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.gd-background-card__school-link {
+  padding-right: 0.88em;
+}
+
+.gd-background-card__school-link::after {
+  content: "↗";
+
+  position: absolute;
+  top: 0.04em;
+  right: 0;
+
+  color: var(--gd-matrix);
+
+  font-family: var(--gd-font-mono);
+  font-size: 0.48em;
+  font-weight: 600;
+
+  opacity: 0.86;
+}
+
+.gd-background-card__inline-link {
+  padding-inline: 0.08em;
+
+  font-weight: 650;
+}
+
+.gd-background-card__inline-link::after {
+  content: " ↗";
+
+  color: var(--gd-matrix);
+
+  font-family: var(--gd-font-mono);
+  font-size: 0.72em;
+  font-weight: 600;
+
+  opacity: 0.82;
+}
+
+.gd-background-card__school-link:hover,
+.gd-background-card__school-link:focus-visible,
+.gd-background-card__inline-link:hover,
+.gd-background-card__inline-link:focus-visible {
+  color: var(--gd-matrix);
+
+  box-shadow:
+    inset 0 -0.24em 0 rgba(98, 245, 138, 0.24);
+
+  text-shadow:
+    0 0 11px var(--gd-matrix-glow),
+    0 0 22px rgba(98, 245, 138, 0.10);
+}
+
+/* =================================================================
+   WORKFLOW INTRO BALANCE
+   ================================================================= */
+
+.gd-workflow-heading__lead {
+  font-size: clamp(1.08rem, 1.16vw, 1.24rem);
+  line-height: 1.5;
+}
+
+@media (max-width: 960px), (max-height: 760px) {
+  .gd-page-step-controls {
+    display: none;
+  }
+
+  .gd-hero.gd-screen--with-sidebar {
+    padding-left: var(--gd-gutter);
+  }
+}
