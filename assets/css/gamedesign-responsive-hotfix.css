@@ -1,14 +1,13 @@
 /* ================================================================
-   RESPONSIVE HOTFIX: project carousel mobile type + desktop avatar
+   RESPONSIVE HOTFIX: project carousel mobile composition + desktop avatar
    Loaded after gamedesign-responsive.css.
    ================================================================ */
 
 /*
   Desktop / laptop avatar:
-  restore the intentional oversized portrait crop used before the
+  keep the intentional oversized portrait crop used before the
   responsive pass. The generic `.gd-page img { max-width: 100%; }`
-  rule was constraining the portrait to the visual column width and
-  making it look much smaller than intended.
+  rule would otherwise constrain the portrait to the visual column.
 */
 @media (min-width: 961px) {
   .gd-page .gd-hero__avatar {
@@ -26,29 +25,77 @@
 }
 
 /*
-  Mobile project carousel:
-  the viewport is intentionally 16:9, so desktop-sized typography has
-  very little vertical room. Scale the overlay copy independently from
-  the rest of the mobile page and forbid project names such as
-  BalanceCraft from breaking in the middle of a word.
+  Phone project carousel:
+  16:9 is too shallow for a slide containing a section heading,
+  project metadata, a title and readable supporting copy. On phones
+  the carousel therefore becomes a taller 4:3 presentation card.
+
+  Pagination is moved into normal document flow below the media frame,
+  so it can never cover project copy.
 */
 @media (max-width: 640px) {
-  .gd-project-heading {
-    top: 10px;
-    left: 14px;
+  .gd-section--projects {
+    padding: 0 0 28px !important;
+  }
 
-    max-width: calc(100% - 28px);
+  .gd-project-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    height: auto;
+    min-height: 0;
+
+    overflow: hidden;
+  }
+
+  .gd-project-viewport {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+  }
+
+  .gd-project-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .gd-project-card__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 14, 10, 0.96) 0%,
+        rgba(8, 14, 10, 0.76) 42%,
+        rgba(8, 14, 10, 0.20) 78%,
+        rgba(8, 14, 10, 0.08) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgba(8, 13, 10, 0.98) 0%,
+        rgba(8, 13, 10, 0.58) 42%,
+        rgba(8, 13, 10, 0.12) 78%,
+        rgba(8, 13, 10, 0.06) 100%
+      );
+  }
+
+  /* Section label remains visible, but no longer dominates the card. */
+  .gd-project-heading {
+    top: 14px;
+    left: 16px;
+
+    max-width: calc(100% - 32px);
   }
 
   .gd-project-heading .gd-section-index {
-    font-size: clamp(0.48rem, 2.25vw, 0.58rem);
+    font-size: clamp(0.48rem, 2.15vw, 0.58rem);
     line-height: 1;
   }
 
   .gd-project-heading h2 {
-    margin-top: 4px;
+    margin-top: 5px;
 
-    font-size: clamp(1rem, 4.9vw, 1.24rem);
+    font-size: clamp(1.02rem, 4.9vw, 1.28rem);
     line-height: 1;
 
     overflow-wrap: normal;
@@ -56,27 +103,35 @@
     white-space: nowrap;
   }
 
+  /*
+    The project copy gets its own mobile typographic scale.
+    Keep the metadata compact, title prominent and description readable.
+  */
   .gd-project-card__content {
-    width: min(72%, 270px);
+    width: min(82%, 310px);
 
     padding:
-      10px
-      34px
-      26px
-      14px;
+      14px
+      38px
+      20px
+      16px;
   }
 
   .gd-project-card__type {
-    margin: 0;
+    margin: 0 0 4px;
 
-    font-size: clamp(0.44rem, 1.9vw, 0.54rem);
-    line-height: 1.12;
+    font-size: clamp(0.46rem, 2.05vw, 0.58rem);
+    line-height: 1.2;
+    letter-spacing: 0.045em;
+
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .gd-project-card h3 {
-    margin: 4px 0 5px;
+    margin: 3px 0 6px;
 
-    font-size: clamp(0.94rem, 4.35vw, 1.18rem);
+    font-size: clamp(1.05rem, 4.8vw, 1.32rem);
     line-height: 1;
     letter-spacing: -0.025em;
 
@@ -85,35 +140,95 @@
     white-space: nowrap;
   }
 
+  /* Base mobile CSS hides this paragraph. Restore it at phone scale. */
+  .gd-project-card__content > p:not(
+    .gd-project-card__type,
+    .gd-project-card__stack
+  ) {
+    display: block;
+
+    max-width: 34ch;
+    margin: 0;
+
+    color: var(--gd-text-secondary);
+
+    font-size: clamp(0.56rem, 2.45vw, 0.68rem);
+    line-height: 1.32;
+
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  /* Stack remains secondary information on a phone-sized card. */
+  .gd-project-card__stack {
+    display: none;
+  }
+
   .gd-project-card a {
     margin-top: 3px;
+  }
 
-    font-size: clamp(0.5rem, 2vw, 0.6rem);
-    line-height: 1.15;
+  /*
+    Pagination becomes a separate control row below the image instead
+    of an overlay. This also makes the carousel affordance clearer.
+  */
+  .gd-project-pagination {
+    position: relative;
+    left: auto;
+    bottom: auto;
+
+    align-self: center;
+
+    margin: 12px auto 0;
+
+    transform: none;
+  }
+
+  /* Keep arrows vertically centered on the media frame, not on dots. */
+  .gd-carousel-button {
+    top: calc(50% - 22px);
   }
 }
 
 @media (max-width: 420px) {
   .gd-project-heading {
-    top: 8px;
-    left: 12px;
+    top: 12px;
+    left: 13px;
   }
 
   .gd-project-heading h2 {
-    font-size: clamp(0.94rem, 4.7vw, 1.08rem);
+    font-size: clamp(0.98rem, 4.65vw, 1.12rem);
   }
 
   .gd-project-card__content {
-    width: 74%;
+    width: 84%;
 
     padding:
-      8px
-      30px
-      23px
-      12px;
+      11px
+      32px
+      17px
+      13px;
+  }
+
+  .gd-project-card__type {
+    font-size: clamp(0.43rem, 1.95vw, 0.52rem);
   }
 
   .gd-project-card h3 {
-    font-size: clamp(0.88rem, 4.15vw, 1.04rem);
+    font-size: clamp(0.98rem, 4.45vw, 1.16rem);
+  }
+
+  .gd-project-card__content > p:not(
+    .gd-project-card__type,
+    .gd-project-card__stack
+  ) {
+    max-width: 32ch;
+
+    font-size: clamp(0.53rem, 2.3vw, 0.62rem);
+    line-height: 1.28;
+  }
+
+  .gd-project-pagination {
+    margin-top: 10px;
   }
 }
