@@ -25,13 +25,14 @@
 }
 
 /*
-  Phone project carousel:
-  16:9 is too shallow for a slide containing a section heading,
-  project metadata, a title and readable supporting copy. On phones
-  the carousel therefore becomes a taller 4:3 presentation card.
+  PHONE-ONLY PROJECT CAROUSEL
+  ---------------------------
+  The desktop slide composition is deliberately replaced on phones.
+  A 3:4 portrait card gives the project art and title enough vertical
+  room without forcing supporting copy into the image.
 
-  Pagination is moved into normal document flow below the media frame,
-  so it can never cover project copy.
+  Everything in this block is capped at 640px, so tablets, laptops and
+  desktop monitors keep their existing layout untouched.
 */
 @media (max-width: 640px) {
   .gd-section--projects {
@@ -49,16 +50,17 @@
     overflow: hidden;
   }
 
+  /* Portrait mobile presentation. Background art is cropped by cover. */
   .gd-project-viewport {
     width: 100% !important;
     height: auto !important;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
 
     overflow: hidden;
   }
 
   .gd-project-card {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
   }
 
   .gd-project-card__overlay {
@@ -66,36 +68,36 @@
       linear-gradient(
         90deg,
         rgba(8, 14, 10, 0.96) 0%,
-        rgba(8, 14, 10, 0.76) 42%,
-        rgba(8, 14, 10, 0.20) 78%,
-        rgba(8, 14, 10, 0.08) 100%
+        rgba(8, 14, 10, 0.72) 44%,
+        rgba(8, 14, 10, 0.18) 80%,
+        rgba(8, 14, 10, 0.06) 100%
       ),
       linear-gradient(
         to top,
         rgba(8, 13, 10, 0.98) 0%,
-        rgba(8, 13, 10, 0.58) 42%,
-        rgba(8, 13, 10, 0.12) 78%,
-        rgba(8, 13, 10, 0.06) 100%
+        rgba(8, 13, 10, 0.48) 38%,
+        rgba(8, 13, 10, 0.10) 76%,
+        rgba(8, 13, 10, 0.04) 100%
       );
   }
 
-  /* Section label remains visible, but no longer dominates the card. */
+  /* Section heading: + roughly 1–2 typographic points from prior mobile pass. */
   .gd-project-heading {
-    top: 14px;
+    top: 15px;
     left: 16px;
 
     max-width: calc(100% - 32px);
   }
 
   .gd-project-heading .gd-section-index {
-    font-size: clamp(0.48rem, 2.15vw, 0.58rem);
+    font-size: clamp(0.5rem, 2.2vw, 0.6rem);
     line-height: 1;
   }
 
   .gd-project-heading h2 {
-    margin-top: 5px;
+    margin-top: 6px;
 
-    font-size: clamp(1.02rem, 4.9vw, 1.28rem);
+    font-size: clamp(1.14rem, 5.35vw, 1.42rem);
     line-height: 1;
 
     overflow-wrap: normal;
@@ -103,31 +105,29 @@
     white-space: nowrap;
   }
 
-  /*
-    The project copy gets its own mobile typographic scale.
-    Keep the metadata compact, title prominent and description readable.
-  */
   .gd-project-card__content {
     width: min(82%, 310px);
 
     padding:
       14px
       38px
-      20px
+      24px
       16px;
   }
 
+  /* Project type becomes supporting metadata, not a competing headline. */
   .gd-project-card__type {
-    margin: 0 0 4px;
+    margin: 0 0 5px;
 
-    font-size: clamp(0.46rem, 2.05vw, 0.58rem);
-    line-height: 1.2;
+    font-size: clamp(0.38rem, 1.72vw, 0.48rem);
+    line-height: 1.15;
     letter-spacing: 0.045em;
 
     overflow-wrap: normal;
     word-break: normal;
   }
 
+  /* Keep project-name scale exactly as in the previous mobile pass. */
   .gd-project-card h3 {
     margin: 3px 0 6px;
 
@@ -140,26 +140,15 @@
     white-space: nowrap;
   }
 
-  /* Base mobile CSS hides this paragraph. Restore it at phone scale. */
+  /* Supporting description is intentionally omitted on phone slides. */
   .gd-project-card__content > p:not(
     .gd-project-card__type,
     .gd-project-card__stack
   ) {
-    display: block;
-
-    max-width: 34ch;
-    margin: 0;
-
-    color: var(--gd-text-secondary);
-
-    font-size: clamp(0.56rem, 2.45vw, 0.68rem);
-    line-height: 1.32;
-
-    overflow-wrap: normal;
-    word-break: normal;
+    display: none !important;
   }
 
-  /* Stack remains secondary information on a phone-sized card. */
+  /* Technology stack remains tertiary and hidden on phones. */
   .gd-project-card__stack {
     display: none;
   }
@@ -168,10 +157,7 @@
     margin-top: 3px;
   }
 
-  /*
-    Pagination becomes a separate control row below the image instead
-    of an overlay. This also makes the carousel affordance clearer.
-  */
+  /* Pagination stays outside the image so it never competes with copy. */
   .gd-project-pagination {
     position: relative;
     left: auto;
@@ -184,7 +170,6 @@
     transform: none;
   }
 
-  /* Keep arrows vertically centered on the media frame, not on dots. */
   .gd-carousel-button {
     top: calc(50% - 22px);
   }
@@ -192,12 +177,12 @@
 
 @media (max-width: 420px) {
   .gd-project-heading {
-    top: 12px;
+    top: 13px;
     left: 13px;
   }
 
   .gd-project-heading h2 {
-    font-size: clamp(0.98rem, 4.65vw, 1.12rem);
+    font-size: clamp(1.08rem, 5.15vw, 1.28rem);
   }
 
   .gd-project-card__content {
@@ -206,26 +191,17 @@
     padding:
       11px
       32px
-      17px
+      20px
       13px;
   }
 
   .gd-project-card__type {
-    font-size: clamp(0.43rem, 1.95vw, 0.52rem);
+    font-size: clamp(0.36rem, 1.65vw, 0.44rem);
   }
 
+  /* Keep the previous narrow-phone project-name scale unchanged. */
   .gd-project-card h3 {
     font-size: clamp(0.98rem, 4.45vw, 1.16rem);
-  }
-
-  .gd-project-card__content > p:not(
-    .gd-project-card__type,
-    .gd-project-card__stack
-  ) {
-    max-width: 32ch;
-
-    font-size: clamp(0.53rem, 2.3vw, 0.62rem);
-    line-height: 1.28;
   }
 
   .gd-project-pagination {
