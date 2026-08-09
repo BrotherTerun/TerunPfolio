@@ -4,17 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link
-    rel="icon"
-    href="{{ '/favicon.ico' | relative_url }}"
-    sizes="any"
-  >
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
 
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/gamedesign.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/gamedesign-responsive.css' | relative_url }}">
 </head>
 
 <body class="gd-page">
@@ -22,34 +19,28 @@
 
   {% include gamedesign-header.html %}
 
-
   <aside class="gd-side-nav" data-side-nav aria-label="Разделы страницы">
     <nav class="gd-side-nav__panel" aria-label="Навигация по разделам">
       <a href="#profile" data-side-nav-link>
         <strong>PROFILE</strong>
         <span class="gd-side-nav__marker" aria-hidden="true"></span>
       </a>
-
       <a href="#skills" data-side-nav-link>
         <strong>HARD SKILLS</strong>
         <span class="gd-side-nav__marker" aria-hidden="true"></span>
       </a>
-
       <a href="#projects" data-side-nav-link>
         <strong>PROJECTS</strong>
         <span class="gd-side-nav__marker" aria-hidden="true"></span>
       </a>
-
       <a href="#background" data-side-nav-link>
         <strong>BACKGROUND</strong>
         <span class="gd-side-nav__marker" aria-hidden="true"></span>
       </a>
-
       <a href="#workflow" data-side-nav-link>
         <strong>WORKFLOW</strong>
         <span class="gd-side-nav__marker" aria-hidden="true"></span>
       </a>
-
       <a href="#contacts" data-side-nav-link>
         <strong>CONTACTS</strong>
         <span class="gd-side-nav__marker" aria-hidden="true"></span>
@@ -57,12 +48,11 @@
     </nav>
   </aside>
 
-
   <main id="main-content" class="gd-main">
     {{ content }}
   </main>
 
-
+  <script src="{{ '/assets/js/gamedesign-responsive-mode.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/gamedesign.js' | relative_url }}"></script>
 </body>
 </html>
