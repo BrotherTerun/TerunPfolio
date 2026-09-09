@@ -1,0 +1,208 @@
+@media (max-width: 980px) {
+  .gm-header__inner {
+    grid-template-columns: auto auto;
+  }
+
+  .gm-nav {
+    display: none;
+  }
+
+  .gm-header .gm-button {
+    justify-self: end;
+  }
+
+  .gm-section__heading,
+  .gm-faq-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gm-game-card,
+  .gm-section--split,
+  .gm-about {
+    grid-template-columns: 1fr;
+  }
+
+  .gm-game-card__media,
+  .gm-split__media {
+    min-height: 440px;
+  }
+
+  .gm-split__content {
+    padding: 76px max(24px, calc((100vw - var(--gm-max)) / 2));
+    border-left: 0;
+    border-top: 1px solid var(--gm-border);
+  }
+
+  .gm-feature-grid,
+  .gm-process {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gm-review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gm-review {
+    min-height: 230px;
+  }
+
+  .gm-about__portrait {
+    width: min(520px, 100%);
+    min-height: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .gm-container {
+    width: min(calc(100% - 32px), var(--gm-max));
+  }
+
+  .gm-header__inner {
+    min-height: 66px;
+    gap: 14px;
+  }
+
+  .gm-brand__mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .gm-brand__text strong {
+    font-size: 1.2rem;
+  }
+
+  .gm-brand__text small {
+    display: none;
+  }
+
+  .gm-header .gm-button {
+    min-height: 36px;
+    padding-inline: 13px;
+    font-size: .64rem;
+  }
+
+  .gm-page h1 {
+    font-size: clamp(3rem, 15vw, 4.7rem);
+  }
+
+  .gm-page h2 {
+    font-size: clamp(2.4rem, 12vw, 3.6rem);
+  }
+
+  .gm-hero {
+    min-height: 88svh;
+  }
+
+  .gm-hero__content {
+    padding: 132px 0 58px;
+  }
+
+  .gm-hero__facts {
+    gap: 8px 16px;
+  }
+
+  .gm-hero__facts span + span::before {
+    margin-right: 16px;
+  }
+
+  .gm-actions,
+  .gm-actions .gm-button {
+    width: 100%;
+  }
+
+  .gm-section {
+    padding: 76px 0;
+  }
+
+  .gm-section__heading {
+    margin-bottom: 34px;
+  }
+
+  .gm-game-card__media {
+    min-height: 300px;
+  }
+
+  .gm-game-card__body {
+    padding: 28px 22px;
+  }
+
+  .gm-game-card__heading {
+    display: block;
+  }
+
+  .gm-status {
+    display: inline-flex;
+    margin-bottom: 18px;
+  }
+
+  .gm-game-card__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .gm-split__media {
+    min-height: 390px;
+  }
+
+  .gm-split__content {
+    padding: 66px 22px;
+  }
+
+  .gm-principles article {
+    padding-left: 42px;
+  }
+
+  .gm-feature-grid,
+  .gm-process {
+    grid-template-columns: 1fr;
+  }
+
+  .gm-feature-grid article {
+    min-height: 180px;
+  }
+
+  .gm-about {
+    gap: 42px;
+  }
+
+  .gm-about__portrait {
+    min-height: 0;
+  }
+
+  .gm-process li,
+  .gm-process li + li {
+    min-height: auto;
+    padding: 24px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(24,22,22,.16);
+  }
+
+  .gm-process span {
+    margin-bottom: 20px;
+  }
+
+  .gm-faq-list summary {
+    font-size: 1.3rem;
+  }
+
+  .gm-contact {
+    min-height: 500px;
+  }
+
+  .gm-contact__note {
+    margin-top: 8px;
+  }
+
+  .gm-footer__inner {
+    padding: 22px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .gm-media-placeholder > span {
+    max-width: calc(100% - 56px);
+    white-space: normal;
+    text-align: center;
+  }
+}
