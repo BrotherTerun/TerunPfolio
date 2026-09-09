@@ -137,7 +137,7 @@
 
   /* Font families */
   --gm-font-display: "Cormorant Garamond", Georgia, serif;
-  --gm-font-body: "Manrope", Arial, sans-serif;
+  --gm-font-body: "Merriweather", Georgia, serif;
 
   /* Font sizes */
   --gm-font-size-base: 16px;
@@ -179,6 +179,33 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+.gm-text-accent {
+  color: var(--gm-gold);
+}
+
+.gm-text-gold-glow {
+  text-shadow:
+    0 0 8px var(--gm-gold-a22),
+    0 0 18px var(--gm-gold-a19);
+}
+
+.gm-text-teal-glow {
+  text-shadow:
+    0 0 8px var(--gm-teal-a35),
+    0 0 18px var(--gm-teal-a26);
+}
+
+.gm-text-ink {
+  color: var(--gm-teal);
+  font-weight: 700;
+}
+
+.gm-text-emphasis {
+  font-family: var(--gm-font-display);
+  font-weight: 600;
+  letter-spacing: .01em;
 }
 
 body.gm-page {
@@ -768,7 +795,7 @@ body.gm-page {
   padding: 0;
   min-height: 720px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   background:
     radial-gradient(circle at 80% 22%, var(--gm-teal-a09), var(--gm-transparent) 25%),
     var(--gm-bg-soft);
@@ -893,13 +920,9 @@ body.gm-page {
   max-width: 690px;
 }
 
-.gm-about__lead {
+.gm-about {
   color: var(--gm-about-lead);
   font-size: var(--gm-font-size-about-lead);
-}
-
-.gm-about__content > p:not(.gm-eyebrow):not(.gm-about__lead) {
-  color: var(--gm-about-copy);
 }
 
 .gm-tag-list {
