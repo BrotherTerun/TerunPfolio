@@ -5,12 +5,11 @@ description: "Онлайн-игры по настольным ролевым с�
 ---
 
 <section class="gm-hero" id="top">
-  <img
-    class="gm-hero__media gm-media-image gm-media-image--hero"
-    src="{{ '/assets/images/gm/common/hero_key_art.png' | relative_url }}"
-    alt=""
+  <div
+    class="gm-hero__media"
     aria-hidden="true"
-  >
+    style="background-image: url('{{ '/assets/images/gm/common/hero_key_art.png' | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  ></div>
 
   <div class="gm-hero__shade"></div>
 
@@ -55,14 +54,12 @@ description: "Онлайн-игры по настольным ролевым с�
 </section>
 
 <section class="gm-section gm-section--split" id="table">
-  <div class="gm-split__media gm-media-frame">
-    <img
-      class="gm-media-image gm-media-image--contain"
-      src="{{ '/assets/images/gm/common/table_atmosphere.png' | relative_url }}"
-      alt="Онлайн-сессия: камеры игроков и игровой стол Foundry VTT"
-      loading="lazy"
-    >
-  </div>
+  <div
+    class="gm-split__media"
+    role="img"
+    aria-label="Онлайн-сессия: камеры игроков и игровой стол Foundry VTT"
+    style="background-image: url('{{ '/assets/images/gm/common/table_atmosphere.png' | relative_url }}'); background-size: cover; background-position: center top; background-repeat: no-repeat;"
+  ></div>
 
   <div class="gm-split__content">
     <div class="gm-section__heading gm-section__heading--stacked">
@@ -111,12 +108,12 @@ description: "Онлайн-игры по настольным ролевым с�
 
 <section class="gm-section gm-section--about" id="about">
   <div class="gm-container gm-about">
-    <img
-      class="gm-about__portrait gm-media-image"
-      src="{{ '/assets/images/gm/common/gm_portrait.png' | relative_url }}"
-      alt="Стилизованный портрет ведущего Теруна"
-      loading="lazy"
-    >
+    <div
+      class="gm-about__portrait"
+      role="img"
+      aria-label="Стилизованный портрет ведущего Теруна"
+      style="background-image: url('{{ '/assets/images/gm/common/gm_portrait.png' | relative_url }}'); background-size: cover; background-position: center top; background-repeat: no-repeat;"
+    ></div>
 
     <div class="gm-about__content">
       <p class="gm-eyebrow">О ведущем</p>
@@ -208,23 +205,20 @@ description: "Онлайн-игры по настольным ролевым с�
 </section>
 
 <section class="gm-contact" id="contact">
-  <div class="gm-contact__media">
-    <img
-      class="gm-media-image"
-      src="{{ '/assets/images/gm/common/final-cta.png' | relative_url }}"
-      alt="Игровая компания за общим столом"
-      loading="lazy"
-    >
-  </div>
+  <div
+    class="gm-contact__media"
+    role="img"
+    aria-label="Игровая компания за общим столом"
+    style="background-image: url('{{ '/assets/images/gm/common/final-cta.png' | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  ></div>
+  <div class="gm-contact__shade"></div>
 
-  <div class="gm-contact__panel">
-    <div class="gm-contact__content">
-      <p class="gm-eyebrow">Готовы собрать стол?</p>
-      <h2>Напишите мне — подберём игру и формат.</h2>
-      <div class="gm-actions">
-        <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <span class="gm-contact__note">Форма записи и политика оплаты будут подключены отдельным этапом.</span>
-      </div>
+  <div class="gm-container gm-contact__content">
+    <p class="gm-eyebrow">Готовы собрать стол?</p>
+    <h2>Напишите мне — подберём игру и формат.</h2>
+    <div class="gm-actions">
+      <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <span class="gm-contact__note">Форма записи и политика оплаты будут подключены отдельным этапом.</span>
     </div>
   </div>
 </section>
