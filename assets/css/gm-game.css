@@ -1,7 +1,7 @@
 /*
   Styles unique to /gm/games/*.
-  Fonts, kegs and palette are inherited from :root in gm.css.
-  If you need to change typography globally, edit gm.css rather than this file.
+  Fonts, kegs, palette and paper material are inherited from :root in gm.css.
+  If you need to change typography or the paper texture globally, edit gm.css.
 */
 
 .gm-game-hero {
@@ -60,9 +60,11 @@
   padding: 28px;
   border: 1px solid var(--gm-paper-border);
   border-top: 3px solid var(--gm-teal);
-  background:
-    radial-gradient(circle at 88% 12%, rgba(40,123,117,.08), transparent 26%),
-    var(--gm-paper-card);
+  background-color: var(--gm-paper-card);
+  background-image: var(--gm-paper-texture);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   box-shadow: var(--gm-paper-shadow);
 }
 
