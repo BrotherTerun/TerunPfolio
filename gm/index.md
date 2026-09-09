@@ -29,20 +29,6 @@ description: "Онлайн-игры по настольным ролевым с�
         кто только знакомится с настольными ролевыми играми.
       </p>
 
-      <div class="gm-actions">
-        <a class="gm-button" href="#games">Записаться на игру</a>
-        <a class="gm-button gm-button--ghost" href="#contact">Собрать группу</a>
-      </div>
-    </div>
-
-    <aside class="gm-hero-profile__identity" aria-label="Опыт ведущего и знакомые системы">
-      <div
-        class="gm-hero-profile__portrait"
-        role="img"
-        aria-label="Стилизованный портрет ведущего Теруна"
-        style="background-image: url('{{ '/assets/images/gm/common/gm_portrait.png' | relative_url }}'); background-size: cover; background-position: center top; background-repeat: no-repeat;"
-      ></div>
-
       <div class="gm-hero-profile__systems">
         <p>Системы, с которыми я работал:</p>
         <div class="gm-tag-list gm-tag-list--hero" aria-label="Системы и направления">
@@ -58,6 +44,20 @@ description: "Онлайн-игры по настольным ролевым с�
         </div>
         <p class="gm-hero-profile__more">И некоторые другие системы.</p>
       </div>
+
+      <div class="gm-actions">
+        <a class="gm-button" href="#games">Записаться на игру</a>
+        <a class="gm-button gm-button--ghost" href="#contact">Собрать группу</a>
+      </div>
+    </div>
+
+    <aside class="gm-hero-profile__identity" aria-label="Портрет ведущего Теруна">
+      <div
+        class="gm-hero-profile__portrait"
+        role="img"
+        aria-label="Стилизованный портрет ведущего Теруна"
+        style="background-image: url('{{ '/assets/images/gm/common/gm_portrait.png' | relative_url }}'); background-size: cover; background-position: center top; background-repeat: no-repeat;"
+      ></div>
     </aside>
   </div>
 </section>
