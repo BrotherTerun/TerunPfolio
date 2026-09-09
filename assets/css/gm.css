@@ -35,6 +35,92 @@
   --gm-border: rgba(212, 170, 82, .42);
   --gm-paper-border: rgba(16, 45, 53, .2);
 
+  /* Solid color aliases used by components */
+  --gm-nav-text: #e8e3db;
+  --gm-button-text: #15130f;
+  --gm-button-hover: #e0bb69;
+  --gm-placeholder-blue: #1b2547;
+  --gm-placeholder-burgundy: #311b26;
+  --gm-hero-lead: #dfdbd3;
+  --gm-card-copy: #4f5854;
+  --gm-card-meta: #6a7771;
+  --gm-dark-section-bg: #080f22;
+  --gm-about-bg: #e8ddc9;
+  --gm-about-lead: #314b4d;
+  --gm-about-copy: #5d6661;
+  --gm-reviews-top: #4b2028;
+  --gm-reviews-bottom: #361820;
+  --gm-review-meta: #d9c8c9;
+  --gm-process-copy: #58645f;
+  --gm-faq-bg: #0c142c;
+  --gm-footer-bg: #070b18;
+  --gm-game-back-link: #d7d1c8;
+  --gm-game-meta: #697771;
+  --gm-game-copy: #425553;
+
+  /* Transparent / alpha color aliases.
+     All direct color values stay in :root; component rules reference tokens. */
+  --gm-transparent: transparent;
+
+  --gm-teal-a05: rgba(40, 123, 117, .05);
+  --gm-teal-a055: rgba(40, 123, 117, .055);
+  --gm-teal-a07: rgba(40, 123, 117, .07);
+  --gm-teal-a08: rgba(40, 123, 117, .08);
+  --gm-teal-a09: rgba(40, 123, 117, .09);
+  --gm-teal-a12: rgba(40, 123, 117, .12);
+  --gm-teal-a26: rgba(40, 123, 117, .26);
+  --gm-teal-a35: rgba(40, 123, 117, .35);
+  --gm-teal-a48: rgba(40, 123, 117, .48);
+  --gm-teal-soft-a12: rgba(112, 173, 143, .12);
+
+  --gm-gold-a08: rgba(212, 170, 82, .08);
+  --gm-gold-a13: rgba(212, 170, 82, .13);
+  --gm-gold-a19: rgba(212, 170, 82, .19);
+  --gm-gold-a22: rgba(212, 170, 82, .22);
+  --gm-gold-a44: rgba(212, 170, 82, .44);
+  --gm-gold-clear: rgba(212, 170, 82, 0);
+
+  --gm-ink-a13: rgba(16, 45, 53, .13);
+  --gm-ink-a15: rgba(16, 45, 53, .15);
+  --gm-ink-a16: rgba(16, 45, 53, .16);
+  --gm-ink-a18: rgba(16, 45, 53, .18);
+  --gm-ink-a22: rgba(16, 45, 53, .22);
+  --gm-ink-a34: rgba(16, 45, 53, .34);
+  --gm-ink-a50: rgba(16, 45, 53, .5);
+  --gm-ink-a52: rgba(16, 45, 53, .52);
+
+  --gm-burgundy-a30: rgba(74, 32, 40, .3);
+  --gm-sepia-a07: rgba(112, 72, 32, .07);
+  --gm-paper-card-a74: rgba(243, 234, 219, .74);
+  --gm-paper-card-a76: rgba(243, 234, 219, .76);
+  --gm-paper-light-a22: rgba(244, 231, 210, .22);
+  --gm-review-panel-a20: rgba(25, 10, 14, .2);
+
+  --gm-white-a012: rgba(255, 255, 255, .012);
+  --gm-white-a025: rgba(255, 255, 255, .025);
+  --gm-white-a08: rgba(255, 255, 255, .08);
+  --gm-white-a10: rgba(255, 255, 255, .1);
+  --gm-white-a28: rgba(255, 255, 255, .28);
+  --gm-black-a12: rgba(0, 0, 0, .12);
+  --gm-text-a80: rgba(245, 240, 232, .8);
+
+  --gm-header-bg: rgba(7, 12, 28, .82);
+  --gm-ghost-bg: rgba(6, 9, 20, .72);
+  --gm-ghost-hover-bg: rgba(18, 24, 45, .92);
+  --gm-placeholder-label-bg: rgba(8, 12, 28, .68);
+
+  --gm-night-a18: rgba(5, 8, 18, .18);
+  --gm-night-a22: rgba(5, 8, 18, .22);
+  --gm-night-a42: rgba(5, 8, 18, .42);
+  --gm-night-a79: rgba(5, 8, 18, .79);
+  --gm-night-a84: rgba(5, 8, 18, .84);
+  --gm-night-a91: rgba(5, 8, 18, .91);
+  --gm-night-a94: rgba(5, 8, 18, .94);
+
+  --gm-contact-night-a58: rgba(7, 10, 22, .58);
+  --gm-contact-night-a84: rgba(7, 10, 22, .84);
+  --gm-contact-night-a94: rgba(7, 10, 22, .94);
+
   /* Paper material
      Затемнение возвращено через opacity + multiply.
      cover + no-repeat сохраняют фактуру без видимых швов тайлинга. */
@@ -180,10 +266,10 @@ body.gm-page {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  border-bottom: 1px solid rgba(212, 170, 82, .19);
+  border-bottom: 1px solid var(--gm-gold-a19);
   background:
-    linear-gradient(90deg, rgba(40,123,117,.08), transparent 34%),
-    rgba(7, 12, 28, .82);
+    linear-gradient(90deg, var(--gm-teal-a08), var(--gm-transparent) 34%),
+    var(--gm-header-bg);
   backdrop-filter: blur(18px);
 }
 
@@ -209,7 +295,7 @@ body.gm-page {
   place-items: center;
   border: 1px solid var(--gm-gold);
   transform: rotate(45deg);
-  background: rgba(40, 123, 117, .08);
+  background: var(--gm-teal-a08);
   color: var(--gm-gold);
   font-family: var(--gm-font-display);
   font-size: var(--gm-font-size-brand-mark);
@@ -240,7 +326,7 @@ body.gm-page {
 }
 
 .gm-nav a {
-  color: #e8e3db;
+  color: var(--gm-nav-text);
   font-size: var(--gm-font-size-nav);
   text-decoration: none;
   transition: color .2s ease;
@@ -263,32 +349,32 @@ body.gm-page {
   border: 1px solid var(--gm-gold);
   border-radius: 2px;
   background: var(--gm-gold);
-  color: #15130f !important;
+  color: var(--gm-button-text) !important;
   font-size: var(--gm-font-size-button);
   font-weight: 700;
   letter-spacing: var(--gm-letter-ui);
   text-decoration: none;
   text-transform: uppercase;
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.28),
-    0 8px 28px rgba(0,0,0,.12);
+    inset 0 0 0 1px var(--gm-white-a28),
+    0 8px 28px var(--gm-black-a12);
   transition: transform .18s ease, background-color .18s ease, color .18s ease;
 }
 
 .gm-button:hover,
 .gm-button:focus-visible {
   transform: translateY(-2px);
-  background: #e0bb69;
+  background: var(--gm-button-hover);
 }
 
 .gm-button--ghost {
-  background: rgba(6, 9, 20, .72);
+  background: var(--gm-ghost-bg);
   color: var(--gm-text) !important;
 }
 
 .gm-button--ghost:hover,
 .gm-button--ghost:focus-visible {
-  background: rgba(18, 24, 45, .92);
+  background: var(--gm-ghost-hover-bg);
 }
 
 .gm-button--small {
@@ -338,7 +424,7 @@ body.gm-page {
   flex: 0 0 7px;
   transform: rotate(45deg);
   border: 1px solid currentColor;
-  background: transparent;
+  background: var(--gm-transparent);
 } */
 
 .gm-section {
@@ -405,8 +491,8 @@ body.gm-page {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 14% 18%, rgba(40, 123, 117, .09), transparent 25%),
-    radial-gradient(circle at 84% 74%, rgba(112, 72, 32, .07), transparent 28%);
+    radial-gradient(circle at 14% 18%, var(--gm-teal-a09), var(--gm-transparent) 25%),
+    radial-gradient(circle at 84% 74%, var(--gm-sepia-a07), var(--gm-transparent) 28%);
 }
 
 .gm-section--paper > .gm-container,
@@ -435,9 +521,9 @@ body.gm-page {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 26% 28%, rgba(40,123,117,.26), transparent 31%),
-    radial-gradient(circle at 72% 66%, rgba(212,170,82,.13), transparent 29%),
-    linear-gradient(135deg, #1b2547, #091226 60%, #311b26);
+    radial-gradient(circle at 26% 28%, var(--gm-teal-a26), var(--gm-transparent) 31%),
+    radial-gradient(circle at 72% 66%, var(--gm-gold-a13), var(--gm-transparent) 29%),
+    linear-gradient(135deg, var(--gm-placeholder-blue), var(--gm-bg) 60%, var(--gm-placeholder-burgundy));
 }
 
 .gm-media-placeholder::before,
@@ -450,15 +536,15 @@ body.gm-page {
 
 .gm-media-placeholder::before {
   background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
-    radial-gradient(circle at 33% 42%, rgba(112,173,143,.12), transparent 18%);
+    linear-gradient(var(--gm-white-a025) 1px, var(--gm-transparent) 1px),
+    linear-gradient(90deg, var(--gm-white-a025) 1px, var(--gm-transparent) 1px),
+    radial-gradient(circle at 33% 42%, var(--gm-teal-soft-a12), var(--gm-transparent) 18%);
   background-size: 42px 42px, 42px 42px, auto;
 }
 
 .gm-media-placeholder::after {
   inset: 18px;
-  border: 1px dashed rgba(212, 170, 82, .42);
+  border: 1px dashed var(--gm-border);
 }
 
 .gm-media-placeholder > span {
@@ -467,9 +553,9 @@ body.gm-page {
   inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
   padding: 7px 10px;
-  border: 1px solid rgba(212, 170, 82, .44);
-  background: rgba(8, 12, 28, .68);
-  color: rgba(245, 240, 232, .8);
+  border: 1px solid var(--gm-gold-a44);
+  background: var(--gm-placeholder-label-bg);
+  color: var(--gm-text-a80);
   font-size: var(--gm-font-size-label-xs);
   font-weight: 700;
   letter-spacing: .14em;
@@ -496,9 +582,9 @@ body.gm-page {
 .gm-hero__shade {
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(5,8,18,.22) 0%, rgba(5,8,18,.42) 40%, rgba(5,8,18,.94) 100%),
-    linear-gradient(90deg, rgba(5,8,18,.79), transparent 68%),
-    radial-gradient(circle at 72% 34%, rgba(40,123,117,.12), transparent 26%);
+    linear-gradient(180deg, var(--gm-night-a22) 0%, var(--gm-night-a42) 40%, var(--gm-night-a94) 100%),
+    linear-gradient(90deg, var(--gm-night-a79), var(--gm-transparent) 68%),
+    radial-gradient(circle at 72% 34%, var(--gm-teal-a12), var(--gm-transparent) 26%);
 }
 
 .gm-hero__content {
@@ -513,13 +599,13 @@ body.gm-page {
   height: 1px;
   display: block;
   margin-top: 46px;
-  background: linear-gradient(90deg, var(--gm-gold), rgba(212,170,82,0));
+  background: linear-gradient(90deg, var(--gm-gold), var(--gm-gold-clear));
 }
 
 .gm-hero__lead {
   max-width: 720px;
   margin-bottom: 34px;
-  color: #dfdbd3;
+  color: var(--gm-hero-lead);
   font-size: var(--gm-font-size-lead);
 }
 
@@ -562,7 +648,7 @@ body.gm-page {
   border: 1px solid var(--gm-paper-border);
   border-top: 3px solid var(--gm-teal);
   background:
-    linear-gradient(rgba(243,234,219,.76), rgba(243,234,219,.76)),
+    linear-gradient(var(--gm-paper-card-a76), var(--gm-paper-card-a76)),
     var(--gm-paper-texture),
     var(--gm-paper-card);
   background-repeat: no-repeat;
@@ -585,8 +671,8 @@ body.gm-page {
   right: 15px;
   width: 22px;
   height: 22px;
-  border-top: 1px solid rgba(16,45,53,.34);
-  border-right: 1px solid rgba(16,45,53,.34);
+  border-top: 1px solid var(--gm-ink-a34);
+  border-right: 1px solid var(--gm-ink-a34);
 }
 
 .gm-game-card::after {
@@ -594,8 +680,8 @@ body.gm-page {
   bottom: 15px;
   width: 22px;
   height: 22px;
-  border-right: 1px solid rgba(16,45,53,.22);
-  border-bottom: 1px solid rgba(16,45,53,.22);
+  border-right: 1px solid var(--gm-ink-a22);
+  border-bottom: 1px solid var(--gm-ink-a22);
 }
 
 .gm-game-card__media {
@@ -611,7 +697,7 @@ body.gm-page {
   content: "ARCHIVE / AVAILABLE ADVENTURE";
   display: block;
   margin-bottom: 24px;
-  color: rgba(16,45,53,.52);
+  color: var(--gm-ink-a52);
   font-size: var(--gm-font-size-label-xs);
   font-weight: 700;
   letter-spacing: .13em;
@@ -635,7 +721,7 @@ body.gm-page {
 .gm-status {
   flex: 0 0 auto;
   padding: 7px 9px;
-  border: 1px solid rgba(74, 32, 40, .3);
+  border: 1px solid var(--gm-burgundy-a30);
   color: var(--gm-burgundy);
   font-size: var(--gm-font-size-label-xs);
   font-weight: 700;
@@ -645,24 +731,24 @@ body.gm-page {
 
 .gm-game-card__pitch {
   margin-bottom: 28px;
-  color: #4f5854;
+  color: var(--gm-card-copy);
 }
 
 .gm-game-card__facts {
   margin: 0 0 28px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid rgba(16,45,53,.15);
+  border-top: 1px solid var(--gm-ink-a15);
 }
 
 .gm-game-card__facts > div {
   padding: 14px 12px 14px 0;
-  border-bottom: 1px solid rgba(16,45,53,.15);
+  border-bottom: 1px solid var(--gm-ink-a15);
 }
 
 .gm-game-card__facts dt {
   margin-bottom: 4px;
-  color: #6a7771;
+  color: var(--gm-card-meta);
   font-size: var(--gm-font-size-label-xs);
   font-weight: 700;
   letter-spacing: .1em;
@@ -684,7 +770,7 @@ body.gm-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background:
-    radial-gradient(circle at 80% 22%, rgba(40,123,117,.09), transparent 25%),
+    radial-gradient(circle at 80% 22%, var(--gm-teal-a09), var(--gm-transparent) 25%),
     var(--gm-bg-soft);
 }
 
@@ -708,11 +794,11 @@ body.gm-page {
 .gm-principles article {
   position: relative;
   padding: 25px 0 25px 54px;
-  border-top: 1px solid rgba(255,255,255,.1);
+  border-top: 1px solid var(--gm-white-a10);
 }
 
 .gm-principles article:last-child {
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid var(--gm-white-a10);
 }
 
 .gm-principles article > span {
@@ -739,8 +825,8 @@ body.gm-page {
    ========================================================= */
 .gm-section--dark {
   background:
-    linear-gradient(135deg, rgba(40,123,117,.055), transparent 35%),
-    #080f22;
+    linear-gradient(135deg, var(--gm-teal-a055), var(--gm-transparent) 35%),
+    var(--gm-dark-section-bg);
 }
 
 .gm-feature-grid {
@@ -760,7 +846,7 @@ body.gm-page {
   border-right: 1px solid var(--gm-border);
   border-bottom: 1px solid var(--gm-border);
   background:
-    linear-gradient(180deg, rgba(255,255,255,.012), rgba(40,123,117,.07));
+    linear-gradient(180deg, var(--gm-white-a012), var(--gm-teal-a07));
 }
 
 .gm-feature-grid article::before {
@@ -785,7 +871,7 @@ body.gm-page {
    ABOUT / PAPER PORTRAIT
    ========================================================= */
 .gm-section--about {
-  background: #e8ddc9;
+  background: var(--gm-about-bg);
   color: var(--gm-ink);
 }
 
@@ -799,7 +885,7 @@ body.gm-page {
 .gm-about__portrait {
   aspect-ratio: 3 / 4;
   min-height: 520px;
-  border: 1px solid rgba(16,45,53,.18);
+  border: 1px solid var(--gm-ink-a18);
   box-shadow: var(--gm-shadow);
 }
 
@@ -808,12 +894,12 @@ body.gm-page {
 }
 
 .gm-about__lead {
-  color: #314b4d;
+  color: var(--gm-about-lead);
   font-size: var(--gm-font-size-about-lead);
 }
 
 .gm-about__content > p:not(.gm-eyebrow):not(.gm-about__lead) {
-  color: #5d6661;
+  color: var(--gm-about-copy);
 }
 
 .gm-tag-list {
@@ -825,8 +911,8 @@ body.gm-page {
 
 .gm-tag-list span {
   padding: 8px 11px;
-  border: 1px solid rgba(40,123,117,.35);
-  background: rgba(40,123,117,.055);
+  border: 1px solid var(--gm-teal-a35);
+  background: var(--gm-teal-a055);
   color: var(--gm-ink);
   font-size: var(--gm-font-size-label);
   font-weight: 700;
@@ -839,8 +925,8 @@ body.gm-page {
    ========================================================= */
 .gm-section--reviews {
   background:
-    radial-gradient(circle at 12% 18%, rgba(212,170,82,.08), transparent 22%),
-    linear-gradient(145deg, #4b2028, #361820);
+    radial-gradient(circle at 12% 18%, var(--gm-gold-a08), var(--gm-transparent) 22%),
+    linear-gradient(145deg, var(--gm-reviews-top), var(--gm-reviews-bottom));
 }
 
 .gm-review-grid {
@@ -857,8 +943,8 @@ body.gm-page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid rgba(244, 231, 210, .22);
-  background: rgba(25, 10, 14, .2);
+  border: 1px solid var(--gm-paper-light-a22);
+  background: var(--gm-review-panel-a20);
 }
 
 .gm-review::before {
@@ -866,7 +952,7 @@ body.gm-page {
   position: absolute;
   top: 8px;
   right: 20px;
-  color: rgba(212,170,82,.22);
+  color: var(--gm-gold-a22);
   font-family: var(--gm-font-display);
   font-size: 5rem;
   line-height: 1;
@@ -886,7 +972,7 @@ body.gm-page {
 }
 
 .gm-review footer span {
-  color: #d9c8c9;
+  color: var(--gm-review-meta);
   font-size: var(--gm-font-size-meta);
 }
 
@@ -904,14 +990,14 @@ body.gm-page {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   list-style: none;
-  border-top: 2px solid rgba(40,123,117,.48);
+  border-top: 2px solid var(--gm-teal-a48);
 }
 
 .gm-process li {
   position: relative;
   min-height: 235px;
   padding: 28px 26px 24px 0;
-  border-right: 1px solid rgba(16,45,53,.16);
+  border-right: 1px solid var(--gm-ink-a16);
 }
 
 .gm-process li + li {
@@ -935,7 +1021,7 @@ body.gm-page {
 }
 
 .gm-process p {
-  color: #58645f;
+  color: var(--gm-process-copy);
   font-size: var(--gm-font-size-body-sm);
 }
 
@@ -944,8 +1030,8 @@ body.gm-page {
    ========================================================= */
 .gm-section--faq {
   background:
-    radial-gradient(circle at 18% 18%, rgba(40,123,117,.08), transparent 26%),
-    #0c142c;
+    radial-gradient(circle at 18% 18%, var(--gm-teal-a08), var(--gm-transparent) 26%),
+    var(--gm-faq-bg);
 }
 
 .gm-faq-layout {
@@ -1010,8 +1096,8 @@ body.gm-page {
 .gm-contact__shade {
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(7,10,22,.94), rgba(7,10,22,.58) 60%, rgba(7,10,22,.84)),
-    radial-gradient(circle at 72% 50%, rgba(40,123,117,.12), transparent 25%);
+    linear-gradient(90deg, var(--gm-contact-night-a94), var(--gm-contact-night-a58) 60%, var(--gm-contact-night-a84)),
+    radial-gradient(circle at 72% 50%, var(--gm-teal-a12), var(--gm-transparent) 25%);
 }
 
 .gm-contact__content {
@@ -1035,10 +1121,10 @@ body.gm-page {
    FOOTER
    ========================================================= */
 .gm-footer {
-  border-top: 1px solid rgba(255,255,255,.08);
+  border-top: 1px solid var(--gm-white-a08);
   background:
-    linear-gradient(90deg, rgba(40,123,117,.05), transparent 30%),
-    #070b18;
+    linear-gradient(90deg, var(--gm-teal-a05), var(--gm-transparent) 30%),
+    var(--gm-footer-bg);
   color: var(--gm-muted);
 }
 
