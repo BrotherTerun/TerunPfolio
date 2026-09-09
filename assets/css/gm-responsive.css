@@ -1,145 +1,187 @@
 /*
   Responsive geometry lives here.
-  Font values are NOT hardcoded in selectors: desktop and mobile kegs
-  are adjusted through :root variables, so typography remains tunable
-  from one place without hunting through individual components.
+  Desktop is width-driven, like the game-design section: all wide layouts
+  are treated as viewport screens, while compact tablets / phones return
+  to ordinary document flow. There is deliberately NO scroll-snap here.
 */
 
 /* =========================================================
-   COMPACT DESKTOP / WINDOWED 16:9
-   Target: ordinary desktop browser window with ~700–950px CSS viewport height.
-   The goal is to keep every CURRENT landing section inside one visible screen
-   without clipping content or changing the underlying section architecture.
+   WIDE SCREEN MODE
+   Applies to desktop and landscape tablet-like widths regardless of height.
+   Each landing section occupies one visible browser screen below the fixed
+   GM header. A small JS fitter may compact an individual section only when
+   its real content overflows that screen.
    ========================================================= */
-@media (min-width: 981px) and (max-height: 950px) {
+@media (min-width: 961px) {
   :root {
-    /* Viewport geometry */
     --gm-viewport-header: 76px;
-    --gm-viewport-fit: calc(100svh - var(--gm-viewport-header));
-    --gm-viewport-pad-y: clamp(44px, 6svh, 62px);
+    --gm-viewport-fit: calc(100dvh - var(--gm-viewport-header));
+    --gm-viewport-pad-y: clamp(30px, 4.6dvh, 58px);
 
-    /* Desktop kegs for constrained-height windows */
-    --gm-font-size-h1: clamp(3.6rem, min(5vw, 8.5svh), 5.5rem);
-    --gm-font-size-h2: clamp(2.6rem, min(3.8vw, 6.2svh), 4rem);
-    --gm-font-size-h3: clamp(1.45rem, 2vw, 1.95rem);
-    --gm-font-size-h3-compact: 1.55rem;
-    --gm-font-size-feature-title: 1.55rem;
-    --gm-font-size-process-title: 1.5rem;
-    --gm-font-size-review: 1.35rem;
-    --gm-font-size-faq: 1.3rem;
-    --gm-font-size-lead: clamp(1rem, 1.35vw, 1.18rem);
-    --gm-font-size-about-lead: 1.06rem;
+    /* Adaptive fitter config. Read by gm-adaptive-fit.js. */
+    --gm-adapt-desktop-min-width: 961;
+    --gm-adapt-overflow-tolerance: 3;
+    --gm-adapt-max-level: 3;
+    --gm-adapt-recheck-ms: 120;
+
+    /* Wide-screen type scale: height participates, so a short browser
+       window remains the same layout instead of falling into another mode. */
+    --gm-font-size-h1: clamp(3.35rem, min(5.4vw, 9.6dvh), 6.5rem);
+    --gm-font-size-h2: clamp(2.45rem, min(4vw, 6.8dvh), 4.5rem);
+    --gm-font-size-h3: clamp(1.45rem, min(2.1vw, 3.8dvh), 2.05rem);
+    --gm-font-size-h3-compact: clamp(1.38rem, 2.8dvh, 1.72rem);
+    --gm-font-size-feature-title: clamp(1.4rem, 2.8dvh, 1.72rem);
+    --gm-font-size-process-title: clamp(1.36rem, 2.7dvh, 1.65rem);
+    --gm-font-size-review: clamp(1.25rem, 2.45dvh, 1.5rem);
+    --gm-font-size-faq: clamp(1.2rem, 2.35dvh, 1.45rem);
+    --gm-font-size-lead: clamp(1rem, min(1.35vw, 2.25dvh), 1.22rem);
+    --gm-font-size-about-lead: clamp(1rem, 2.05dvh, 1.14rem);
   }
 
-  .gm-section,
-  .gm-section--split,
-  .gm-contact {
+  /* The header is fixed, so reserve its space once. This makes every
+     following screen exactly viewport-height minus the header. */
+  .gm-main {
+    padding-top: var(--gm-viewport-header);
+  }
+
+  .gm-main > section {
+    height: var(--gm-viewport-fit);
+    min-height: var(--gm-viewport-fit);
+    overflow: hidden;
     scroll-margin-top: var(--gm-viewport-header);
   }
 
-  .gm-section {
+  .gm-section:not(.gm-section--split) {
     padding: var(--gm-viewport-pad-y) 0;
   }
 
+  .gm-section:not(.gm-section--split) > .gm-container {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .gm-section--paper > .gm-container,
+  .gm-section--dark > .gm-container,
+  .gm-section--reviews > .gm-container,
+  .gm-section--process > .gm-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .gm-section--about > .gm-container,
+  .gm-section--faq > .gm-container {
+    align-content: center;
+  }
+
   .gm-section__heading {
-    margin-bottom: 30px;
-    gap: 40px;
+    margin-bottom: clamp(20px, 3dvh, 36px);
+    gap: clamp(30px, 3.4vw, 52px);
   }
 
   .gm-section__heading > p:last-child {
     margin-bottom: 0;
   }
 
-  /* Hero: the site header is fixed over the section, so the hero itself
-     may occupy the full browser viewport while its content is compacted. */
+  /* Hero */
   .gm-hero {
-    min-height: 100svh;
+    align-items: center;
   }
 
   .gm-hero__content {
-    padding: calc(var(--gm-viewport-header) + 42px) 0 46px;
+    padding: clamp(32px, 4.4dvh, 58px) 0;
   }
 
   .gm-page h1 {
-    max-width: 860px;
-    margin-bottom: 18px;
+    max-width: min(860px, 64vw);
+    margin-bottom: clamp(14px, 2.2dvh, 22px);
   }
 
   .gm-hero__lead {
     max-width: 680px;
-    margin-bottom: 24px;
+    margin-bottom: clamp(18px, 2.7dvh, 30px);
   }
 
   .gm-hero__facts {
-    margin-top: 26px;
+    margin-top: clamp(20px, 3.2dvh, 34px);
   }
 
   .gm-hero__content::after {
-    margin-top: 28px;
+    margin-top: clamp(22px, 3.4dvh, 38px);
   }
 
-  /* Adventure dossier: reduce vertical chrome, not information. */
+  /* Adventure dossier */
+  .gm-games-grid {
+    min-height: 0;
+  }
+
   .gm-game-card__media {
-    min-height: 360px;
+    min-height: clamp(260px, 40dvh, 420px);
   }
 
   .gm-game-card__body {
-    padding: 30px 34px;
+    padding: clamp(26px, 3.2dvh, 38px);
   }
 
   .gm-game-card__body::before {
-    margin-bottom: 14px;
+    margin-bottom: clamp(12px, 2dvh, 20px);
   }
 
-  .gm-game-card__pitch {
-    margin-bottom: 18px;
-  }
-
+  .gm-game-card__pitch,
   .gm-game-card__facts {
-    margin-bottom: 18px;
+    margin-bottom: clamp(14px, 2.2dvh, 24px);
   }
 
   .gm-game-card__facts > div {
-    padding: 10px 10px 10px 0;
+    padding: clamp(8px, 1.4dvh, 12px) 10px clamp(8px, 1.4dvh, 12px) 0;
   }
 
-  /* Table principles: this was the tallest fixed section after the hero. */
+  /* Split / actual table */
   .gm-section--split,
   .gm-split__media {
-    min-height: min(680px, var(--gm-viewport-fit));
+    height: var(--gm-viewport-fit);
+    min-height: 0;
   }
 
   .gm-split__content {
-    padding: 52px max(40px, calc((100vw - var(--gm-max)) / 2)) 52px 60px;
+    height: 100%;
+    min-height: 0;
+    padding:
+      clamp(32px, 4.8dvh, 58px)
+      max(40px, calc((100vw - var(--gm-max)) / 2))
+      clamp(32px, 4.8dvh, 58px)
+      clamp(48px, 4.4vw, 70px);
   }
 
   .gm-principles article {
-    padding: 17px 0 17px 48px;
+    padding: clamp(14px, 2dvh, 22px) 0 clamp(14px, 2dvh, 22px) 50px;
   }
 
   .gm-principles article > span {
-    top: 21px;
+    top: clamp(18px, 2.45dvh, 26px);
   }
 
   /* Included services */
   .gm-feature-grid article {
-    min-height: 180px;
-    padding: 24px;
+    min-height: clamp(145px, 22dvh, 210px);
+    padding: clamp(20px, 2.8dvh, 28px);
   }
 
   /* About */
   .gm-about {
-    gap: 60px;
+    height: 100%;
+    min-height: 0;
+    gap: clamp(42px, 5vw, 72px);
   }
 
   .gm-about__portrait {
-    width: min(350px, 100%);
+    width: min(350px, 40dvh, 100%);
     min-height: 0;
     justify-self: center;
   }
 
   .gm-tag-list {
-    margin-top: 20px;
+    margin-top: clamp(16px, 2.4dvh, 24px);
   }
 
   .gm-tag-list span {
@@ -148,22 +190,22 @@
 
   /* Reviews */
   .gm-review {
-    min-height: 235px;
-    padding: 24px;
+    min-height: clamp(190px, 28dvh, 270px);
+    padding: clamp(20px, 2.8dvh, 28px);
   }
 
   .gm-review::before {
-    font-size: 4rem;
+    font-size: clamp(3.4rem, 7dvh, 4.6rem);
   }
 
   /* Booking process */
   .gm-process {
-    margin-top: 28px;
+    margin-top: clamp(20px, 3dvh, 34px);
   }
 
   .gm-process li {
-    min-height: 170px;
-    padding: 20px 22px 18px 0;
+    min-height: clamp(140px, 21dvh, 190px);
+    padding: clamp(18px, 2.4dvh, 24px) 22px 18px 0;
   }
 
   .gm-process li + li {
@@ -171,37 +213,303 @@
   }
 
   .gm-process span {
-    margin-bottom: 28px;
+    margin-bottom: clamp(20px, 3.4dvh, 34px);
   }
 
   /* FAQ */
   .gm-faq-layout {
-    gap: 60px;
+    height: 100%;
+    min-height: 0;
+    gap: clamp(42px, 5vw, 72px);
   }
 
   .gm-faq-list summary {
-    padding: 18px 0;
+    padding: clamp(14px, 2.15dvh, 21px) 0;
   }
 
   .gm-faq-list details p {
-    padding-bottom: 18px;
+    padding-bottom: clamp(12px, 2dvh, 18px);
   }
 
-  /* Final CTA + footer */
+  /* Final CTA */
   .gm-contact {
-    min-height: min(470px, var(--gm-viewport-fit));
+    align-items: center;
   }
 
   .gm-contact__content {
-    padding: 62px 0;
+    padding: clamp(42px, 6dvh, 76px) 0;
   }
 
   .gm-footer__inner {
     min-height: 72px;
   }
+
+  /* ---------------------------------------------------------
+     PER-SECTION ADAPTIVE FIT LEVELS
+     JS only adds these when the section actually overflows.
+     --------------------------------------------------------- */
+  .gm-main > section[data-fit-level="1"] {
+    --gm-font-size-h1: clamp(3.05rem, min(4.8vw, 8.3dvh), 5.4rem);
+    --gm-font-size-h2: clamp(2.15rem, min(3.5vw, 5.8dvh), 3.7rem);
+    --gm-font-size-h3: clamp(1.34rem, min(1.9vw, 3.2dvh), 1.82rem);
+    --gm-font-size-h3-compact: 1.48rem;
+    --gm-font-size-feature-title: 1.48rem;
+    --gm-font-size-process-title: 1.44rem;
+    --gm-font-size-review: 1.28rem;
+    --gm-font-size-faq: 1.24rem;
+    --gm-font-size-lead: 1.04rem;
+    --gm-font-size-about-lead: 1.02rem;
+    line-height: 1.54;
+  }
+
+  .gm-main > .gm-section[data-fit-level="1"]:not(.gm-section--split) {
+    padding: clamp(22px, 3dvh, 38px) 0;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-section__heading {
+    margin-bottom: 22px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-game-card__media {
+    min-height: clamp(220px, 33dvh, 330px);
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-game-card__body {
+    padding: 24px 28px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-split__content {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-principles article {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-feature-grid article {
+    min-height: 140px;
+    padding: 20px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-about__portrait {
+    width: min(320px, 36dvh, 100%);
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-review {
+    min-height: 185px;
+    padding: 20px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-process {
+    margin-top: 18px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-process li {
+    min-height: 132px;
+    padding-top: 16px;
+    padding-bottom: 14px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-process span {
+    margin-bottom: 18px;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-faq-list summary {
+    padding: 12px 0;
+  }
+
+  .gm-main > section[data-fit-level="1"] .gm-contact__content {
+    padding: 34px 0;
+  }
+
+  .gm-main > section[data-fit-level="2"] {
+    --gm-font-size-h1: clamp(2.7rem, min(4.2vw, 7.2dvh), 4.7rem);
+    --gm-font-size-h2: clamp(1.95rem, min(3.05vw, 5dvh), 3.2rem);
+    --gm-font-size-h3: 1.42rem;
+    --gm-font-size-h3-compact: 1.34rem;
+    --gm-font-size-feature-title: 1.34rem;
+    --gm-font-size-process-title: 1.3rem;
+    --gm-font-size-review: 1.18rem;
+    --gm-font-size-faq: 1.16rem;
+    --gm-font-size-lead: 1rem;
+    --gm-font-size-about-lead: .98rem;
+    line-height: 1.46;
+  }
+
+  .gm-main > .gm-section[data-fit-level="2"]:not(.gm-section--split) {
+    padding: 18px 0;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-section__heading {
+    margin-bottom: 16px;
+    gap: 28px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-game-card__media {
+    min-height: clamp(190px, 28dvh, 280px);
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-game-card__body {
+    padding: 20px 24px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-game-card__body::before,
+  .gm-main > section[data-fit-level="2"] .gm-game-card__pitch,
+  .gm-main > section[data-fit-level="2"] .gm-game-card__facts {
+    margin-bottom: 10px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-split__content {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-principles article {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-feature-grid article {
+    min-height: 122px;
+    padding: 16px 18px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-about {
+    gap: 36px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-about__portrait {
+    width: min(285px, 32dvh, 100%);
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-tag-list {
+    margin-top: 12px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-review {
+    min-height: 165px;
+    padding: 16px 18px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-process {
+    margin-top: 12px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-process li {
+    min-height: 116px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-process span {
+    margin-bottom: 12px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-faq-layout {
+    gap: 42px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-faq-list summary {
+    padding: 9px 0;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-faq-list details p {
+    padding-bottom: 10px;
+  }
+
+  .gm-main > section[data-fit-level="2"] .gm-contact__content {
+    padding: 24px 0;
+  }
+
+  .gm-main > section[data-fit-level="3"] {
+    --gm-font-size-h1: clamp(2.45rem, min(3.8vw, 6.4dvh), 4.15rem);
+    --gm-font-size-h2: clamp(1.78rem, min(2.75vw, 4.45dvh), 2.8rem);
+    --gm-font-size-h3: 1.3rem;
+    --gm-font-size-h3-compact: 1.24rem;
+    --gm-font-size-feature-title: 1.24rem;
+    --gm-font-size-process-title: 1.22rem;
+    --gm-font-size-review: 1.1rem;
+    --gm-font-size-faq: 1.08rem;
+    --gm-font-size-lead: .96rem;
+    --gm-font-size-about-lead: .94rem;
+    line-height: 1.4;
+  }
+
+  .gm-main > .gm-section[data-fit-level="3"]:not(.gm-section--split) {
+    padding: 12px 0;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-section__heading {
+    margin-bottom: 10px;
+    gap: 22px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-game-card__media {
+    min-height: clamp(160px, 24dvh, 240px);
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-game-card__body {
+    padding: 16px 20px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-split__content {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-principles article {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-feature-grid article {
+    min-height: 105px;
+    padding: 13px 16px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-about {
+    gap: 28px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-about__portrait {
+    width: min(255px, 29dvh, 100%);
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-review {
+    min-height: 145px;
+    padding: 14px 16px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-process li {
+    min-height: 100px;
+    padding-top: 9px;
+    padding-bottom: 8px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-process span {
+    margin-bottom: 8px;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-faq-list summary {
+    padding: 7px 0;
+  }
+
+  .gm-main > section[data-fit-level="3"] .gm-contact__content {
+    padding: 16px 0;
+  }
 }
 
-@media (max-width: 980px) {
+/* =========================================================
+   COMPACT TABLET / PHONE FLOW
+   Below 961px the viewport-screen contract is disabled completely.
+   ========================================================= */
+@media (max-width: 960px) {
   .gm-header__inner {
     grid-template-columns: auto auto;
   }
