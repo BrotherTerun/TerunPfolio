@@ -319,7 +319,7 @@ body.gm-page {
 /* =========================================================
    SHARED / ARCHIVE MOTIF
    ========================================================= */
-.gm-eyebrow {
+/* .gm-eyebrow {
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -329,9 +329,9 @@ body.gm-page {
   font-weight: 700;
   letter-spacing: var(--gm-letter-label);
   text-transform: uppercase;
-}
+} */
 
-.gm-eyebrow::before {
+/* .gm-eyebrow::before {
   content: "";
   width: 7px;
   height: 7px;
@@ -339,7 +339,7 @@ body.gm-page {
   transform: rotate(45deg);
   border: 1px solid currentColor;
   background: transparent;
-}
+} */
 
 .gm-section {
   position: relative;
@@ -416,11 +416,11 @@ body.gm-page {
   z-index: 1;
 }
 
-.gm-section--paper .gm-eyebrow,
+/* .gm-section--paper .gm-eyebrow,
 .gm-section--about .gm-eyebrow,
 .gm-section--process .gm-eyebrow {
   color: var(--gm-teal);
-}
+} */
 
 .gm-section--paper h2,
 .gm-section--about h2,

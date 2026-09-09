@@ -14,10 +14,10 @@ description: "Онлайн-игры по настольным ролевым с�
   <div class="gm-hero__shade"></div>
 
   <div class="gm-container gm-hero__content">
-    <p class="gm-eyebrow">Онлайн НРИ · Foundry VTT · Discord</p>
-    <h1>Истории, в которых решения игроков действительно что-то меняют.</h1>
+    <!-- <p class="gm-eyebrow">Онлайн НРИ · Foundry VTT · Discord</p> -->
+    <h1>Присоединяйтесь к миру Настольно-Ролевых Игр!</h1>
     <p class="gm-hero__lead">
-      Провожу ваншоты и кампании с акцентом на выбор, последствия, атмосферу и понятные правила за столом.
+      Привет! Меня зовут Терун, и я занимаюсь проведением настольно-ролевых-игр онлайн. Вожу как ваншоты, так и кампании с акцентом на погружение в историю, взаимодействие между персонажами и события. Рад за столом как опытным ветеранам хобби так и новичкам. Познакомьтесь со мной подробнее ниже, и записывайтесь на понравившуюся игру. Увидимся за столом.
     </p>
 
     <div class="gm-actions">
@@ -37,7 +37,7 @@ description: "Онлайн-игры по настольным ролевым с�
   <div class="gm-container">
     <div class="gm-section__heading">
       <div>
-        <p class="gm-eyebrow">Сейчас можно сыграть</p>
+        <!-- <p class="gm-eyebrow">Сейчас можно сыграть</p> -->
         <h2>Приключения</h2>
       </div>
       <p>
@@ -63,7 +63,7 @@ description: "Онлайн-игры по настольным ролевым с�
 
   <div class="gm-split__content">
     <div class="gm-section__heading gm-section__heading--stacked">
-      <p class="gm-eyebrow">Что будет за столом</p>
+      <!-- <p class="gm-eyebrow">Что будет за столом</p> -->
       <h2>Не экскурсия по сценарию, а игра про решения.</h2>
     </div>
 
@@ -91,7 +91,7 @@ description: "Онлайн-игры по настольным ролевым с�
   <div class="gm-container">
     <div class="gm-section__heading">
       <div>
-        <p class="gm-eyebrow">Что входит в игру</p>
+        <!-- <p class="gm-eyebrow">Что входит в игру</p> -->
         <h2>Всё необходимое для старта</h2>
       </div>
       <p>Этот блок — не про «премиальность», а про конкретику: за что именно платит игрок и что уже подготовлено к сессии.</p>
@@ -116,7 +116,7 @@ description: "Онлайн-игры по настольным ролевым с�
     ></div>
 
     <div class="gm-about__content">
-      <p class="gm-eyebrow">О ведущем</p>
+      <!-- <p class="gm-eyebrow">О ведущем</p> -->
       <h2>Терун</h2>
       <p class="gm-about__lead">
         Более шести лет играю и веду настольные ролевые игры. Работал с D&D, Pathfinder, Legend of the Five Rings, Vampire: The Masquerade и другими системами.
@@ -140,7 +140,7 @@ description: "Онлайн-игры по настольным ролевым с�
   <div class="gm-container">
     <div class="gm-section__heading">
       <div>
-        <p class="gm-eyebrow">Отзывы игроков</p>
+        <!-- <p class="gm-eyebrow">Отзывы игроков</p> -->
         <h2>Как это ощущается за столом</h2>
       </div>
       <p>Сюда пойдут реальные отзывы участников прежних игр. До публикации коммерческих кейсов не называем их «отзывами клиентов».</p>
@@ -163,7 +163,7 @@ description: "Онлайн-игры по настольным ролевым с�
 <section class="gm-section gm-section--process" id="process">
   <div class="gm-container">
     <div class="gm-section__heading gm-section__heading--stacked">
-      <p class="gm-eyebrow">Как попасть за стол</p>
+      <!-- <p class="gm-eyebrow">Как попасть за стол</p> -->
       <h2>Четыре шага до игры</h2>
     </div>
 
@@ -179,7 +179,7 @@ description: "Онлайн-игры по настольным ролевым с�
 <section class="gm-section gm-section--faq" id="faq">
   <div class="gm-container gm-faq-layout">
     <div>
-      <p class="gm-eyebrow">FAQ</p>
+      <!-- <p class="gm-eyebrow">FAQ</p> -->
       <h2>Перед первой игрой</h2>
     </div>
 
@@ -214,7 +214,7 @@ description: "Онлайн-игры по настольным ролевым с�
   <div class="gm-contact__shade"></div>
 
   <div class="gm-container gm-contact__content">
-    <p class="gm-eyebrow">Готовы собрать стол?</p>
+    <!-- <p class="gm-eyebrow">Готовы собрать стол?</p> -->
     <h2>Напишите мне — подберём игру и формат.</h2>
     <div class="gm-actions">
       <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
