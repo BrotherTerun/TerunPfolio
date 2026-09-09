@@ -694,7 +694,7 @@
     min-height: auto;
     padding: 24px 0;
     border-right: 0;
-    border-bottom: 1px solid rgba(16,45,53,.16);
+    border-bottom: 1px solid var(--gm-ink-a16);
   }
 
   .gm-process span {
