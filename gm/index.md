@@ -5,9 +5,12 @@ description: "Онлайн-игры по настольным ролевым с�
 ---
 
 <section class="gm-hero" id="top">
-  <div class="gm-hero__media gm-media-placeholder" aria-hidden="true">
-    <span>MEDIA / HERO KEY ART / FULL BLEED</span>
-  </div>
+  <img
+    class="gm-hero__media gm-media-image gm-media-image--hero"
+    src="{{ '/assets/images/gm/common/hero_key_art.png' | relative_url }}"
+    alt=""
+    aria-hidden="true"
+  >
 
   <div class="gm-hero__shade"></div>
 
@@ -52,8 +55,13 @@ description: "Онлайн-игры по настольным ролевым с�
 </section>
 
 <section class="gm-section gm-section--split" id="table">
-  <div class="gm-split__media gm-media-placeholder" aria-hidden="true">
-    <span>MEDIA / TABLE ATMOSPHERE / 4:5</span>
+  <div class="gm-split__media gm-media-frame">
+    <img
+      class="gm-media-image gm-media-image--contain"
+      src="{{ '/assets/images/gm/common/table_atmosphere.png' | relative_url }}"
+      alt="Онлайн-сессия: камеры игроков и игровой стол Foundry VTT"
+      loading="lazy"
+    >
   </div>
 
   <div class="gm-split__content">
@@ -103,9 +111,12 @@ description: "Онлайн-игры по настольным ролевым с�
 
 <section class="gm-section gm-section--about" id="about">
   <div class="gm-container gm-about">
-    <div class="gm-about__portrait gm-media-placeholder" aria-hidden="true">
-      <span>MEDIA / GM PORTRAIT / 3:4</span>
-    </div>
+    <img
+      class="gm-about__portrait gm-media-image"
+      src="{{ '/assets/images/gm/common/gm_portrait.png' | relative_url }}"
+      alt="Стилизованный портрет ведущего Теруна"
+      loading="lazy"
+    >
 
     <div class="gm-about__content">
       <p class="gm-eyebrow">О ведущем</p>
@@ -197,17 +208,23 @@ description: "Онлайн-игры по настольным ролевым с�
 </section>
 
 <section class="gm-contact" id="contact">
-  <div class="gm-contact__media gm-media-placeholder" aria-hidden="true">
-    <span>MEDIA / FINAL CTA ART / WIDE</span>
+  <div class="gm-contact__media">
+    <img
+      class="gm-media-image"
+      src="{{ '/assets/images/gm/common/final-cta.png' | relative_url }}"
+      alt="Игровая компания за общим столом"
+      loading="lazy"
+    >
   </div>
-  <div class="gm-contact__shade"></div>
 
-  <div class="gm-container gm-contact__content">
-    <p class="gm-eyebrow">Готовы собрать стол?</p>
-    <h2>Напишите мне — подберём игру и формат.</h2>
-    <div class="gm-actions">
-      <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
-      <span class="gm-contact__note">Форма записи и политика оплаты будут подключены отдельным этапом.</span>
+  <div class="gm-contact__panel">
+    <div class="gm-contact__content">
+      <p class="gm-eyebrow">Готовы собрать стол?</p>
+      <h2>Напишите мне — подберём игру и формат.</h2>
+      <div class="gm-actions">
+        <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <span class="gm-contact__note">Форма записи и политика оплаты будут подключены отдельным этапом.</span>
+      </div>
     </div>
   </div>
 </section>
