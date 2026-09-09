@@ -4,7 +4,7 @@ title: "Терун — ведущий НРИ"
 description: "Онлайн-игры по настольным ролевым системам: ваншоты, кампании и авторские сценарии."
 ---
 
-<section class="gm-hero" id="top">
+<section class="gm-hero gm-hero--profile" id="about">
   <div
     class="gm-hero__media"
     aria-hidden="true"
@@ -13,62 +13,72 @@ description: "Онлайн-игры по настольным ролевым с�
 
   <div class="gm-hero__shade"></div>
 
-  <div class="gm-container gm-hero__content">
-    <!-- <p class="gm-eyebrow">Онлайн НРИ · Foundry VTT · Discord</p> -->
-    <h1>Привет! Меня зовут Терун</h1>
-    <p class="gm-hero__lead">
-      Я занимаюсь проведением настольно-ролевых-игр
-      <span class="gm-text-accent gm-text-gold-glow"> онлайн</span> уже больше 6 лет. Вожу как ваншоты, так и кампании. В игре делаю акцент на погружение в историю, взаимодействие между персонажами и сюжетные события. Рад за столом как опытным ветеранам хобби так и новичкам. Ниже вы можете познакомиться со мной подробнее, и записаться на предстоящие игры. Увидимся за столом!
-    </p>
+  <div class="gm-container gm-hero__content gm-hero-profile">
+    <div class="gm-hero-profile__copy">
+      <h1>Привет! Я Терун — ведущий НРИ.</h1>
 
-    <div class="gm-actions">
-      <a class="gm-button" href="#games">Выбрать приключение</a>
-      <a class="gm-button gm-button--ghost" href="#contact">Собрать свою группу</a>
+      <p class="gm-hero__lead">
+        Уже больше шести лет веду ваншоты и кампании
+        <span class="gm-text-accent gm-text-gold-glow">онлайн</span>.
+        Делаю акцент на погружение в историю, взаимодействие между персонажами
+        и последствия решений игроков.
+      </p>
+
+      <p class="gm-hero-profile__secondary">
+        За моим столом одинаково рады и опытным игрокам, и тем,
+        кто только знакомится с настольными ролевыми играми.
+      </p>
+
+      <div class="gm-actions">
+        <a class="gm-button" href="#games">Записаться на игру</a>
+        <a class="gm-button gm-button--ghost" href="#contact">Собрать группу</a>
+      </div>
     </div>
 
-    <!-- <div class="gm-hero__facts" aria-label="Коротко о формате">
-      <span>6+ лет за столом</span>
-      <span>Онлайн</span>
-      <span>Русский язык</span>
-    </div> -->
+    <aside class="gm-hero-profile__identity" aria-label="Опыт ведущего и знакомые системы">
+      <div
+        class="gm-hero-profile__portrait"
+        role="img"
+        aria-label="Стилизованный портрет ведущего Теруна"
+        style="background-image: url('{{ '/assets/images/gm/common/gm_portrait.png' | relative_url }}'); background-size: cover; background-position: center top; background-repeat: no-repeat;"
+      ></div>
+
+      <div class="gm-hero-profile__systems">
+        <p>Системы, с которыми я работал:</p>
+        <div class="gm-tag-list gm-tag-list--hero" aria-label="Системы и направления">
+          <span>D&amp;D 5ed</span>
+          <span>Witcher TTRPG</span>
+          <span>Legend of the 5 Rings 4ed/5ed</span>
+          <span>Adventures in Rokugan</span>
+          <span>Cyberpunk RED</span>
+          <span>Fate</span>
+          <span>Vampire: The Masquerade</span>
+          <span>Werewolf: The Apocalypse</span>
+          <span>Hunter: The Reckoning</span>
+        </div>
+        <p class="gm-hero-profile__more">И некоторые другие системы.</p>
+      </div>
+    </aside>
   </div>
 </section>
 
-<section class="gm-section gm-section--about" id="about">
-  <div class="gm-container gm-about">
-    <div
-      class="gm-about__portrait"
-      role="img"
-      aria-label="Стилизованный портрет ведущего Теруна"
-      style="background-image: url('{{ '/assets/images/gm/common/gm_portrait.png' | relative_url }}'); background-size: cover; background-position: center top; background-repeat: no-repeat;"
-    ></div>
-
-    <div class="gm-about__content">
-      <!-- <p class="gm-eyebrow">О ведущем</p> -->
-      <h2>Обо мне</h2>
-      <p class="gm-about__lead">
-        Итак, раз уж вы решили пройти дальше, позвольте ещё раз представиться: меня зовут
-        <span class="gm-text-teal-glow"> <b> Терун  </b> </span>,
-       он же <span class="gm-text-teal-glow"> <b> BrotherTerun </b> </span>,
-        он же <span class="gm-text-teal-glow"> <b> Леонид </b> </span>.
-        Я занимаюсь настольными играми с самого детства, а личный опыт проведения игр уже перевалил за шесть лет. За всё это время я водил и играл в:</p>
-      <div class="gm-tag-list" aria-label="Системы и направления">
-        <span>D&D 5ed</span>
-        <span>Witcher TTRPG</span>
-        <span>Legend of the 5 Rings 4ed/5ed</span>
-        <span>Adventures in Rokugan</span>
-        <span>Cyberpunk RED</span>
-        <span>Fate</span>
-        <span>Vampire: The Masquerade</span>
-        <span>Werewolf: The Apocalypse</span>
-        <span>Hunter: The Reckoning</span>
+<section class="gm-section gm-section--paper" id="games">
+  <div class="gm-container">
+    <div class="gm-section__heading">
+      <div>
+        <h2>Отправиться в приключение</h2>
       </div>
       <p>
-        <br>и некоторые другие системы.
-
+        Здесь вы можете узнать о том, какие игры планируются в ближайшее время.
+        Нажав на карточку, можно подробнее узнать о конкретной истории, а затем
+        записаться и присоединиться к группе.
       </p>
+    </div>
 
-
+    <div class="gm-games-grid">
+      {% for game in site.data.gm_games %}
+        {% include gm-game-card.html game=game %}
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -83,7 +93,6 @@ description: "Онлайн-игры по настольным ролевым с�
 
   <div class="gm-split__content">
     <div class="gm-section__heading gm-section__heading--stacked">
-      <!-- <p class="gm-eyebrow">Что будет за столом</p> -->
       <h2>Как я провожу игры</h2>
     </div>
 
@@ -107,41 +116,20 @@ description: "Онлайн-игры по настольным ролевым с�
   </div>
 </section>
 
-<section class="gm-section gm-section--paper" id="games">
+<section class="gm-section gm-section--dark" id="included">
   <div class="gm-container">
     <div class="gm-section__heading">
       <div>
-        <!-- <p class="gm-eyebrow">Сейчас можно сыграть</p> -->
-        <h2>Отправиться в приключение</h2>
+        <h2>Что потребуется для игры</h2>
       </div>
-      <p>
-        Здесь вы можете узнать о том, какие игры планируются в ближайщее время. Нажав на карточку, можно подробнее узнать о конкретной истории. Нажав на кнопку записаться и заполнив google-форму можно присоединиться к группе.
-      </p>
+      <p>Этот блок — не про «премиальность», а про конкретику: за что именно платит игрок и что уже подготовлено к сессии.</p>
     </div>
 
-    <div class="gm-games-grid">
-      {% for game in site.data.gm_games %}
-        {% include gm-game-card.html game=game %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="gm-contact" id="contact">
-  <div
-    class="gm-contact__media"
-    role="img"
-    aria-label="Игровая компания за общим столом"
-    style="background-image: url('{{ '/assets/images/gm/common/final-cta.png' | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
-  ></div>
-  <div class="gm-contact__shade"></div>
-
-  <div class="gm-container gm-contact__content">
-    <!-- <p class="gm-eyebrow">Готовы собрать стол?</p> -->
-    <h2>Напишите мне — подберём игру и формат.</h2>
-    <div class="gm-actions">
-      <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
-      <span class="gm-contact__note">Форма записи и политика оплаты будут подключены отдельным этапом.</span>
+    <div class="gm-feature-grid">
+      <article><strong>Foundry VTT</strong><span>Подготовленные сцены, карты и игровые материалы.</span></article>
+      <article><strong>Голосовая связь</strong><span>Discord или другой согласованный канал.</span></article>
+      <article><strong>Подготовка к игре</strong><span>Черновой слот под персонажей, памятки и короткий ввод перед сессией.</span></article>
+      <article><strong>Сопровождение</strong><span>Черновой слот под правила переноса, отмены и связь между играми.</span></article>
     </div>
   </div>
 </section>
@@ -150,7 +138,6 @@ description: "Онлайн-игры по настольным ролевым с�
   <div class="gm-container">
     <div class="gm-section__heading">
       <div>
-        <!-- <p class="gm-eyebrow">Отзывы игроков</p> -->
         <h2>Как это ощущается за столом</h2>
       </div>
       <p>Сюда пойдут реальные отзывы участников прежних игр. До публикации коммерческих кейсов не называем их «отзывами клиентов».</p>
@@ -173,7 +160,6 @@ description: "Онлайн-игры по настольным ролевым с�
 <section class="gm-section gm-section--process" id="process">
   <div class="gm-container">
     <div class="gm-section__heading gm-section__heading--stacked">
-      <!-- <p class="gm-eyebrow">Как попасть за стол</p> -->
       <h2>Четыре шага до игры</h2>
     </div>
 
@@ -186,30 +172,10 @@ description: "Онлайн-игры по настольным ролевым с�
   </div>
 </section>
 
-<section class="gm-section gm-section--dark" id="included">
-  <div class="gm-container">
-    <div class="gm-section__heading">
-      <div>
-        <!-- <p class="gm-eyebrow">Что входит в игру</p> -->
-        <h2>Что потребуется для игры</h2>
-      </div>
-      <p>Этот блок — не про «премиальность», а про конкретику: за что именно платит игрок и что уже подготовлено к сессии.</p>
-    </div>
-
-    <div class="gm-feature-grid">
-      <article><strong>Foundry VTT</strong><span>Подготовленные сцены, карты и игровые материалы.</span></article>
-      <article><strong>Голосовая связь</strong><span>Discord или другой согласованный канал.</span></article>
-      <article><strong>Подготовка к игре</strong><span>Черновой слот под персонажей, памятки и короткий ввод перед сессией.</span></article>
-      <article><strong>Сопровождение</strong><span>Черновой слот под правила переноса, отмены и связь между играми.</span></article>
-    </div>
-  </div>
-</section>
-
 <section class="gm-section gm-section--faq" id="faq">
   <div class="gm-container gm-faq-layout">
     <div>
-      <!-- <p class="gm-eyebrow">FAQ</p> -->
-      <h2>Частые Вопросы</h2>
+      <h2>Частые вопросы</h2>
     </div>
 
     <div class="gm-faq-list">
@@ -233,4 +199,20 @@ description: "Онлайн-игры по настольным ролевым с�
   </div>
 </section>
 
+<section class="gm-contact" id="contact">
+  <div
+    class="gm-contact__media"
+    role="img"
+    aria-label="Игровая компания за общим столом"
+    style="background-image: url('{{ '/assets/images/gm/common/final-cta.png' | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  ></div>
+  <div class="gm-contact__shade"></div>
 
+  <div class="gm-container gm-contact__content">
+    <h2>Напишите мне — подберём игру и формат.</h2>
+    <div class="gm-actions">
+      <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <span class="gm-contact__note">Форма записи и политика оплаты будут подключены отдельным этапом.</span>
+    </div>
+  </div>
+</section>
