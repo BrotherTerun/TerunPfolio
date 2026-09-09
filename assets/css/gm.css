@@ -1,23 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
-
 :root {
-  --gm-bg: #0b1024;
-  --gm-bg-soft: #111933;
-  --gm-surface: #151d38;
-  --gm-paper: #eee7db;
-  --gm-paper-2: #e1d7c6;
+  /* =========================================================
+     GM DESIGN TOKENS
+     Быстрая настройка раздела /gm/ начинается отсюда.
+
+     Типографика:
+     - семейства шрифтов: --gm-font-display / --gm-font-body
+     - все основные кегли: блок --gm-font-size-*
+     - мобильные кегли: --gm-font-size-mobile-*
+
+     Цвета и материалы:
+     - тёмная оболочка: --gm-bg / --gm-bg-soft / --gm-surface
+     - архивная бумага: --gm-paper / --gm-paper-2
+     - чернила: --gm-ink / --gm-ink-soft / --gm-teal / --gm-teal-soft
+     - системные акценты: --gm-gold / --gm-burgundy / --gm-sepia
+     ========================================================= */
+
+  /* Palette */
+  --gm-bg: #091226;
+  --gm-bg-soft: #101a34;
+  --gm-surface: #151f3c;
+  --gm-paper: #eadfca;
+  --gm-paper-2: #dfd0b3;
+  --gm-paper-card: #f3eadb;
   --gm-text: #f5f0e8;
-  --gm-ink: #181616;
   --gm-muted: #b8b4ad;
+  --gm-ink: #102d35;
+  --gm-ink-soft: #4d615f;
+  --gm-teal: #287b75;
+  --gm-teal-soft: #70ad8f;
   --gm-gold: #d4aa52;
   --gm-gold-soft: #8b6d35;
   --gm-burgundy: #4a2028;
+  --gm-sepia: #704820;
   --gm-border: rgba(212, 170, 82, .42);
+  --gm-paper-border: rgba(16, 45, 53, .2);
+
+  /* Layout */
   --gm-max: 1180px;
   --gm-radius: 18px;
   --gm-shadow: 0 28px 70px rgba(0, 0, 0, .28);
+  --gm-paper-shadow: 0 20px 50px rgba(68, 48, 25, .13);
+
+  /* Font families */
   --gm-font-display: "Cormorant Garamond", Georgia, serif;
   --gm-font-body: "Manrope", Arial, sans-serif;
+
+  /* Font sizes */
+  --gm-font-size-base: 16px;
+  --gm-font-size-h1: clamp(3.4rem, 7vw, 7.1rem);
+  --gm-font-size-h2: clamp(2.6rem, 5vw, 4.9rem);
+  --gm-font-size-h3: clamp(1.55rem, 2.5vw, 2.25rem);
+  --gm-font-size-h3-compact: 1.75rem;
+  --gm-font-size-feature-title: 1.8rem;
+  --gm-font-size-process-title: 1.7rem;
+  --gm-font-size-review: 1.55rem;
+  --gm-font-size-faq: 1.5rem;
+  --gm-font-size-lead: clamp(1.05rem, 1.7vw, 1.32rem);
+  --gm-font-size-about-lead: 1.16rem;
+  --gm-font-size-brand: 1.45rem;
+  --gm-font-size-brand-mark: 1.35rem;
+  --gm-font-size-nav: .88rem;
+  --gm-font-size-button: .82rem;
+  --gm-font-size-button-small: .74rem;
+  --gm-font-size-body-sm: .9rem;
+  --gm-font-size-body-card: .92rem;
+  --gm-font-size-meta: .8rem;
+  --gm-font-size-label: .74rem;
+  --gm-font-size-label-xs: .66rem;
+
+  /* Mobile font sizes */
+  --gm-font-size-mobile-h1: clamp(3rem, 15vw, 4.7rem);
+  --gm-font-size-mobile-h2: clamp(2.4rem, 12vw, 3.6rem);
+  --gm-font-size-mobile-brand: 1.2rem;
+  --gm-font-size-mobile-faq: 1.3rem;
+  --gm-font-size-mobile-button: .64rem;
+
+  /* Type rhythm */
+  --gm-line-height-body: 1.65;
+  --gm-line-height-heading: 1.02;
+  --gm-line-height-quote: 1.22;
+  --gm-letter-label: .19em;
+  --gm-letter-ui: .08em;
 }
 
 html {
@@ -31,8 +94,8 @@ body.gm-page {
   background: var(--gm-bg);
   color: var(--gm-text);
   font-family: var(--gm-font-body);
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--gm-font-size-base);
+  line-height: var(--gm-line-height-body);
 }
 
 .gm-page * {
@@ -54,25 +117,25 @@ body.gm-page {
 .gm-page h2,
 .gm-page h3 {
   font-family: var(--gm-font-display);
-  line-height: 1.02;
+  line-height: var(--gm-line-height-heading);
   letter-spacing: -.025em;
 }
 
 .gm-page h1 {
   max-width: 940px;
   margin-bottom: 24px;
-  font-size: clamp(3.4rem, 7vw, 7.1rem);
+  font-size: var(--gm-font-size-h1);
   font-weight: 600;
 }
 
 .gm-page h2 {
   margin-bottom: 18px;
-  font-size: clamp(2.6rem, 5vw, 4.9rem);
+  font-size: var(--gm-font-size-h2);
   font-weight: 600;
 }
 
 .gm-page h3 {
-  font-size: clamp(1.55rem, 2.5vw, 2.25rem);
+  font-size: var(--gm-font-size-h3);
   font-weight: 600;
 }
 
@@ -102,13 +165,17 @@ body.gm-page {
   transform: translateY(0);
 }
 
-/* Header */
+/* =========================================================
+   HEADER
+   ========================================================= */
 .gm-header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, .08);
-  background: rgba(8, 12, 28, .78);
+  border-bottom: 1px solid rgba(212, 170, 82, .19);
+  background:
+    linear-gradient(90deg, rgba(40,123,117,.08), transparent 34%),
+    rgba(7, 12, 28, .82);
   backdrop-filter: blur(18px);
 }
 
@@ -134,13 +201,10 @@ body.gm-page {
   place-items: center;
   border: 1px solid var(--gm-gold);
   transform: rotate(45deg);
+  background: rgba(40, 123, 117, .08);
   color: var(--gm-gold);
   font-family: var(--gm-font-display);
-  font-size: 1.35rem;
-}
-
-.gm-brand__mark::first-letter {
-  transform: rotate(-45deg);
+  font-size: var(--gm-font-size-brand-mark);
 }
 
 .gm-brand__text {
@@ -150,13 +214,13 @@ body.gm-page {
 
 .gm-brand__text strong {
   font-family: var(--gm-font-display);
-  font-size: 1.45rem;
+  font-size: var(--gm-font-size-brand);
   font-weight: 600;
 }
 
 .gm-brand__text small {
   color: var(--gm-muted);
-  font-size: .67rem;
+  font-size: var(--gm-font-size-label-xs);
   letter-spacing: .14em;
   text-transform: uppercase;
 }
@@ -169,7 +233,7 @@ body.gm-page {
 
 .gm-nav a {
   color: #e8e3db;
-  font-size: .88rem;
+  font-size: var(--gm-font-size-nav);
   text-decoration: none;
   transition: color .2s ease;
 }
@@ -179,7 +243,9 @@ body.gm-page {
   color: var(--gm-gold);
 }
 
-/* Buttons */
+/* =========================================================
+   BUTTONS / LINKS
+   ========================================================= */
 .gm-button {
   min-height: 52px;
   display: inline-flex;
@@ -190,12 +256,14 @@ body.gm-page {
   border-radius: 2px;
   background: var(--gm-gold);
   color: #15130f !important;
-  font-size: .82rem;
+  font-size: var(--gm-font-size-button);
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: var(--gm-letter-ui);
   text-decoration: none;
   text-transform: uppercase;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.28),
+    0 8px 28px rgba(0,0,0,.12);
   transition: transform .18s ease, background-color .18s ease, color .18s ease;
 }
 
@@ -218,7 +286,7 @@ body.gm-page {
 .gm-button--small {
   min-height: 40px;
   padding-inline: 18px;
-  font-size: .74rem;
+  font-size: var(--gm-font-size-button-small);
 }
 
 .gm-actions {
@@ -229,19 +297,40 @@ body.gm-page {
 
 .gm-text-link {
   display: inline-flex;
-  color: var(--gm-gold) !important;
+  color: var(--gm-teal) !important;
   font-weight: 700;
   text-decoration: none;
 }
 
-/* Shared */
+.gm-section--dark .gm-text-link,
+.gm-section--reviews .gm-text-link,
+.gm-section--faq .gm-text-link {
+  color: var(--gm-gold) !important;
+}
+
+/* =========================================================
+   SHARED / ARCHIVE MOTIF
+   ========================================================= */
 .gm-eyebrow {
   margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--gm-gold);
-  font-size: .74rem;
+  font-size: var(--gm-font-size-label);
   font-weight: 700;
-  letter-spacing: .19em;
+  letter-spacing: var(--gm-letter-label);
   text-transform: uppercase;
+}
+
+.gm-eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  transform: rotate(45deg);
+  border: 1px solid currentColor;
+  background: transparent;
 }
 
 .gm-section {
@@ -257,6 +346,10 @@ body.gm-page {
   align-items: end;
 }
 
+.gm-section__heading > div {
+  position: relative;
+}
+
 .gm-section__heading > p:last-child {
   max-width: 560px;
   margin-bottom: 10px;
@@ -268,12 +361,53 @@ body.gm-page {
   display: block;
 }
 
+/* Paper texture: deliberately subtle. Media illustrations can later sit above it. */
+.gm-section--paper,
+.gm-section--about,
+.gm-section--process {
+  isolation: isolate;
+}
+
+.gm-section--paper::before,
+.gm-section--about::before,
+.gm-section--process::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  opacity: .5;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(40,123,117,.11), transparent 22%),
+    radial-gradient(circle at 83% 76%, rgba(112,72,32,.08), transparent 25%),
+    radial-gradient(circle at 18px 15px, rgba(38,44,38,.06) 0 1px, transparent 1.35px),
+    radial-gradient(circle at 7px 11px, rgba(112,72,32,.05) 0 1px, transparent 1.25px);
+  background-size: auto, auto, 29px 31px, 41px 37px;
+  mix-blend-mode: multiply;
+}
+
+.gm-section--paper .gm-eyebrow,
+.gm-section--about .gm-eyebrow,
+.gm-section--process .gm-eyebrow {
+  color: var(--gm-teal);
+}
+
+.gm-section--paper h2,
+.gm-section--about h2,
+.gm-section--process h2,
+.gm-section--paper h3,
+.gm-section--about h3,
+.gm-section--process h3 {
+  color: var(--gm-ink);
+}
+
 .gm-media-placeholder {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 25% 25%, rgba(212, 170, 82, .18), transparent 34%),
-    linear-gradient(135deg, #1b2547, #0b1024 62%, #311b26);
+    radial-gradient(circle at 26% 28%, rgba(40,123,117,.26), transparent 31%),
+    radial-gradient(circle at 72% 66%, rgba(212,170,82,.13), transparent 29%),
+    linear-gradient(135deg, #1b2547, #091226 60%, #311b26);
 }
 
 .gm-media-placeholder::before,
@@ -286,9 +420,10 @@ body.gm-page {
 
 .gm-media-placeholder::before {
   background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size: 42px 42px;
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+    radial-gradient(circle at 33% 42%, rgba(112,173,143,.12), transparent 18%);
+  background-size: 42px 42px, 42px 42px, auto;
 }
 
 .gm-media-placeholder::after {
@@ -305,13 +440,15 @@ body.gm-page {
   border: 1px solid rgba(212, 170, 82, .44);
   background: rgba(8, 12, 28, .68);
   color: rgba(245, 240, 232, .8);
-  font-size: .66rem;
+  font-size: var(--gm-font-size-label-xs);
   font-weight: 700;
   letter-spacing: .14em;
   white-space: nowrap;
 }
 
-/* Hero */
+/* =========================================================
+   HERO
+   ========================================================= */
 .gm-hero {
   position: relative;
   min-height: 94svh;
@@ -329,8 +466,9 @@ body.gm-page {
 .gm-hero__shade {
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(5, 8, 18, .26) 0%, rgba(5, 8, 18, .44) 40%, rgba(5, 8, 18, .92) 100%),
-    linear-gradient(90deg, rgba(5, 8, 18, .76), transparent 68%);
+    linear-gradient(180deg, rgba(5,8,18,.22) 0%, rgba(5,8,18,.42) 40%, rgba(5,8,18,.94) 100%),
+    linear-gradient(90deg, rgba(5,8,18,.79), transparent 68%),
+    radial-gradient(circle at 72% 34%, rgba(40,123,117,.12), transparent 26%);
 }
 
 .gm-hero__content {
@@ -339,11 +477,20 @@ body.gm-page {
   padding: 170px 0 92px;
 }
 
+.gm-hero__content::after {
+  content: "";
+  width: min(420px, 46vw);
+  height: 1px;
+  display: block;
+  margin-top: 46px;
+  background: linear-gradient(90deg, var(--gm-gold), rgba(212,170,82,0));
+}
+
 .gm-hero__lead {
   max-width: 720px;
   margin-bottom: 34px;
   color: #dfdbd3;
-  font-size: clamp(1.05rem, 1.7vw, 1.32rem);
+  font-size: var(--gm-font-size-lead);
 }
 
 .gm-hero__facts {
@@ -352,19 +499,21 @@ body.gm-page {
   flex-wrap: wrap;
   gap: 10px 28px;
   color: var(--gm-muted);
-  font-size: .8rem;
+  font-size: var(--gm-font-size-meta);
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: var(--gm-letter-ui);
 }
 
 .gm-hero__facts span + span::before {
   content: "◆";
   margin-right: 28px;
-  color: var(--gm-gold-soft);
+  color: var(--gm-teal-soft);
   font-size: .55rem;
 }
 
-/* Games */
+/* =========================================================
+   GAMES / PAPER DOSSIERS
+   ========================================================= */
 .gm-section--paper {
   background: var(--gm-paper);
   color: var(--gm-ink);
@@ -376,12 +525,40 @@ body.gm-page {
 }
 
 .gm-game-card {
+  position: relative;
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(320px, 1.08fr) minmax(0, 1fr);
-  border: 1px solid rgba(53, 43, 28, .18);
-  background: #f5efe5;
-  box-shadow: 0 20px 50px rgba(58, 42, 24, .12);
+  border: 1px solid var(--gm-paper-border);
+  border-top: 3px solid var(--gm-teal);
+  background: var(--gm-paper-card);
+  box-shadow: var(--gm-paper-shadow);
+}
+
+.gm-game-card::before,
+.gm-game-card::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.gm-game-card::before {
+  top: 15px;
+  right: 15px;
+  width: 22px;
+  height: 22px;
+  border-top: 1px solid rgba(16,45,53,.34);
+  border-right: 1px solid rgba(16,45,53,.34);
+}
+
+.gm-game-card::after {
+  right: 15px;
+  bottom: 15px;
+  width: 22px;
+  height: 22px;
+  border-right: 1px solid rgba(16,45,53,.22);
+  border-bottom: 1px solid rgba(16,45,53,.22);
 }
 
 .gm-game-card__media {
@@ -389,7 +566,18 @@ body.gm-page {
 }
 
 .gm-game-card__body {
+  position: relative;
   padding: 44px;
+}
+
+.gm-game-card__body::before {
+  content: "ARCHIVE / AVAILABLE ADVENTURE";
+  display: block;
+  margin-bottom: 24px;
+  color: rgba(16,45,53,.52);
+  font-size: var(--gm-font-size-label-xs);
+  font-weight: 700;
+  letter-spacing: .13em;
 }
 
 .gm-game-card__heading {
@@ -412,33 +600,33 @@ body.gm-page {
   padding: 7px 9px;
   border: 1px solid rgba(74, 32, 40, .3);
   color: var(--gm-burgundy);
-  font-size: .67rem;
+  font-size: var(--gm-font-size-label-xs);
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: var(--gm-letter-ui);
   text-transform: uppercase;
 }
 
 .gm-game-card__pitch {
   margin-bottom: 28px;
-  color: #4f4840;
+  color: #4f5854;
 }
 
 .gm-game-card__facts {
   margin: 0 0 28px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid rgba(31, 25, 19, .12);
+  border-top: 1px solid rgba(16,45,53,.15);
 }
 
 .gm-game-card__facts > div {
   padding: 14px 12px 14px 0;
-  border-bottom: 1px solid rgba(31, 25, 19, .12);
+  border-bottom: 1px solid rgba(16,45,53,.15);
 }
 
 .gm-game-card__facts dt {
   margin-bottom: 4px;
-  color: #81776a;
-  font-size: .66rem;
+  color: #6a7771;
+  font-size: var(--gm-font-size-label-xs);
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -446,17 +634,21 @@ body.gm-page {
 
 .gm-game-card__facts dd {
   margin: 0;
-  font-size: .92rem;
+  font-size: var(--gm-font-size-body-card);
   font-weight: 600;
 }
 
-/* Split block */
+/* =========================================================
+   SPLIT / TABLE PRINCIPLES
+   ========================================================= */
 .gm-section--split {
   padding: 0;
   min-height: 720px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: var(--gm-bg-soft);
+  background:
+    radial-gradient(circle at 80% 22%, rgba(40,123,117,.09), transparent 25%),
+    var(--gm-bg-soft);
 }
 
 .gm-split__media {
@@ -490,14 +682,14 @@ body.gm-page {
   position: absolute;
   top: 29px;
   left: 0;
-  color: var(--gm-gold);
-  font-size: .72rem;
+  color: var(--gm-teal-soft);
+  font-size: var(--gm-font-size-label);
   font-weight: 700;
 }
 
 .gm-principles h3 {
   margin-bottom: 9px;
-  font-size: 1.75rem;
+  font-size: var(--gm-font-size-h3-compact);
 }
 
 .gm-principles p {
@@ -505,9 +697,13 @@ body.gm-page {
   color: var(--gm-muted);
 }
 
-/* Features */
+/* =========================================================
+   INCLUDED / FEATURE GRID
+   ========================================================= */
 .gm-section--dark {
-  background: #090e20;
+  background:
+    linear-gradient(135deg, rgba(40,123,117,.055), transparent 35%),
+    #080f22;
 }
 
 .gm-feature-grid {
@@ -526,23 +722,33 @@ body.gm-page {
   gap: 10px;
   border-right: 1px solid var(--gm-border);
   border-bottom: 1px solid var(--gm-border);
-  background: linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,.035));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.012), rgba(40,123,117,.07));
+}
+
+.gm-feature-grid article::before {
+  content: "◆";
+  margin-bottom: auto;
+  color: var(--gm-teal-soft);
+  font-size: var(--gm-font-size-label);
 }
 
 .gm-feature-grid strong {
   font-family: var(--gm-font-display);
-  font-size: 1.8rem;
+  font-size: var(--gm-font-size-feature-title);
   font-weight: 600;
 }
 
 .gm-feature-grid span {
   color: var(--gm-muted);
-  font-size: .9rem;
+  font-size: var(--gm-font-size-body-sm);
 }
 
-/* About */
+/* =========================================================
+   ABOUT / PAPER PORTRAIT
+   ========================================================= */
 .gm-section--about {
-  background: #f0e9de;
+  background: #e8ddc9;
   color: var(--gm-ink);
 }
 
@@ -556,6 +762,7 @@ body.gm-page {
 .gm-about__portrait {
   aspect-ratio: 3 / 4;
   min-height: 520px;
+  border: 1px solid rgba(16,45,53,.18);
   box-shadow: var(--gm-shadow);
 }
 
@@ -564,12 +771,12 @@ body.gm-page {
 }
 
 .gm-about__lead {
-  color: #3d3732;
-  font-size: 1.16rem;
+  color: #314b4d;
+  font-size: var(--gm-font-size-about-lead);
 }
 
 .gm-about__content > p:not(.gm-eyebrow):not(.gm-about__lead) {
-  color: #665e56;
+  color: #5d6661;
 }
 
 .gm-tag-list {
@@ -581,16 +788,22 @@ body.gm-page {
 
 .gm-tag-list span {
   padding: 8px 11px;
-  border: 1px solid rgba(24,22,22,.22);
-  font-size: .72rem;
+  border: 1px solid rgba(40,123,117,.35);
+  background: rgba(40,123,117,.055);
+  color: var(--gm-ink);
+  font-size: var(--gm-font-size-label);
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
 }
 
-/* Reviews */
+/* =========================================================
+   REVIEWS
+   ========================================================= */
 .gm-section--reviews {
-  background: var(--gm-burgundy);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(212,170,82,.08), transparent 22%),
+    linear-gradient(145deg, #4b2028, #361820);
 }
 
 .gm-review-grid {
@@ -600,6 +813,7 @@ body.gm-page {
 }
 
 .gm-review {
+  position: relative;
   margin: 0;
   min-height: 310px;
   padding: 30px;
@@ -610,10 +824,23 @@ body.gm-page {
   background: rgba(25, 10, 14, .2);
 }
 
-.gm-review > p {
+.gm-review::before {
+  content: "“";
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  color: rgba(212,170,82,.22);
   font-family: var(--gm-font-display);
-  font-size: 1.55rem;
-  line-height: 1.22;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.gm-review > p {
+  position: relative;
+  z-index: 1;
+  font-family: var(--gm-font-display);
+  font-size: var(--gm-font-size-review);
+  line-height: var(--gm-line-height-quote);
 }
 
 .gm-review footer {
@@ -623,10 +850,12 @@ body.gm-page {
 
 .gm-review footer span {
   color: #d9c8c9;
-  font-size: .78rem;
+  font-size: var(--gm-font-size-meta);
 }
 
-/* Process */
+/* =========================================================
+   PROCESS / ARCHIVE STRIP
+   ========================================================= */
 .gm-section--process {
   background: var(--gm-paper-2);
   color: var(--gm-ink);
@@ -638,14 +867,14 @@ body.gm-page {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   list-style: none;
-  border-top: 1px solid rgba(24,22,22,.22);
+  border-top: 2px solid rgba(40,123,117,.48);
 }
 
 .gm-process li {
   position: relative;
   min-height: 235px;
   padding: 28px 26px 24px 0;
-  border-right: 1px solid rgba(24,22,22,.16);
+  border-right: 1px solid rgba(16,45,53,.16);
 }
 
 .gm-process li + li {
@@ -655,26 +884,31 @@ body.gm-page {
 .gm-process span {
   display: block;
   margin-bottom: 50px;
-  color: var(--gm-burgundy);
-  font-size: .72rem;
+  color: var(--gm-teal);
+  font-size: var(--gm-font-size-label);
   font-weight: 700;
 }
 
 .gm-process strong {
   display: block;
   margin-bottom: 9px;
+  color: var(--gm-ink);
   font-family: var(--gm-font-display);
-  font-size: 1.7rem;
+  font-size: var(--gm-font-size-process-title);
 }
 
 .gm-process p {
-  color: #665f56;
-  font-size: .9rem;
+  color: #58645f;
+  font-size: var(--gm-font-size-body-sm);
 }
 
-/* FAQ */
+/* =========================================================
+   FAQ
+   ========================================================= */
 .gm-section--faq {
-  background: #0d132a;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(40,123,117,.08), transparent 26%),
+    #0c142c;
 }
 
 .gm-faq-layout {
@@ -695,7 +929,7 @@ body.gm-page {
   padding: 25px 0;
   cursor: pointer;
   font-family: var(--gm-font-display);
-  font-size: 1.5rem;
+  font-size: var(--gm-font-size-faq);
   list-style: none;
 }
 
@@ -719,7 +953,9 @@ body.gm-page {
   color: var(--gm-muted);
 }
 
-/* Final CTA */
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
 .gm-contact {
   position: relative;
   min-height: 560px;
@@ -736,7 +972,9 @@ body.gm-page {
 
 .gm-contact__shade {
   z-index: 1;
-  background: linear-gradient(90deg, rgba(7,10,22,.93), rgba(7,10,22,.57) 60%, rgba(7,10,22,.82));
+  background:
+    linear-gradient(90deg, rgba(7,10,22,.94), rgba(7,10,22,.58) 60%, rgba(7,10,22,.84)),
+    radial-gradient(circle at 72% 50%, rgba(40,123,117,.12), transparent 25%);
 }
 
 .gm-contact__content {
@@ -753,13 +991,17 @@ body.gm-page {
   max-width: 430px;
   align-self: center;
   color: var(--gm-muted);
-  font-size: .8rem;
+  font-size: var(--gm-font-size-meta);
 }
 
-/* Footer */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 .gm-footer {
   border-top: 1px solid rgba(255,255,255,.08);
-  background: #070b18;
+  background:
+    linear-gradient(90deg, rgba(40,123,117,.05), transparent 30%),
+    #070b18;
   color: var(--gm-muted);
 }
 
