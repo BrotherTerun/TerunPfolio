@@ -60,11 +60,15 @@
   padding: 28px;
   border: 1px solid var(--gm-paper-border);
   border-top: 3px solid var(--gm-teal);
-  background-color: var(--gm-paper-card);
-  background-image: var(--gm-paper-texture);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(40,123,117,.08), transparent 26%),
+    linear-gradient(rgba(243,234,219,.74), rgba(243,234,219,.74)),
+    var(--gm-paper-texture),
+    var(--gm-paper-card);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto, auto, cover, auto;
   background-position: center;
+  background-blend-mode: normal, normal, multiply, normal;
   box-shadow: var(--gm-paper-shadow);
 }
 
