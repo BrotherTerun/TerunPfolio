@@ -36,11 +36,12 @@
   --gm-paper-border: rgba(16, 45, 53, .2);
 
   /* Paper material
-     Текстура используется без затемняющих blend-режимов.
-     cover + no-repeat намеренно убирают видимые швы тайлинга. */
+     Затемнение возвращено через opacity + multiply.
+     cover + no-repeat сохраняют фактуру без видимых швов тайлинга. */
   --gm-paper-texture: url("../images/gm/common/paper-texture.png");
   --gm-paper-texture-size: cover;
   --gm-paper-texture-position: center center;
+  --gm-paper-texture-opacity: .32;
 
   /* Layout */
   --gm-max: 1180px;
@@ -370,9 +371,8 @@ body.gm-page {
 
 /* =========================================================
    PAPER MATERIAL
-   Реальный растр используется напрямую — без multiply, tint и затемнения.
-   cover + no-repeat убирают шов: изображение масштабируется под секцию,
-   а не повторяется плиткой.
+   Реальный растр снова слегка затемняется через opacity + multiply.
+   cover + no-repeat сохраняют отсутствие видимых швов.
    ========================================================= */
 .gm-section--paper,
 .gm-section--about,
@@ -388,10 +388,25 @@ body.gm-page {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  opacity: var(--gm-paper-texture-opacity);
   background-image: var(--gm-paper-texture);
   background-repeat: no-repeat;
   background-size: var(--gm-paper-texture-size);
   background-position: var(--gm-paper-texture-position);
+  mix-blend-mode: multiply;
+}
+
+.gm-section--paper::after,
+.gm-section--about::after,
+.gm-section--process::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(40, 123, 117, .09), transparent 25%),
+    radial-gradient(circle at 84% 74%, rgba(112, 72, 32, .07), transparent 28%);
 }
 
 .gm-section--paper > .gm-container,
@@ -546,11 +561,14 @@ body.gm-page {
   grid-template-columns: minmax(320px, 1.08fr) minmax(0, 1fr);
   border: 1px solid var(--gm-paper-border);
   border-top: 3px solid var(--gm-teal);
-  background-color: var(--gm-paper-card);
-  background-image: var(--gm-paper-texture);
+  background:
+    linear-gradient(rgba(243,234,219,.76), rgba(243,234,219,.76)),
+    var(--gm-paper-texture),
+    var(--gm-paper-card);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto, cover, auto;
   background-position: center;
+  background-blend-mode: normal, multiply, normal;
   box-shadow: var(--gm-paper-shadow);
 }
 
