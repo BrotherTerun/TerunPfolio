@@ -1,0 +1,29 @@
+{% assign game = include.game %}
+<article class="gm-game-card">
+  <a class="gm-game-card__media gm-media-placeholder" href="{{ game.url | relative_url }}" aria-label="Открыть страницу игры {{ game.title }}">
+    <span>{{ game.media_label }}</span>
+  </a>
+
+  <div class="gm-game-card__body">
+    <div class="gm-game-card__heading">
+      <div>
+        <p class="gm-eyebrow">{{ game.eyebrow }}</p>
+        <h3><a href="{{ game.url | relative_url }}">{{ game.title }}</a></h3>
+      </div>
+      <span class="gm-status">{{ game.status }}</span>
+    </div>
+
+    <p class="gm-game-card__pitch">{{ game.pitch }}</p>
+
+    <dl class="gm-game-card__facts">
+      <div><dt>Система</dt><dd>{{ game.system }}</dd></div>
+      <div><dt>Формат</dt><dd>{{ game.format }}</dd></div>
+      <div><dt>Площадка</dt><dd>{{ game.platform }}</dd></div>
+      <div><dt>Игроки</dt><dd>{{ game.players }}</dd></div>
+      <div><dt>Время</dt><dd>{{ game.duration }}</dd></div>
+      <div><dt>Стоимость</dt><dd>{{ game.price }}</dd></div>
+    </dl>
+
+    <a class="gm-text-link" href="{{ game.url | relative_url }}">Подробнее об игре →</a>
+  </div>
+</article>
