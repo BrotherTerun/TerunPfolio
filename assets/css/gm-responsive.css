@@ -1,3 +1,9 @@
+/*
+  Responsive geometry lives here.
+  Font values are NOT hardcoded here: mobile kegs are taken from :root in gm.css
+  (--gm-font-size-mobile-*), so typography can be tuned from one place.
+*/
+
 @media (max-width: 980px) {
   .gm-header__inner {
     grid-template-columns: auto auto;
@@ -69,7 +75,7 @@
   }
 
   .gm-brand__text strong {
-    font-size: 1.2rem;
+    font-size: var(--gm-font-size-mobile-brand);
   }
 
   .gm-brand__text small {
@@ -79,15 +85,15 @@
   .gm-header .gm-button {
     min-height: 36px;
     padding-inline: 13px;
-    font-size: .64rem;
+    font-size: var(--gm-font-size-mobile-button);
   }
 
   .gm-page h1 {
-    font-size: clamp(3rem, 15vw, 4.7rem);
+    font-size: var(--gm-font-size-mobile-h1);
   }
 
   .gm-page h2 {
-    font-size: clamp(2.4rem, 12vw, 3.6rem);
+    font-size: var(--gm-font-size-mobile-h2);
   }
 
   .gm-hero {
@@ -96,6 +102,11 @@
 
   .gm-hero__content {
     padding: 132px 0 58px;
+  }
+
+  .gm-hero__content::after {
+    width: 72vw;
+    margin-top: 34px;
   }
 
   .gm-hero__facts {
@@ -125,6 +136,10 @@
 
   .gm-game-card__body {
     padding: 28px 22px;
+  }
+
+  .gm-game-card__body::before {
+    margin-bottom: 18px;
   }
 
   .gm-game-card__heading {
@@ -174,7 +189,7 @@
     min-height: auto;
     padding: 24px 0;
     border-right: 0;
-    border-bottom: 1px solid rgba(24,22,22,.16);
+    border-bottom: 1px solid rgba(16,45,53,.16);
   }
 
   .gm-process span {
@@ -182,7 +197,7 @@
   }
 
   .gm-faq-list summary {
-    font-size: 1.3rem;
+    font-size: var(--gm-font-size-mobile-faq);
   }
 
   .gm-contact {
