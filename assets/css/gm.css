@@ -10,7 +10,7 @@
 
      Цвета и материалы:
      - тёмная оболочка: --gm-bg / --gm-bg-soft / --gm-surface
-     - архивная бумага: --gm-paper / --gm-paper-2
+     - архивная бумага: --gm-paper / --gm-paper-2 / --gm-paper-texture
      - чернила: --gm-ink / --gm-ink-soft / --gm-teal / --gm-teal-soft
      - системные акценты: --gm-gold / --gm-burgundy / --gm-sepia
      ========================================================= */
@@ -34,6 +34,13 @@
   --gm-sepia: #704820;
   --gm-border: rgba(212, 170, 82, .42);
   --gm-paper-border: rgba(16, 45, 53, .2);
+
+  /* Paper material
+     Текстура используется без затемняющих blend-режимов.
+     cover + no-repeat намеренно убирают видимые швы тайлинга. */
+  --gm-paper-texture: url("../images/gm/common/paper-texture.png");
+  --gm-paper-texture-size: cover;
+  --gm-paper-texture-position: center center;
 
   /* Layout */
   --gm-max: 1180px;
@@ -361,7 +368,12 @@ body.gm-page {
   display: block;
 }
 
-/* Paper texture: deliberately subtle. Media illustrations can later sit above it. */
+/* =========================================================
+   PAPER MATERIAL
+   Реальный растр используется напрямую — без multiply, tint и затемнения.
+   cover + no-repeat убирают шов: изображение масштабируется под секцию,
+   а не повторяется плиткой.
+   ========================================================= */
 .gm-section--paper,
 .gm-section--about,
 .gm-section--process {
@@ -373,17 +385,20 @@ body.gm-page {
 .gm-section--process::before {
   content: "";
   position: absolute;
-  z-index: -1;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
-  opacity: .5;
-  background-image:
-    radial-gradient(circle at 12% 18%, rgba(40,123,117,.11), transparent 22%),
-    radial-gradient(circle at 83% 76%, rgba(112,72,32,.08), transparent 25%),
-    radial-gradient(circle at 18px 15px, rgba(38,44,38,.06) 0 1px, transparent 1.35px),
-    radial-gradient(circle at 7px 11px, rgba(112,72,32,.05) 0 1px, transparent 1.25px);
-  background-size: auto, auto, 29px 31px, 41px 37px;
-  mix-blend-mode: multiply;
+  background-image: var(--gm-paper-texture);
+  background-repeat: no-repeat;
+  background-size: var(--gm-paper-texture-size);
+  background-position: var(--gm-paper-texture-position);
+}
+
+.gm-section--paper > .gm-container,
+.gm-section--about > .gm-container,
+.gm-section--process > .gm-container {
+  position: relative;
+  z-index: 1;
 }
 
 .gm-section--paper .gm-eyebrow,
@@ -531,7 +546,11 @@ body.gm-page {
   grid-template-columns: minmax(320px, 1.08fr) minmax(0, 1fr);
   border: 1px solid var(--gm-paper-border);
   border-top: 3px solid var(--gm-teal);
-  background: var(--gm-paper-card);
+  background-color: var(--gm-paper-card);
+  background-image: var(--gm-paper-texture);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   box-shadow: var(--gm-paper-shadow);
 }
 
