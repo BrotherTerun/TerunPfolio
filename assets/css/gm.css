@@ -663,7 +663,7 @@ body.gm-page {
 
 .gm-hero-profile {
   display: grid;
-  align-items: center;
+  align-items: center;  
 }
 
 .gm-hero-profile::after {
@@ -699,12 +699,6 @@ body.gm-page {
 
 .gm-hero-profile__systems {
   margin-top: 16px;
-}
-
-.gm-hero-profile__systems > p:first-child {
-  margin-bottom: 10px;
-  color: var(--gm-muted);
-  font-size: var(--gm-font-size-meta);
 }
 
 .gm-tag-list--hero {
