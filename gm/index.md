@@ -8,7 +8,6 @@ description: "Онлайн-игры по настольным ролевым с�
   <div
     class="gm-hero__media"
     aria-hidden="true"
-    style="background-image: url('{{ '/assets/images/gm/common/hero_key_art.png' | relative_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
   ></div>
 
   <div class="gm-hero__shade"></div>
