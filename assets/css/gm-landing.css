@@ -2,11 +2,13 @@
   --gm-landing-petrol-deep: #05262d;
   --gm-landing-petrol: #073740;
   --gm-landing-petrol-soft: #0b4a52;
+  --gm-landing-petrol-soft-a5: rgba(11, 74, 82, .5);
   --gm-landing-panel: rgba(4, 25, 30, .78);
   --gm-landing-panel-strong: rgba(4, 22, 27, .91);
   --gm-landing-review-card: rgba(7, 27, 31, .94);
   --gm-landing-review-side: rgba(7, 27, 31, .86);
   --gm-landing-paper-shadow: rgba(62, 41, 21, .2);
+  --gm-landing-teal: rgba(53, 182, 159, .9);
   --gm-landing-teal-glow: rgba(53, 182, 159, .18);
   --gm-landing-teal-glow-strong: rgba(53, 182, 159, .28);
   --gm-landing-night-a72: rgba(3, 18, 22, .72);
@@ -479,7 +481,7 @@ body.gm-page {
   padding: clamp(15px, 1.8dvh, 20px) 20px;
   justify-content: center;
   border-color: var(--gm-gold-a19);
-  background: linear-gradient(90deg, var(--gm-teal-a08), var(--gm-white-a012));
+  background: linear-gradient(90deg, var(--gm-landing-petrol-soft-a5), var(--gm-landing-panel));
 }
 
 .gm-table__column--requirements .gm-feature-grid article::before {
