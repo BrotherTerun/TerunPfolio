@@ -59,6 +59,10 @@
       gap: 8px;
     }
 
+    .gm-header-games-label--compact {
+      display: none;
+    }
+
     .gm-social-link {
       position: relative;
       width: 34px;
@@ -200,6 +204,21 @@
         height: 16px;
       }
     }
+
+    @media (min-width: 320px) and (max-width: 680px) and (orientation: portrait) {
+      .gm-header-games-label--full {
+        display: none;
+      }
+
+      .gm-header-games-label--compact {
+        display: inline;
+      }
+
+      .gm-header .gm-button--small {
+        min-width: 0;
+        padding-inline: 12px;
+      }
+    }
   </style>
 
   <div class="gm-container gm-header__inner">
@@ -297,7 +316,10 @@
         {% endif %}
       </div>
 
-      <a class="gm-button gm-button--small" href="{{ '/gm/#games' | relative_url }}">Посмотреть игры</a>
+      <a class="gm-button gm-button--small" href="{{ '/gm/#games' | relative_url }}" aria-label="Игры">
+        <span class="gm-header-games-label--full">Посмотреть игры</span>
+        <span class="gm-header-games-label--compact">Игры</span>
+      </a>
     </div>
   </div>
 </header>
