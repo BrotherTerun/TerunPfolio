@@ -109,7 +109,7 @@
       if (screen.id === "faq") {
         content.style.gridTemplateColumns = "1fr";
         content.style.gridTemplateRows = "auto minmax(0, 1fr)";
-        content.style.gap = "clamp(28px, 4dvh, 44px)";
+        content.style.gap = "clamp(18px, 2.5dvh, 28px)";
 
         const heading = content.firstElementChild;
         const headingTitle = heading?.querySelector("h2");
@@ -128,7 +128,7 @@
         if (list) {
           list.style.width = "min(100%, 1080px)";
           list.style.justifySelf = "center";
-          list.style.alignSelf = "center";
+          list.style.alignSelf = "start";
 
           list.querySelectorAll("summary").forEach((summary) => {
             summary.style.fontSize = "clamp(1.35rem, 2.8dvh, 1.7rem)";
@@ -276,7 +276,6 @@
   window.addEventListener("orientationchange", scheduleFit, { passive: true });
   window.addEventListener("load", scheduleFit, { once: true });
 
-  /* FAQ changes its real content height after opening/closing. */
   document.addEventListener("toggle", (event) => {
     if (event.target instanceof HTMLDetailsElement) scheduleFit();
   }, true);
