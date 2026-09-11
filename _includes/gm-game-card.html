@@ -7,10 +7,8 @@
   <div class="gm-game-card__body">
     <div class="gm-game-card__heading">
       <div>
-        <!-- <p class="gm-eyebrow">{{ game.eyebrow }}</p> -->
         <h3><a href="{{ game.url | relative_url }}">{{ game.title }}</a></h3>
       </div>
-      <span class="gm-status">{{ game.status }}</span>
     </div>
 
     <p class="gm-game-card__pitch">{{ game.pitch }}</p>
@@ -24,6 +22,13 @@
       <div><dt>Стоимость</dt><dd>{{ game.price }}</dd></div>
     </dl>
 
-    <a class="gm-text-link" href="{{ game.url | relative_url }}">Подробнее об игре →</a>
+    <div class="gm-game-card__actions">
+      <a class="gm-text-link" href="{{ game.url | relative_url }}">Подробнее об игре →</a>
+      <a
+        class="gm-button gm-game-card__signup"
+        href="{{ site.data.gm.contacts.booking_url | relative_url }}"
+        data-booking-game="{{ game.slug }}"
+      >Записаться</a>
+    </div>
   </div>
 </article>
