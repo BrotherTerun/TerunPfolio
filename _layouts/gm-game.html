@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Merriweather:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/gm.css' | relative_url }}">
@@ -32,21 +32,18 @@
 
       <div class="gm-container gm-game-hero__content">
         <a class="gm-back-link" href="{{ '/gm/#games' | relative_url }}">← Все приключения</a>
-        <!-- <p class="gm-eyebrow">{{ page.eyebrow }}</p> -->
         <h1>{{ page.game_title }}</h1>
         <p class="gm-hero__lead">{{ page.pitch }}</p>
       </div>
     </section>
 
-    <section class="gm-section gm-section--paper">
+    <section class="gm-section gm-section--paper gm-game-detail-section">
       <div class="gm-container gm-game-detail">
-        <aside class="gm-game-detail__facts">
-          <!-- <p class="gm-eyebrow">Формат</p> -->
+        <aside class="gm-game-detail__facts" aria-label="Параметры игры">
           <dl>
             <div><dt>Система</dt><dd>{{ page.system }}</dd></div>
-            <div><dt>Формат</dt><dd>{{ page.format }}</dd></div>
-            <div><dt>Площадка</dt><dd>{{ page.platform }}</dd></div>
-            <div><dt>Игроки</dt><dd>{{ page.players }}</dd></div>
+            <div><dt>Дата</dt><dd>{{ page.date | default: 'Уточняется' }}</dd></div>
+            <div><dt>Места</dt><dd>{{ page.players }}</dd></div>
             <div><dt>Длительность</dt><dd>{{ page.duration }}</dd></div>
             <div><dt>Стоимость</dt><dd>{{ page.price }}</dd></div>
           </dl>
@@ -62,9 +59,11 @@
 
   <footer class="gm-footer">
     <div class="gm-container gm-footer__inner">
-      <p>Терун · Ведущий НРИ</p>
-      <a href="{{ '/gm/' | relative_url }}">К разделу ГМства</a>
+      <p>Copyright © 2026 Tereshenko Leonid. All rights reserved.</p>
+      <a href="#portfolio-coming-soon">чем ещё я занимаюсь?</a>
     </div>
   </footer>
+
+  <script src="{{ '/assets/js/gm-landing.js' | relative_url }}" defer></script>
 </body>
 </html>
