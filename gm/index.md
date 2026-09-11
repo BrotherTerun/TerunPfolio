@@ -56,6 +56,32 @@ description: "Онлайн-игры по настольным ролевым с�
   </div>
 </section>
 
+<style>
+  /*
+    The games catalog is the only landing section allowed to grow beyond
+    one viewport. It keeps one-screen minimum height, but never clips rows.
+  */
+  @media (min-width: 961px) {
+    .gm-main > #games {
+      height: auto;
+      min-height: var(--gm-viewport-fit);
+      overflow: visible;
+    }
+
+    .gm-main > #games > .gm-container {
+      width: min(calc(100% - 48px), 1540px);
+      height: auto;
+      min-height: 0;
+    }
+  }
+
+  /* Catalog cards keep the same six facts as the original large card. */
+  .gm-games-grid--catalog .gm-game-card__facts > div:nth-child(2),
+  .gm-games-grid--catalog .gm-game-card__facts > div:nth-child(3) {
+    display: block;
+  }
+</style>
+
 <section class="gm-section gm-section--paper" id="games">
   <div class="gm-container">
     <div class="gm-section__heading gm-section__heading--stacked gm-section__heading--centered">
