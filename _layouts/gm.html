@@ -85,6 +85,15 @@
     }
 
     .gm-transition::before {
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        var(--gm-gold-clear) 0%,
+        var(--gm-gold-a44) 16%,
+        var(--gm-gold) 50%,
+        var(--gm-gold-a44) 84%,
+        var(--gm-gold-clear) 100%
+      );
       box-shadow:
         0 0 22px var(--gm-gold-a22),
         0 0 42px var(--gm-landing-transition-glow-qa);
@@ -94,10 +103,13 @@
     .gm-transition--dark-paper::after,
     .gm-transition--paper-dark::after,
     .gm-transition--dark-dark::after {
-      background: var(--gm-transparent);
+      width: 12px;
+      height: 12px;
+      border-color: var(--gm-gold);
+      background: var(--gm-gold);
       box-shadow:
-        0 0 16px var(--gm-gold-a19),
-        0 0 28px var(--gm-landing-transition-glow-qa);
+        0 0 16px var(--gm-gold-a22),
+        0 0 30px var(--gm-landing-transition-glow-qa);
     }
 
     /* Reviews are one centered composition: heading + rail + pagination.
@@ -109,6 +121,13 @@
 
     .gm-review-slide.is-active {
       transform: translateY(0);
+    }
+
+    /* During the invisible clone -> real-slide loop reset, freeze each card as
+       well as the rail. Otherwise the active class swaps with a .5s vertical
+       transition and produces a tiny up/down twitch at the loop boundary. */
+    .gm-review-carousel__track.is-jumping .gm-review-slide {
+      transition: none !important;
     }
 
     @media (min-width: 961px) {
@@ -144,12 +163,22 @@
       }
     }
 
-    /* Extend media/shade a few pixels past the nominal poster bounds to avoid
-       antialiasing seams at the section dividers. The overlay itself is darker
-       in hue, but about fifteen percentage points more transparent than before. */
+    /* The image, shade and contact section now share the exact same bounds.
+       No overscan or media scaling: section transitions sit on the real edge
+       of the poster instead of exposing a narrow mismatched strip. */
+    .gm-contact {
+      overflow: hidden;
+    }
+
     .gm-contact__media,
     .gm-contact__shade {
-      inset: -4px 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gm-contact__media {
+      transform: none;
     }
 
     .gm-contact__shade {
