@@ -27,6 +27,22 @@
       --gm-landing-contact-teal-a18: rgba(6, 77, 75, .18);
     }
 
+    /* gm-landing.css deliberately lets several presentation layers overflow
+       vertically. Keep that behaviour, but clip the horizontal axis so scaled
+       media, carousel rails and decorative transforms never enlarge the page's
+       scrollable width. */
+    html,
+    body.gm-page {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    body.gm-page .gm-main {
+      max-width: 100%;
+      overflow-x: clip;
+      overflow-y: visible;
+    }
+
     /* Keep the header in the same petrol family as the landing, but visibly
        darker so it reads as a stable navigation layer above the sections. */
     body.gm-page .gm-header {
