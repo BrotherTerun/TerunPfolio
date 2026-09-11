@@ -213,6 +213,228 @@ description: "Онлайн-игры по настольным ролевым с�
       min-height: 0;
     }
   }
+
+  /* =========================================================
+     REVIEWS / PROJECT-CAROUSEL BEHAVIOUR
+     Reuses the same data hooks and JS engine as the game-design project rail.
+     ========================================================= */
+  .gm-review-carousel__shell {
+    position: relative;
+  }
+
+  .gm-review-carousel__heading {
+    margin-bottom: clamp(20px, 3dvh, 34px);
+  }
+
+  .gm-review-carousel__stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(12px, 1.8vw, 24px);
+  }
+
+  .gm-review-carousel__viewport {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--gm-paper-light-a22);
+    background: var(--gm-review-panel-a20);
+    box-shadow: var(--gm-shadow);
+    outline: none;
+  }
+
+  .gm-review-carousel__viewport:focus-visible {
+    border-color: var(--gm-gold);
+    box-shadow:
+      var(--gm-shadow),
+      0 0 0 2px var(--gm-gold-a22);
+  }
+
+  .gm-review-carousel__track {
+    display: flex;
+    width: 100%;
+    will-change: transform;
+    transition: transform 1200ms cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .gm-review-carousel__track.is-jumping,
+  .gm-review-carousel__track.is-loop-jumping {
+    transition: none;
+  }
+
+  .gm-review-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    min-height: clamp(320px, 44dvh, 470px);
+    padding: clamp(34px, 4vw, 66px);
+    border: 0;
+    background:
+      radial-gradient(circle at 88% 16%, var(--gm-gold-a08), var(--gm-transparent) 24%),
+      linear-gradient(135deg, var(--gm-white-a012), var(--gm-review-panel-a20));
+    box-shadow: none;
+    transition: opacity 500ms ease;
+  }
+
+  .gm-review-slide:not(.is-active) {
+    opacity: .7;
+  }
+
+  .gm-review-slide::before {
+    top: clamp(14px, 2dvh, 24px);
+    right: clamp(24px, 3vw, 46px);
+    font-size: clamp(5rem, 10dvh, 7.5rem);
+  }
+
+  .gm-review-slide > p {
+    max-width: 980px;
+    margin-bottom: clamp(36px, 6dvh, 74px);
+    font-size: clamp(1.65rem, min(2.35vw, 4dvh), 2.45rem);
+  }
+
+  .gm-review-slide footer {
+    gap: 5px;
+  }
+
+  .gm-review-slide footer strong {
+    font-size: clamp(1rem, 1.45vw, 1.2rem);
+  }
+
+  .gm-review-carousel__button {
+    width: clamp(42px, 3.3vw, 54px);
+    height: clamp(64px, 8dvh, 82px);
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--gm-border);
+    background: var(--gm-review-panel-a20);
+    color: var(--gm-text);
+    font-family: var(--gm-font-display);
+    font-size: clamp(2rem, 3vw, 3rem);
+    cursor: pointer;
+    transition:
+      border-color .2s ease,
+      color .2s ease,
+      background-color .2s ease,
+      transform .2s ease;
+  }
+
+  .gm-review-carousel__button:hover,
+  .gm-review-carousel__button:focus-visible {
+    color: var(--gm-gold);
+    border-color: var(--gm-gold);
+    background: var(--gm-gold-a08);
+    transform: translateY(-2px);
+  }
+
+  .gm-review-carousel__pagination {
+    min-height: 18px;
+    margin-top: clamp(16px, 2.4dvh, 24px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .gm-review-carousel .gd-project-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 1px solid var(--gm-gold-a44);
+    border-radius: 50%;
+    background: var(--gm-transparent);
+    cursor: pointer;
+    transition:
+      transform .2s ease,
+      background-color .2s ease,
+      border-color .2s ease;
+  }
+
+  .gm-review-carousel .gd-project-dot:hover,
+  .gm-review-carousel .gd-project-dot:focus-visible,
+  .gm-review-carousel .gd-project-dot.is-active {
+    border-color: var(--gm-gold);
+    background: var(--gm-gold);
+    transform: scale(1.2);
+  }
+
+  .gm-review-carousel .gd-project-progress {
+    position: absolute;
+    z-index: 6;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    overflow: hidden;
+    background: var(--gm-white-a08);
+    pointer-events: none;
+  }
+
+  .gm-review-carousel .gd-project-progress__fill {
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: linear-gradient(90deg, var(--gm-teal-soft), var(--gm-gold));
+  }
+
+  .gm-review-carousel__status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 960px) {
+    .gm-review-carousel__stage {
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+      gap: 10px;
+    }
+
+    .gm-review-slide {
+      min-height: 360px;
+      padding: 34px 30px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .gm-review-carousel__heading {
+      display: block;
+      text-align: left;
+    }
+
+    .gm-review-carousel__heading > p:last-child {
+      max-width: none;
+      margin-top: 12px;
+    }
+
+    .gm-review-carousel__stage {
+      grid-template-columns: 36px minmax(0, 1fr) 36px;
+      gap: 6px;
+    }
+
+    .gm-review-carousel__button {
+      width: 36px;
+      height: 58px;
+      font-size: 1.8rem;
+    }
+
+    .gm-review-slide {
+      min-height: 390px;
+      padding: 30px 24px;
+    }
+
+    .gm-review-slide > p {
+      font-size: 1.45rem;
+    }
+  }
 </style>
 
 <section class="gm-section gm-section--paper" id="games">
@@ -283,26 +505,72 @@ description: "Онлайн-игры по настольным ролевым с�
   </div>
 </section>
 
-<section class="gm-section gm-section--reviews" id="reviews">
-  <div class="gm-container">
-    <div class="gm-section__heading">
+<section
+  class="gm-section gm-section--reviews gm-review-carousel"
+  id="reviews"
+  aria-labelledby="reviews-title"
+  data-project-carousel
+>
+  <div class="gm-container gm-review-carousel__shell">
+    <div class="gm-section__heading gm-review-carousel__heading">
       <div>
-        <h2>Как это ощущается за столом</h2>
+        <h2 id="reviews-title">Как это ощущается за столом</h2>
       </div>
       <p>Сюда пойдут реальные отзывы участников прежних игр. До публикации коммерческих кейсов не называем их «отзывами клиентов».</p>
     </div>
 
-    <div class="gm-review-grid">
-      {% for review in site.data.gm_reviews %}
-        <blockquote class="gm-review">
-          <p>{{ review.quote }}</p>
-          <footer>
-            <strong>{{ review.author }}</strong>
-            <span>{{ review.context }}</span>
-          </footer>
-        </blockquote>
-      {% endfor %}
+    <div class="gm-review-carousel__stage">
+      <button
+        class="gm-review-carousel__button gm-review-carousel__button--prev"
+        type="button"
+        data-carousel-prev
+        aria-label="Предыдущий отзыв"
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
+
+      <div
+        class="gm-review-carousel__viewport"
+        data-carousel-viewport
+        tabindex="0"
+        role="region"
+        aria-roledescription="карусель"
+        aria-label="Отзывы участников игр"
+      >
+        <div class="gm-review-carousel__track" data-carousel-track>
+          {% for review in site.data.gm_reviews %}
+            <blockquote
+              class="gm-review gm-review-slide gd-project-card"
+              data-project-slide
+              aria-label="Отзыв — {{ review.author }}"
+            >
+              <p>{{ review.quote }}</p>
+              <footer>
+                <strong>{{ review.author }}</strong>
+                <span>{{ review.context }}</span>
+              </footer>
+            </blockquote>
+          {% endfor %}
+        </div>
+      </div>
+
+      <button
+        class="gm-review-carousel__button gm-review-carousel__button--next"
+        type="button"
+        data-carousel-next
+        aria-label="Следующий отзыв"
+      >
+        <span aria-hidden="true">›</span>
+      </button>
     </div>
+
+    <div
+      class="gm-review-carousel__pagination"
+      data-carousel-pagination
+      aria-label="Выбор отзыва"
+    ></div>
+
+    <p class="gm-review-carousel__status" data-carousel-status aria-live="polite"></p>
   </div>
 </section>
 
