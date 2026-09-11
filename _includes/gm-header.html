@@ -10,6 +10,21 @@
       gap: 18px;
     }
 
+    .gm-brand__mark {
+      overflow: hidden;
+      background: var(--gm-teal-a08);
+    }
+
+    .gm-brand__mark img {
+      width: 142%;
+      height: 142%;
+      max-width: none;
+      display: block;
+      object-fit: cover;
+      transform: rotate(-45deg);
+      transform-origin: center;
+    }
+
     .gm-brand__text {
       display: flex;
       align-items: baseline;
@@ -184,7 +199,9 @@
 
   <div class="gm-container gm-header__inner">
     <a class="gm-brand" href="{{ '/gm/' | relative_url }}" aria-label="Главная раздела ведущего НРИ">
-      <span class="gm-brand__mark" aria-hidden="true"></span>
+      <span class="gm-brand__mark" aria-hidden="true">
+        <img src="{{ '/assets/images/gm/common/logo.png' | relative_url }}" alt="">
+      </span>
       <span class="gm-brand__text">
         <strong>{{ site.data.gm.brand.name }}</strong>
         <small>{{ site.data.gm.brand.role }}</small>
