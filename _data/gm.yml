@@ -5,6 +5,8 @@ brand:
 contacts:
   telegram_label: "@BrotherTerun"
   telegram_url: "https://t.me/BrotherTerun"
+  discord_url: ""
+  vk_url: ""
   booking_url: "/gm/#contact"
 
 service:
