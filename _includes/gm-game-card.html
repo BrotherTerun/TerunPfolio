@@ -1,14 +1,20 @@
 {% assign game = include.game %}
 {% assign booking_url = site.data.gm.contacts.booking_url %}
 <article class="gm-game-card">
-  <a class="gm-game-card__media gm-media-placeholder" href="{{ game.url | relative_url }}" aria-label="Открыть страницу игры {{ game.title }}">
+  <a
+    class="gm-game-card__link"
+    href="{{ game.url | relative_url }}"
+    aria-label="Подробнее об игре {{ game.title }}"
+  ></a>
+
+  <div class="gm-game-card__media gm-media-placeholder" aria-hidden="true">
     <span>{{ game.media_label }}</span>
-  </a>
+  </div>
 
   <div class="gm-game-card__body">
     <div class="gm-game-card__heading">
       <div>
-        <h3><a href="{{ game.url | relative_url }}">{{ game.title }}</a></h3>
+        <h3>{{ game.title }}</h3>
       </div>
     </div>
 
@@ -16,15 +22,13 @@
 
     <dl class="gm-game-card__facts">
       <div><dt>Система</dt><dd>{{ game.system }}</dd></div>
-      <div><dt>Формат</dt><dd>{{ game.format }}</dd></div>
-      <div><dt>Площадка</dt><dd>{{ game.platform }}</dd></div>
-      <div><dt>Игроки</dt><dd>{{ game.players }}</dd></div>
-      <div><dt>Время</dt><dd>{{ game.duration }}</dd></div>
+      <div><dt>Дата</dt><dd>{{ game.date | default: "Уточняется" }}</dd></div>
+      <div><dt>Места</dt><dd>{{ game.players }}</dd></div>
+      <div><dt>Длительность</dt><dd>{{ game.duration }}</dd></div>
       <div><dt>Стоимость</dt><dd>{{ game.price }}</dd></div>
     </dl>
 
-    <div class="gm-game-card__actions">
-      <a class="gm-text-link" href="{{ game.url | relative_url }}">Подробнее об игре →</a>
+    <div class="gm-game-card__actions gm-game-card__actions--signup-only">
       {% if booking_url contains '://' %}
         <a
           class="gm-button gm-game-card__signup"
