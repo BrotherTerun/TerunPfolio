@@ -49,7 +49,31 @@
     content.style.removeProperty("align-content");
     content.style.removeProperty("align-items");
     content.style.removeProperty("grid-template-columns");
+    content.style.removeProperty("grid-template-rows");
     content.style.removeProperty("gap");
+
+    if (screen.id === "faq") {
+      const heading = content.firstElementChild;
+      const headingTitle = heading?.querySelector("h2");
+      const list = content.querySelector(".gm-faq-list");
+
+      heading?.style.removeProperty("text-align");
+      heading?.style.removeProperty("align-self");
+      heading?.style.removeProperty("justify-self");
+      headingTitle?.style.removeProperty("margin-bottom");
+
+      if (list) {
+        list.style.removeProperty("width");
+        list.style.removeProperty("justify-self");
+        list.style.removeProperty("align-self");
+
+        list.querySelectorAll("summary").forEach((summary) => {
+          summary.style.removeProperty("font-size");
+          summary.style.removeProperty("padding-top");
+          summary.style.removeProperty("padding-bottom");
+        });
+      }
+    }
   };
 
   const applyFlowGeometry = (screen, wide) => {
@@ -72,19 +96,46 @@
     screen.style.overflow = "visible";
     screen.style.paddingTop = "clamp(46px, 6dvh, 64px)";
     screen.style.paddingBottom = "clamp(46px, 6dvh, 64px)";
-    screen.style.display = "flex";
-    screen.style.alignItems = "center";
+    screen.style.display = "block";
+    screen.style.removeProperty("align-items");
 
     const content = screen.querySelector(":scope > .gm-container");
     if (content) {
       content.style.height = "auto";
-      content.style.minHeight = "0";
-      content.style.alignContent = "start";
-      content.style.alignItems = "start";
+      content.style.minHeight = "calc(var(--gm-viewport-fit) - 128px)";
+      content.style.alignContent = "stretch";
+      content.style.alignItems = "stretch";
 
       if (screen.id === "faq") {
-        content.style.gridTemplateColumns = "minmax(220px, .52fr) minmax(0, 1.48fr)";
-        content.style.gap = "clamp(36px, 4vw, 60px)";
+        content.style.gridTemplateColumns = "1fr";
+        content.style.gridTemplateRows = "auto minmax(0, 1fr)";
+        content.style.gap = "clamp(28px, 4dvh, 44px)";
+
+        const heading = content.firstElementChild;
+        const headingTitle = heading?.querySelector("h2");
+        const list = content.querySelector(".gm-faq-list");
+
+        if (heading) {
+          heading.style.textAlign = "center";
+          heading.style.alignSelf = "start";
+          heading.style.justifySelf = "stretch";
+        }
+
+        if (headingTitle) {
+          headingTitle.style.marginBottom = "0";
+        }
+
+        if (list) {
+          list.style.width = "min(100%, 1080px)";
+          list.style.justifySelf = "center";
+          list.style.alignSelf = "center";
+
+          list.querySelectorAll("summary").forEach((summary) => {
+            summary.style.fontSize = "clamp(1.35rem, 2.8dvh, 1.7rem)";
+            summary.style.paddingTop = "clamp(17px, 2.25dvh, 24px)";
+            summary.style.paddingBottom = "clamp(17px, 2.25dvh, 24px)";
+          });
+        }
       }
     }
 
