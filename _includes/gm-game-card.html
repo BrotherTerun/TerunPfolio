@@ -1,4 +1,5 @@
 {% assign game = include.game %}
+{% assign booking_url = site.data.gm.contacts.booking_url %}
 <article class="gm-game-card">
   <a class="gm-game-card__media gm-media-placeholder" href="{{ game.url | relative_url }}" aria-label="Открыть страницу игры {{ game.title }}">
     <span>{{ game.media_label }}</span>
@@ -24,11 +25,21 @@
 
     <div class="gm-game-card__actions">
       <a class="gm-text-link" href="{{ game.url | relative_url }}">Подробнее об игре →</a>
-      <a
-        class="gm-button gm-game-card__signup"
-        href="{{ site.data.gm.contacts.booking_url | relative_url }}"
-        data-booking-game="{{ game.slug }}"
-      >Записаться</a>
+      {% if booking_url contains '://' %}
+        <a
+          class="gm-button gm-game-card__signup"
+          href="{{ booking_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-booking-game="{{ game.slug }}"
+        >Записаться</a>
+      {% else %}
+        <a
+          class="gm-button gm-game-card__signup"
+          href="{{ booking_url | relative_url }}"
+          data-booking-game="{{ game.slug }}"
+        >Записаться</a>
+      {% endif %}
     </div>
   </div>
 </article>
