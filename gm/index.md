@@ -58,7 +58,7 @@ description: "Онлайн-игры по настольным ролевым с�
 
 <section class="gm-section gm-section--paper" id="games">
   <div class="gm-container">
-    <div class="gm-section__heading">
+    <div class="gm-section__heading gm-section__heading--stacked gm-section__heading--centered">
       <div>
         <h2>Отправиться в приключение</h2>
       </div>
@@ -69,7 +69,8 @@ description: "Онлайн-игры по настольным ролевым с�
       </p>
     </div>
 
-    <div class="gm-games-grid">
+    {% assign gm_game_count = site.data.gm_games | size %}
+    <div class="gm-games-grid{% if gm_game_count > 1 %} gm-games-grid--catalog{% else %} gm-games-grid--single{% endif %}">
       {% for game in site.data.gm_games %}
         {% include gm-game-card.html game=game %}
       {% endfor %}
