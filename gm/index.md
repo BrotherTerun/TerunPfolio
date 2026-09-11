@@ -81,19 +81,105 @@ description: "Онлайн-игры по настольным ролевым с�
     display: block;
   }
 
-  /* The table image keeps its one-third column but is shown whole. */
+  /* The table image keeps its one-third column and is always shown whole. */
   .gm-section--split .gm-split__media {
     background-size: contain !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
   }
 
-  .gm-split__included {
-    margin-top: clamp(20px, 3dvh, 32px);
+  /*
+    The right two-thirds are two equal narrative columns:
+    personal principles in the middle and concrete table requirements at right.
+  */
+  @media (min-width: 961px) {
+    .gm-section--split .gm-split__content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(26px, 2.2vw, 42px);
+      align-items: stretch;
+      padding:
+        clamp(30px, 4.2dvh, 48px)
+        clamp(30px, 2.4vw, 46px);
+    }
+
+    .gm-split__column {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .gm-split__column > .gm-section__heading {
+      margin-bottom: clamp(16px, 2.4dvh, 26px);
+    }
+
+    .gm-split__column > .gm-section__heading h2 {
+      margin-bottom: 0;
+    }
+
+    .gm-split__column--principles .gm-principles {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+    }
+
+    .gm-split__column--principles .gm-principles article {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .gm-split__column--requirements {
+      padding-left: clamp(24px, 2vw, 36px);
+      border-left: 1px solid var(--gm-border);
+    }
+
+    .gm-split__column--requirements .gm-section__heading p {
+      max-width: none;
+      margin: 12px 0 0;
+      color: var(--gm-muted);
+      opacity: 1;
+    }
+
+    .gm-split__column--requirements .gm-feature-grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, minmax(0, 1fr));
+    }
+
+    .gm-split__column--requirements .gm-feature-grid article {
+      min-height: 0 !important;
+      padding: clamp(12px, 1.7dvh, 18px) 18px !important;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .gm-split__column--requirements .gm-feature-grid article::before {
+      margin-bottom: 6px;
+    }
   }
 
-  .gm-split__included .gm-section__heading {
-    margin-bottom: clamp(12px, 2dvh, 22px);
+  @media (max-width: 960px) {
+    .gm-section--split .gm-split__content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 46px;
+    }
+
+    .gm-split__column--requirements {
+      padding-top: 38px;
+      border-top: 1px solid var(--gm-border);
+    }
+
+    .gm-split__column--requirements .gm-feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gm-split__column--requirements .gm-feature-grid article {
+      min-height: 0;
+    }
   }
 </style>
 
@@ -128,34 +214,34 @@ description: "Онлайн-игры по настольным ролевым с�
   ></div>
 
   <div class="gm-split__content">
-    <div class="gm-section__heading gm-section__heading--stacked">
-      <h2>Как я провожу игры</h2>
-    </div>
+    <section class="gm-split__column gm-split__column--principles" aria-labelledby="gm-principles-title">
+      <div class="gm-section__heading gm-section__heading--stacked">
+        <h2 id="gm-principles-title">Как я провожу игры</h2>
+      </div>
 
-    <div class="gm-principles">
-      <article>
-        <span>01</span>
-        <h3>Свобода действий</h3>
-        <p>Черновой тезис. Здесь будет короткое объяснение того, насколько игра поддерживает нестандартные решения и импровизацию.</p>
-      </article>
-      <article>
-        <span>02</span>
-        <h3>Последствия</h3>
-        <p>Черновой тезис. Здесь будет формулировка о том, как выборы игроков меняют ситуацию, отношения и дальнейший ход истории.</p>
-      </article>
-      <article>
-        <span>03</span>
-        <h3>Подготовка без лишней рутины</h3>
-        <p>Черновой тезис. Здесь будет описание того, что ведущий берёт на себя, а что требуется от игрока перед началом.</p>
-      </article>
-    </div>
+      <div class="gm-principles">
+        <article>
+          <span>01</span>
+          <h3>Свобода действий</h3>
+          <p>Черновой тезис. Здесь будет короткое объяснение того, насколько игра поддерживает нестандартные решения и импровизацию.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Последствия</h3>
+          <p>Черновой тезис. Здесь будет формулировка о том, как выборы игроков меняют ситуацию, отношения и дальнейший ход истории.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Подготовка без лишней рутины</h3>
+          <p>Черновой тезис. Здесь будет описание того, что ведущий берёт на себя, а что требуется от игрока перед началом.</p>
+        </article>
+      </div>
+    </section>
 
-    <div class="gm-split__included">
-      <div class="gm-section__heading">
-        <div>
-          <h2>Что потребуется для игры</h2>
-        </div>
-        <p>Этот блок — не про «премиальность», а про конкретику: за что именно платит игрок и что уже подготовлено к сессии.</p>
+    <section class="gm-split__column gm-split__column--requirements" aria-labelledby="gm-requirements-title">
+      <div class="gm-section__heading gm-section__heading--stacked">
+        <h2 id="gm-requirements-title">Что потребуется для игры</h2>
+        <p>Коротко о том, что понадобится игроку и что уже будет подготовлено к началу сессии.</p>
       </div>
 
       <div class="gm-feature-grid">
@@ -164,7 +250,7 @@ description: "Онлайн-игры по настольным ролевым с�
         <article><strong>Подготовка к игре</strong><span>Черновой слот под персонажей, памятки и короткий ввод перед сессией.</span></article>
         <article><strong>Сопровождение</strong><span>Черновой слот под правила переноса, отмены и связь между играми.</span></article>
       </div>
-    </div>
+    </section>
   </div>
 </section>
 
