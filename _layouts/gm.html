@@ -68,6 +68,25 @@
       background: var(--gm-landing-petrol-deep);
     }
 
+    /* The portrait itself now owns the full visual frame. The former glass
+       backing keeps its existing geometry but contributes no padding, panel,
+       border or blur, so the artwork expands to exactly that outer size. */
+    .gm-hero-profile__identity {
+      padding: 0;
+      border: 0;
+      background: var(--gm-transparent);
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .gm-hero-profile__portrait {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      border: 1px solid var(--gm-gold-a19);
+      box-shadow: 0 0 70px var(--gm-landing-teal-glow);
+    }
+
     /* The systems rail must sit fully inside the first screen instead of being
        swallowed by the section seam. Give the hero a small amount of extra
        vertical room and lift the rail away from the boundary. */
