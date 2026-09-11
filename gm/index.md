@@ -4,6 +4,27 @@ title: "Терун — ведущий НРИ"
 description: "Онлайн-игры по настольным ролевым системам: ваншоты, кампании и авторские сценарии."
 ---
 
+<style>
+  @media (min-width: 961px) {
+    /* Reframe the live-table photo around the people rather than the raw photo
+       center. A small overscan gives us room to move the image left/up without
+       exposing a hard bitmap edge; the existing section shade handles the fade. */
+    #reviews .gm-reviews__media {
+      background-size: 112% auto;
+      background-position: 62% 60%;
+      transform: none;
+    }
+
+    /* Keep the section balanced, but let the rail sit a little lower so faces
+       have more breathing room above the active card. Move pagination with it
+       so the carousel still reads as one composition. */
+    #reviews .gm-review-carousel__stage,
+    #reviews .gm-review-carousel__pagination {
+      transform: translateY(clamp(18px, 2.4dvh, 28px));
+    }
+  }
+</style>
+
 <section class="gm-hero gm-hero--profile" id="about">
   <div class="gm-hero__media" aria-hidden="true"></div>
   <div class="gm-hero__shade"></div>
