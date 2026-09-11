@@ -249,9 +249,48 @@ description: "Онлайн-игры по настольным ролевым с�
 
   <div class="gm-container gm-contact__content" data-reveal>
     <h2>Напишите мне — подберём игру и формат.</h2>
-    <div class="gm-actions">
-      <a class="gm-button" href="https://t.me/BrotherTerun" target="_blank" rel="noopener noreferrer">Telegram</a>
-      <span class="gm-contact__note">Форма записи и политика оплаты будут подключены отдельным этапом.</span>
+
+    <div class="gm-contact-links" aria-label="Связаться со мной">
+      <a
+        class="gm-contact-link gm-contact-link--telegram gm-contact-link--primary"
+        href="{{ site.data.gm.contacts.telegram_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 3 4.2 9.4c-1 .4-1 1-.1 1.3l4.3 1.4 1.7 5.1c.2.7.8.8 1.3.4l2.6-2.5 4.3 3.2c.8.6 1.4.2 1.6-.8L22 4.1C22.2 3.2 21.8 2.7 21 3Z"></path>
+          <path d="m8.4 12.1 8.9-5.8-7.2 7.7"></path>
+        </svg>
+        <span>Telegram</span>
+      </a>
+
+      <button
+        class="gm-contact-link gm-contact-link--discord"
+        type="button"
+        data-copy-contact="{{ site.data.gm.contacts.discord_handle }}"
+        aria-label="Скопировать Discord: {{ site.data.gm.contacts.discord_handle }}"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7.2 7.8c3.2-1.5 6.4-1.5 9.6 0 1.2 1.8 1.8 4 1.8 6.6-1.6 1.4-3.3 2.2-5 2.5l-1.1-1.5h-1l-1.1 1.5c-1.7-.3-3.4-1.1-5-2.5 0-2.6.6-4.8 1.8-6.6Z"></path>
+          <circle cx="9.4" cy="12.2" r="1"></circle>
+          <circle cx="14.6" cy="12.2" r="1"></circle>
+          <path d="M9.6 14.4c1.6.7 3.2.7 4.8 0"></path>
+        </svg>
+        <span>Discord</span>
+        <span class="gm-contact-link__toast" data-copy-toast role="status" aria-live="polite">Ник скопирован!</span>
+      </button>
+
+      <a
+        class="gm-contact-link gm-contact-link--vk"
+        href="{{ site.data.gm.contacts.vk_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5.4 7.2h2.8c.2 2.1 1.2 4 2.7 5.3V7.2h2.7v3c1.5-.2 2.5-1.7 2.9-3h2.7c-.4 1.8-1.5 3.4-3 4.4 1.6.9 2.9 2.5 3.5 4.4h-3c-.5-1.3-1.5-2.5-3.1-2.8V16h-.7C8.6 16 5.8 12.9 5.4 7.2Z"></path>
+        </svg>
+        <span>VK</span>
+      </a>
     </div>
   </div>
 </section>
