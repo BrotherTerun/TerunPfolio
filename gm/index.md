@@ -7,11 +7,11 @@ description: "Онлайн-игры по настольным ролевым с�
 <style>
   @media (min-width: 961px) {
     /* Reframe the live-table photo around the people rather than the raw photo
-       center. A small overscan gives us room to move the image left/up without
-       exposing a hard bitmap edge; the existing section shade handles the fade. */
+       center. Keep a small overscan, shift the image to the right and return
+       vertical framing to center so the upper faces are not cropped. */
     #reviews .gm-reviews__media {
       background-size: 112% auto;
-      background-position: 62% 60%;
+      background-position: 38% 50%;
       transform: none;
     }
 
