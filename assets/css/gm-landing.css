@@ -541,6 +541,7 @@ body.gm-page {
   max-width: none;
   margin: 0 auto clamp(26px, 3.4dvh, 40px);
   text-align: center;
+  background: radial-gradient(ellipse at center, var(--gm-landing-transition-glow-qa) 0%, var(--gm-landing-teal-glow) 34%, var(--gm-transparent) 72%);
 }
 
 .gm-review-carousel__heading h2 {
