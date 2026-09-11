@@ -80,6 +80,21 @@ description: "Онлайн-игры по настольным ролевым с�
   .gm-games-grid--catalog .gm-game-card__facts > div:nth-child(3) {
     display: block;
   }
+
+  /* The table image keeps its one-third column but is shown whole. */
+  .gm-section--split .gm-split__media {
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .gm-split__included {
+    margin-top: clamp(20px, 3dvh, 32px);
+  }
+
+  .gm-split__included .gm-section__heading {
+    margin-bottom: clamp(12px, 2dvh, 22px);
+  }
 </style>
 
 <section class="gm-section gm-section--paper" id="games">
@@ -109,7 +124,7 @@ description: "Онлайн-игры по настольным ролевым с�
     class="gm-split__media"
     role="img"
     aria-label="Онлайн-сессия: камеры игроков и игровой стол Foundry VTT"
-    style="background-image: url('{{ '/assets/images/gm/common/table_atmosphere.png' | relative_url }}'); background-size: cover; background-position: center top; background-repeat: no-repeat;"
+    style="background-image: url('{{ '/assets/images/gm/common/table_atmosphere.png' | relative_url }}'); background-size: contain; background-position: center; background-repeat: no-repeat;"
   ></div>
 
   <div class="gm-split__content">
@@ -134,23 +149,21 @@ description: "Онлайн-игры по настольным ролевым с�
         <p>Черновой тезис. Здесь будет описание того, что ведущий берёт на себя, а что требуется от игрока перед началом.</p>
       </article>
     </div>
-  </div>
-</section>
 
-<section class="gm-section gm-section--dark" id="included">
-  <div class="gm-container">
-    <div class="gm-section__heading">
-      <div>
-        <h2>Что потребуется для игры</h2>
+    <div class="gm-split__included">
+      <div class="gm-section__heading">
+        <div>
+          <h2>Что потребуется для игры</h2>
+        </div>
+        <p>Этот блок — не про «премиальность», а про конкретику: за что именно платит игрок и что уже подготовлено к сессии.</p>
       </div>
-      <p>Этот блок — не про «премиальность», а про конкретику: за что именно платит игрок и что уже подготовлено к сессии.</p>
-    </div>
 
-    <div class="gm-feature-grid">
-      <article><strong>Foundry VTT</strong><span>Подготовленные сцены, карты и игровые материалы.</span></article>
-      <article><strong>Голосовая связь</strong><span>Discord или другой согласованный канал.</span></article>
-      <article><strong>Подготовка к игре</strong><span>Черновой слот под персонажей, памятки и короткий ввод перед сессией.</span></article>
-      <article><strong>Сопровождение</strong><span>Черновой слот под правила переноса, отмены и связь между играми.</span></article>
+      <div class="gm-feature-grid">
+        <article><strong>Foundry VTT</strong><span>Подготовленные сцены, карты и игровые материалы.</span></article>
+        <article><strong>Голосовая связь</strong><span>Discord или другой согласованный канал.</span></article>
+        <article><strong>Подготовка к игре</strong><span>Черновой слот под персонажей, памятки и короткий ввод перед сессией.</span></article>
+        <article><strong>Сопровождение</strong><span>Черновой слот под правила переноса, отмены и связь между играми.</span></article>
+      </div>
     </div>
   </div>
 </section>
