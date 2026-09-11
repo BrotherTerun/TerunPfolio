@@ -168,6 +168,49 @@
         0 0 30px var(--gm-landing-transition-glow-qa);
     }
 
+    /* Catalogue cards now treat the entire dossier as the details link. Keep
+       the booking button above the stretched link so both actions remain
+       distinct, and remove the old decorative archive label entirely. */
+    .gm-game-card {
+      cursor: pointer;
+    }
+
+    .gm-game-card__body::before {
+      content: none;
+      display: none;
+    }
+
+    .gm-game-card__link {
+      position: absolute;
+      z-index: 5;
+      inset: 0;
+      display: block;
+    }
+
+    .gm-game-card__link:focus-visible {
+      outline: 2px solid var(--gm-teal);
+      outline-offset: -4px;
+    }
+
+    .gm-game-card__media,
+    .gm-game-card__body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .gm-game-card__facts > div:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .gm-game-card__actions--signup-only {
+      justify-content: flex-end;
+    }
+
+    .gm-game-card__signup {
+      position: relative;
+      z-index: 6;
+    }
+
     /* The table section uses the image itself as the visual surface. Remove
        the two large glass panels, keep both columns equal in height and let
        their internal content occupy the available vertical space evenly. */
