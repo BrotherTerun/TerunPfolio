@@ -2,6 +2,7 @@
   const root = document.documentElement;
   const body = document.body;
   const screens = Array.from(document.querySelectorAll(".gm-main > section"));
+  const flowingScreenIds = new Set(["faq"]);
 
   if (!body.classList.contains("gm-page") || screens.length === 0) return;
 
@@ -31,6 +32,61 @@
     screen.removeAttribute("data-fit-overflow");
   };
 
+  const clearFlowGeometry = (screen) => {
+    screen.style.removeProperty("height");
+    screen.style.removeProperty("min-height");
+    screen.style.removeProperty("overflow");
+    screen.style.removeProperty("padding-top");
+    screen.style.removeProperty("padding-bottom");
+
+    const content = screen.querySelector(":scope > .gm-container");
+    if (!content) return;
+
+    content.style.removeProperty("height");
+    content.style.removeProperty("min-height");
+    content.style.removeProperty("align-content");
+    content.style.removeProperty("align-items");
+    content.style.removeProperty("grid-template-columns");
+    content.style.removeProperty("gap");
+  };
+
+  const applyFlowGeometry = (screen, wide) => {
+    if (!flowingScreenIds.has(screen.id)) return false;
+
+    resetScreen(screen);
+
+    if (!wide) {
+      clearFlowGeometry(screen);
+      return true;
+    }
+
+    /*
+      FAQ is content-driven rather than viewport-driven. In the collapsed
+      state it stays compact; opened <details> simply extend normal page flow
+      instead of triggering a fitter level or an internal scrollbar.
+    */
+    screen.style.height = "auto";
+    screen.style.minHeight = "0";
+    screen.style.overflow = "visible";
+    screen.style.paddingTop = "clamp(46px, 6dvh, 64px)";
+    screen.style.paddingBottom = "clamp(46px, 6dvh, 64px)";
+
+    const content = screen.querySelector(":scope > .gm-container");
+    if (content) {
+      content.style.height = "auto";
+      content.style.minHeight = "0";
+      content.style.alignContent = "start";
+      content.style.alignItems = "start";
+
+      if (screen.id === "faq") {
+        content.style.gridTemplateColumns = "minmax(220px, .52fr) minmax(0, 1.48fr)";
+        content.style.gap = "clamp(36px, 4vw, 60px)";
+      }
+    }
+
+    return true;
+  };
+
   const forceLayout = (node) => node.getBoundingClientRect();
 
   const fitScreen = (screen, cfg) => {
@@ -51,13 +107,18 @@
 
   const fitAll = () => {
     const cfg = config();
+    const wide = isWideMode();
 
-    if (!isWideMode()) {
-      screens.forEach(resetScreen);
-      return;
-    }
+    screens.forEach((screen) => {
+      if (applyFlowGeometry(screen, wide)) return;
 
-    screens.forEach((screen) => fitScreen(screen, cfg));
+      if (!wide) {
+        resetScreen(screen);
+        return;
+      }
+
+      fitScreen(screen, cfg);
+    });
   };
 
   let timer = 0;
