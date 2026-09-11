@@ -81,11 +81,47 @@ description: "Онлайн-игры по настольным ролевым с�
     display: block;
   }
 
-  /* The table image keeps its one-third column and is always shown whole. */
+  /*
+    Keep the screenshot whole, but frame it as a deliberate inset inside
+    the one-third media column instead of letting it float in dead space.
+  */
   .gm-section--split .gm-split__media {
+    position: relative;
+    padding: clamp(30px, 4dvh, 44px) clamp(12px, 1vw, 18px);
     background-size: contain !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+    background-origin: content-box !important;
+    background-clip: content-box !important;
+  }
+
+  .gm-section--split .gm-split__media::before,
+  .gm-section--split .gm-split__media::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: min(72%, 420px);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--gm-transparent), var(--gm-gold-a22), var(--gm-transparent));
+    pointer-events: none;
+  }
+
+  .gm-section--split .gm-split__media::before {
+    top: clamp(18px, 2.5dvh, 28px);
+  }
+
+  .gm-section--split .gm-split__media::after {
+    bottom: clamp(18px, 2.5dvh, 28px);
+  }
+
+  .gm-split__column--principles .gm-principles article {
+    padding-left: 0;
+  }
+
+  .gm-split__column--requirements .gm-feature-grid article::before {
+    content: none;
+    display: none;
   }
 
   /*
@@ -155,10 +191,6 @@ description: "Онлайн-игры по настольным ролевым с�
       justify-content: center;
       gap: 6px;
     }
-
-    .gm-split__column--requirements .gm-feature-grid article::before {
-      margin-bottom: 6px;
-    }
   }
 
   @media (max-width: 960px) {
@@ -221,17 +253,14 @@ description: "Онлайн-игры по настольным ролевым с�
 
       <div class="gm-principles">
         <article>
-          <span>01</span>
           <h3>Свобода действий</h3>
           <p>Черновой тезис. Здесь будет короткое объяснение того, насколько игра поддерживает нестандартные решения и импровизацию.</p>
         </article>
         <article>
-          <span>02</span>
           <h3>Последствия</h3>
           <p>Черновой тезис. Здесь будет формулировка о том, как выборы игроков меняют ситуацию, отношения и дальнейший ход истории.</p>
         </article>
         <article>
-          <span>03</span>
           <h3>Подготовка без лишней рутины</h3>
           <p>Черновой тезис. Здесь будет описание того, что ведущий берёт на себя, а что требуется от игрока перед началом.</p>
         </article>
