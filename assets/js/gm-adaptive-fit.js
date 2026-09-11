@@ -38,6 +38,8 @@
     screen.style.removeProperty("overflow");
     screen.style.removeProperty("padding-top");
     screen.style.removeProperty("padding-bottom");
+    screen.style.removeProperty("display");
+    screen.style.removeProperty("align-items");
 
     const content = screen.querySelector(":scope > .gm-container");
     if (!content) return;
@@ -61,15 +63,17 @@
     }
 
     /*
-      FAQ is content-driven rather than viewport-driven. In the collapsed
-      state it stays compact; opened <details> simply extend normal page flow
-      instead of triggering a fitter level or an internal scrollbar.
+      FAQ keeps one visible-screen minimum, but its real height is content-driven.
+      Opening answers therefore extends normal page flow instead of triggering a
+      fitter level, clipping content, or introducing an internal scrollbar.
     */
     screen.style.height = "auto";
-    screen.style.minHeight = "0";
+    screen.style.minHeight = "var(--gm-viewport-fit)";
     screen.style.overflow = "visible";
     screen.style.paddingTop = "clamp(46px, 6dvh, 64px)";
     screen.style.paddingBottom = "clamp(46px, 6dvh, 64px)";
+    screen.style.display = "flex";
+    screen.style.alignItems = "center";
 
     const content = screen.querySelector(":scope > .gm-container");
     if (content) {
@@ -129,6 +133,94 @@
     }, config().recheckMs);
   };
 
+  const setupFaqAccordion = () => {
+    const faq = document.getElementById("faq");
+    if (!faq) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    faq.querySelectorAll(".gm-faq-list details").forEach((details) => {
+      const summary = details.querySelector(":scope > summary");
+      if (!summary || details.dataset.faqAnimated === "true") return;
+
+      const answer = document.createElement("div");
+      const inner = document.createElement("div");
+      answer.className = "gm-faq-answer";
+      inner.className = "gm-faq-answer__inner";
+
+      Array.from(details.childNodes).forEach((node) => {
+        if (node === summary || node === answer) return;
+        if (node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) return;
+        inner.appendChild(node);
+      });
+
+      answer.appendChild(inner);
+      details.appendChild(answer);
+      details.dataset.faqAnimated = "true";
+
+      Object.assign(answer.style, {
+        overflow: "hidden",
+        height: details.open ? "auto" : "0px",
+        opacity: details.open ? "1" : "0",
+        transition: "height 380ms cubic-bezier(.22, 1, .36, 1), opacity 220ms ease"
+      });
+
+      summary.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (details.dataset.faqAnimating === "true") return;
+
+        const opening = !details.open;
+
+        if (reducedMotion.matches) {
+          details.open = opening;
+          answer.style.height = opening ? "auto" : "0px";
+          answer.style.opacity = opening ? "1" : "0";
+          scheduleFit();
+          return;
+        }
+
+        details.dataset.faqAnimating = "true";
+
+        if (opening) {
+          details.open = true;
+          answer.style.height = "0px";
+          answer.style.opacity = "0";
+          forceLayout(answer);
+
+          window.requestAnimationFrame(() => {
+            answer.style.height = `${inner.scrollHeight}px`;
+            answer.style.opacity = "1";
+          });
+        } else {
+          answer.style.height = `${answer.scrollHeight}px`;
+          answer.style.opacity = "1";
+          forceLayout(answer);
+
+          window.requestAnimationFrame(() => {
+            answer.style.height = "0px";
+            answer.style.opacity = "0";
+          });
+        }
+
+        const finish = (transitionEvent) => {
+          if (transitionEvent.propertyName !== "height") return;
+          answer.removeEventListener("transitionend", finish);
+
+          if (opening) {
+            answer.style.height = "auto";
+          } else {
+            details.open = false;
+          }
+
+          delete details.dataset.faqAnimating;
+          scheduleFit();
+        };
+
+        answer.addEventListener("transitionend", finish);
+      });
+    });
+  };
+
   window.addEventListener("resize", scheduleFit, { passive: true });
   window.addEventListener("orientationchange", scheduleFit, { passive: true });
   window.addEventListener("load", scheduleFit, { once: true });
@@ -150,5 +242,6 @@
     });
   }
 
+  setupFaqAccordion();
   fitAll();
 })();
