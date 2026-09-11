@@ -11,7 +11,7 @@ description: "Онлайн-игры по настольным ролевым с�
        vertical framing to center so the upper faces are not cropped. */
     #reviews .gm-reviews__media {
       background-size: 112% auto;
-      background-position: 38% 50%;
+      background-position: -15% 50%;
       transform: none;
     }
 
@@ -32,7 +32,7 @@ description: "Онлайн-игры по настольным ролевым с�
     }
 
     #reviews .gm-review-carousel__heading h2 {
-      font-size: clamp(2.25rem, 2.7vw, 3rem);
+      font-size: clamp(3.25rem, 3.7vw, 4rem);
     }
 
     #reviews .gm-review-slide {

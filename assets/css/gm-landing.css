@@ -1,5 +1,6 @@
 :root {
   --gm-landing-petrol-deep: #05262d;
+  --gm-landing-petrol-deep-a5: rgba(5, 38, 45, .7);
   --gm-landing-petrol: #073740;
   --gm-landing-petrol-soft: #0b4a52;
   --gm-landing-petrol-soft-a5: rgba(11, 74, 82, .5);
@@ -325,6 +326,7 @@ body.gm-page {
 
 #games .gm-section__heading p {
   color: var(--gm-ink-soft);
+  font-size: calc(var(--gm-font-size-base) + 2px);
 }
 
 .gm-games-grid--catalog {
@@ -527,7 +529,8 @@ body.gm-page {
   z-index: -2;
   background:
     linear-gradient(180deg, var(--gm-landing-night-a72), var(--gm-night-a42) 42%, var(--gm-landing-night-a88)),
-    linear-gradient(90deg, var(--gm-landing-petrol-deep), var(--gm-transparent) 22%, var(--gm-transparent) 78%, var(--gm-landing-petrol-deep)),
+    linear-gradient(90deg, var(--gm-landing-petrol-deep), var(--gm-transparent) 18%, var(--gm-transparent) 78%, var(--gm-landing-petrol-deep)),
+    linear-gradient(90deg, var(--gm-landing-petrol-deep), var(--gm-landing-petrol-deep-a5) 4%, var(--gm-transparent) 100%),
     radial-gradient(circle at 50% 40%, var(--gm-teal-a12), var(--gm-transparent) 36%);
 }
 
@@ -535,6 +538,7 @@ body.gm-page {
   position: relative;
   width: min(calc(100% - 64px), var(--gm-landing-section-max));
   max-width: var(--gm-landing-section-max);
+  margin-top: 20vw;
 }
 
 .gm-review-carousel__heading {
@@ -619,7 +623,7 @@ body.gm-page {
 .gm-review-slide > p {
   max-width: 1000px;
   margin-bottom: clamp(38px, 6dvh, 72px);
-  font-size: clamp(1.6rem, min(2.3vw, 3.8dvh), 2.45rem);
+  font-size: clamp(1rem, min(1.5vw, 2.5dvh), 1.3rem);
 }
 
 .gm-review-carousel__button {
