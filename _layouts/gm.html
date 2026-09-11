@@ -19,10 +19,20 @@
   <link rel="stylesheet" href="{{ '/assets/css/gm-landing.css' | relative_url }}">
 
   <style>
-    /* Wide-screen visual QA overrides for the unified petrol/teal landing pass. */
+    :root {
+      --gm-landing-header-shade: rgba(2, 16, 19, .58);
+      --gm-landing-transition-glow-qa: rgba(44, 177, 157, .34);
+      --gm-landing-contact-dark-a57: rgba(1, 14, 17, .57);
+      --gm-landing-contact-dark-a73: rgba(1, 14, 17, .73);
+      --gm-landing-contact-teal-a18: rgba(6, 77, 75, .18);
+    }
+
+    /* Keep the header in the same petrol family as the landing, but visibly
+       darker so it reads as a stable navigation layer above the sections. */
     body.gm-page .gm-header {
       border-bottom: 1px solid var(--gm-gold-a19);
       background:
+        linear-gradient(var(--gm-landing-header-shade), var(--gm-landing-header-shade)),
         radial-gradient(circle at 16% 0%, var(--gm-landing-teal-glow), var(--gm-transparent) 30%),
         linear-gradient(90deg, var(--gm-landing-petrol-deep), var(--gm-landing-petrol) 48%, var(--gm-landing-petrol-deep));
       box-shadow: 0 10px 34px var(--gm-black-a12);
@@ -59,8 +69,8 @@
       }
     }
 
-    /* Section seams are overlays only. The neighbouring section backgrounds
-       remain visible underneath; the seam contributes just glow + geometry. */
+    /* Section seams are overlays only. Neighbouring backgrounds remain visible
+       beneath a stronger teal-to-transparent glow and the gold geometry. */
     .gm-transition,
     .gm-transition--dark-paper,
     .gm-transition--paper-dark,
@@ -68,16 +78,16 @@
       background:
         radial-gradient(
           ellipse at center,
-          var(--gm-landing-teal-glow) 0%,
-          var(--gm-teal-a08) 24%,
-          var(--gm-transparent) 70%
+          var(--gm-landing-transition-glow-qa) 0%,
+          var(--gm-landing-teal-glow) 34%,
+          var(--gm-transparent) 72%
         );
     }
 
     .gm-transition::before {
       box-shadow:
-        0 0 18px var(--gm-gold-a19),
-        0 0 34px var(--gm-landing-teal-glow);
+        0 0 22px var(--gm-gold-a22),
+        0 0 42px var(--gm-landing-transition-glow-qa);
     }
 
     .gm-transition::after,
@@ -85,10 +95,22 @@
     .gm-transition--paper-dark::after,
     .gm-transition--dark-dark::after {
       background: var(--gm-transparent);
+      box-shadow:
+        0 0 16px var(--gm-gold-a19),
+        0 0 28px var(--gm-landing-transition-glow-qa);
     }
 
     /* Reviews are one centered composition: heading + rail + pagination.
-       This prevents the top transition from crowding or clipping the title. */
+       Inactive cards keep their full layout width so the rail geometry stays
+       exactly 15% previous / 70% active / 15% next. */
+    .gm-review-slide {
+      transform: translateY(8px);
+    }
+
+    .gm-review-slide.is-active {
+      transform: translateY(0);
+    }
+
     @media (min-width: 961px) {
       .gm-section--reviews {
         display: flex;
@@ -122,27 +144,33 @@
       }
     }
 
-    /* Final poster uses the same petrol/teal darkness as the rest of the page,
-       rather than the older navy contact overlay tokens. */
+    /* Extend media/shade a few pixels past the nominal poster bounds to avoid
+       antialiasing seams at the section dividers. The overlay itself is darker
+       in hue, but about fifteen percentage points more transparent than before. */
+    .gm-contact__media,
+    .gm-contact__shade {
+      inset: -4px 0;
+    }
+
     .gm-contact__shade {
       background:
         linear-gradient(
           90deg,
-          var(--gm-landing-night-a88) 0%,
-          var(--gm-landing-night-a72) 35%,
-          var(--gm-landing-teal-glow-strong) 62%,
-          var(--gm-landing-night-a72) 100%
+          var(--gm-landing-contact-dark-a73) 0%,
+          var(--gm-landing-contact-dark-a57) 35%,
+          var(--gm-landing-contact-teal-a18) 62%,
+          var(--gm-landing-contact-dark-a57) 100%
         ),
         linear-gradient(
           180deg,
-          var(--gm-landing-night-a72) 0%,
+          var(--gm-landing-contact-dark-a57) 0%,
           var(--gm-transparent) 42%,
-          var(--gm-landing-night-a88) 100%
+          var(--gm-landing-contact-dark-a73) 100%
         ),
         radial-gradient(
           circle at 72% 46%,
-          var(--gm-landing-teal-glow-strong),
-          var(--gm-transparent) 32%
+          var(--gm-landing-teal-glow),
+          var(--gm-transparent) 34%
         );
     }
   </style>
