@@ -63,9 +63,30 @@
       background: var(--gm-landing-petrol-soft);
     }
 
+    /* Footer uses the same darker petrol layer as the header so the page ends
+       inside the same visual shell it starts with. */
     body.gm-page .gm-footer {
       border-top-color: var(--gm-gold-a19);
-      background: var(--gm-landing-petrol-deep);
+      background:
+        linear-gradient(var(--gm-landing-header-shade), var(--gm-landing-header-shade)),
+        radial-gradient(circle at 84% 100%, var(--gm-landing-teal-glow), var(--gm-transparent) 30%),
+        linear-gradient(90deg, var(--gm-landing-petrol-deep), var(--gm-landing-petrol) 48%, var(--gm-landing-petrol-deep));
+      box-shadow: 0 -10px 34px var(--gm-black-a12);
+    }
+
+    body.gm-page .gm-footer__inner p {
+      color: var(--gm-muted);
+    }
+
+    body.gm-page .gm-footer__inner a {
+      color: var(--gm-text);
+      text-decoration: none;
+      transition: color .18s ease;
+    }
+
+    body.gm-page .gm-footer__inner a:hover,
+    body.gm-page .gm-footer__inner a:focus-visible {
+      color: var(--gm-gold);
     }
 
     /* The portrait itself now owns the full visual frame. The former glass
@@ -296,6 +317,112 @@
           var(--gm-transparent) 34%
         );
     }
+
+    /* Final CTA keeps only the headline and a compact set of equal contact
+       actions. Telegram remains the primary path while Discord and VK retain
+       the same contact semantics as the header. */
+    .gm-contact-links {
+      margin-top: clamp(26px, 3.6dvh, 38px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .gm-contact-link {
+      position: relative;
+      min-width: 172px;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 0 22px;
+      border: 1px solid var(--gm-gold-a44);
+      border-radius: 2px;
+      background: var(--gm-landing-panel);
+      color: var(--gm-text) !important;
+      font-family: var(--gm-font-body);
+      font-size: var(--gm-font-size-button);
+      font-weight: 700;
+      letter-spacing: var(--gm-letter-ui);
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 12px 32px var(--gm-black-a12);
+      backdrop-filter: blur(10px);
+      transition: transform .18s ease, border-color .18s ease, background-color .18s ease, color .18s ease;
+    }
+
+    .gm-contact-link svg {
+      width: 19px;
+      height: 19px;
+      flex: 0 0 19px;
+    }
+
+    .gm-contact-link--telegram svg,
+    .gm-contact-link--discord svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .gm-contact-link--vk svg {
+      fill: currentColor;
+    }
+
+    .gm-contact-link--primary {
+      border-color: var(--gm-gold);
+      background: var(--gm-gold);
+      color: var(--gm-button-text) !important;
+      box-shadow:
+        inset 0 0 0 1px var(--gm-white-a28),
+        0 12px 32px var(--gm-black-a12);
+    }
+
+    .gm-contact-link:hover,
+    .gm-contact-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--gm-gold);
+      background: var(--gm-landing-petrol-soft);
+      color: var(--gm-gold) !important;
+    }
+
+    .gm-contact-link--primary:hover,
+    .gm-contact-link--primary:focus-visible {
+      background: var(--gm-button-hover);
+      color: var(--gm-button-text) !important;
+    }
+
+    .gm-contact-link__toast {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 10px);
+      width: max-content;
+      padding: 6px 9px;
+      border: 1px solid var(--gm-gold-a19);
+      background: var(--gm-landing-panel-strong);
+      color: var(--gm-text);
+      font-size: var(--gm-font-size-label-xs);
+      font-weight: 400;
+      letter-spacing: .04em;
+      line-height: 1.2;
+      text-transform: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -4px);
+      transition: opacity 50ms linear, transform 120ms ease;
+    }
+
+    .gm-contact-link.is-copied .gm-contact-link__toast {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .gm-contact-link.is-copy-failed .gm-contact-link__toast {
+      color: var(--gm-muted);
+    }
   </style>
 </head>
 
@@ -310,8 +437,8 @@
 
   <footer class="gm-footer">
     <div class="gm-container gm-footer__inner">
-      <p>Терун · Ведущий НРИ</p>
-      <a href="{{ '/' | relative_url }}">Вернуться в портфолио</a>
+      <p>Copyright © 2026 Tereshenko Leonid. All rights reserved.</p>
+      <a href="#portfolio-coming-soon">чем ещё я занимаюсь?</a>
     </div>
   </footer>
 
