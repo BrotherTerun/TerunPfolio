@@ -1,3 +1,4 @@
+{% assign game = site.data.gm_games | where: "slug", page.game_slug | first %}
 <!doctype html>
 <html lang="ru">
 <head>
@@ -6,8 +7,8 @@
 
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
 
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
+  <title>{% if game %}{{ game.title }} — {{ game.eyebrow }}{% else %}{{ page.title | default: site.title }}{% endif %}</title>
+  <meta name="description" content="{% if game and game.pitch %}{{ game.pitch | strip_html | escape }}{% else %}{{ page.description | default: site.description | escape }}{% endif %}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,14 +27,14 @@
   <main id="main-content" class="gm-main">
     <section class="gm-game-hero">
       <div class="gm-game-hero__media gm-media-placeholder" aria-hidden="true">
-        <span>{{ page.media_label | default: 'MEDIA / GAME KEY ART / FULL BLEED' }}</span>
+        <span>{{ game.media_label | default: 'MEDIA / GAME KEY ART / FULL BLEED' }}</span>
       </div>
       <div class="gm-game-hero__shade"></div>
 
       <div class="gm-container gm-game-hero__content">
         <a class="gm-back-link" href="{{ '/gm/#games' | relative_url }}">← Все приключения</a>
-        <h1>{{ page.game_title }}</h1>
-        <p class="gm-hero__lead">{{ page.pitch }}</p>
+        <h1>{{ game.title | default: page.title }}</h1>
+        <p class="gm-hero__lead">{{ game.pitch | default: page.description }}</p>
       </div>
     </section>
 
@@ -41,11 +42,11 @@
       <div class="gm-container gm-game-detail">
         <aside class="gm-game-detail__facts" aria-label="Параметры игры">
           <dl>
-            <div><dt>Система</dt><dd>{{ page.system }}</dd></div>
-            <div><dt>Дата</dt><dd>{{ page.date | default: 'Уточняется' }}</dd></div>
-            <div><dt>Места</dt><dd>{{ page.players }}</dd></div>
-            <div><dt>Длительность</dt><dd>{{ page.duration }}</dd></div>
-            <div><dt>Стоимость</dt><dd>{{ page.price }}</dd></div>
+            <div><dt>Система</dt><dd>{{ game.system | default: 'Уточняется' }}</dd></div>
+            <div><dt>Дата</dt><dd>{{ game.date | default: 'Уточняется' }}</dd></div>
+            <div><dt>Места</dt><dd>{{ game.players | default: 'Уточняется' }}</dd></div>
+            <div><dt>Длительность</dt><dd>{{ game.duration | default: 'Уточняется' }}</dd></div>
+            <div><dt>Стоимость</dt><dd>{{ game.price | default: 'Уточняется' }}</dd></div>
           </dl>
           <a class="gm-button" href="{{ '/gm/#contact' | relative_url }}">Записаться</a>
         </aside>
