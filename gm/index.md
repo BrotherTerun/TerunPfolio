@@ -22,6 +22,33 @@ description: "Онлайн-игры по настольным ролевым с�
     #reviews .gm-review-carousel__pagination {
       transform: translateY(clamp(18px, 2.4dvh, 28px));
     }
+
+    /* Return the review rail to its earlier compact proportions. The 70/15/15
+       carousel geometry stays intact, but the whole rail is narrower so more of
+       the live-table photo remains visible around it. */
+    #reviews .gm-review-carousel__shell {
+      width: min(calc(100% - 64px), 1280px);
+      max-width: 1280px;
+    }
+
+    #reviews .gm-review-carousel__heading h2 {
+      font-size: clamp(2.25rem, 2.7vw, 3rem);
+    }
+
+    #reviews .gm-review-slide {
+      min-height: clamp(315px, 38dvh, 400px);
+      padding: clamp(30px, 3vw, 46px);
+    }
+
+    #reviews .gm-review-slide::before {
+      font-size: clamp(4rem, 7dvh, 5.25rem);
+    }
+
+    #reviews .gm-review-slide > p {
+      max-width: 880px;
+      margin-bottom: clamp(24px, 4dvh, 42px);
+      font-size: clamp(1.25rem, min(1.7vw, 2.8dvh), 1.75rem);
+    }
   }
 </style>
 
