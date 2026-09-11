@@ -77,7 +77,6 @@ function setupGmReviewCarousel() {
   if (originalSlides.length === 0) return;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const transitionDuration = 1100;
   const dwellDuration = 7000;
   const interactionDelay = 18000;
 
@@ -89,6 +88,7 @@ function setupGmReviewCarousel() {
   let pendingAutoplayDelay = dwellDuration;
   let pointerStartX = null;
   let resizeFrame = null;
+  let jumpCleanupFrame = null;
 
   const firstClone = originalSlides[0].cloneNode(true);
   const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
@@ -129,14 +129,33 @@ function setupGmReviewCarousel() {
     };
   }
 
+  function releaseJumpState() {
+    window.cancelAnimationFrame(jumpCleanupFrame);
+    jumpCleanupFrame = window.requestAnimationFrame(() => {
+      track.classList.remove("is-jumping");
+      jumpCleanupFrame = null;
+    });
+  }
+
   function setTransform(index, animate = true) {
     const { slideWidth, inset } = getMetrics();
-    track.classList.toggle("is-jumping", !animate);
+
+    if (animate) {
+      window.cancelAnimationFrame(jumpCleanupFrame);
+      jumpCleanupFrame = null;
+      track.classList.remove("is-jumping");
+    } else {
+      track.classList.add("is-jumping");
+    }
+
     track.style.transform = `translate3d(${Math.round(inset - index * slideWidth)}px, 0, 0)`;
 
     if (!animate) {
+      /* Keep the no-transition state alive through the accompanying active-slide
+         class swap. Removing it synchronously made the cloned boundary slide
+         animate vertically while the rail itself snapped horizontally. */
       void track.offsetWidth;
-      track.classList.remove("is-jumping");
+      releaseJumpState();
     }
   }
 
