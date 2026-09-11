@@ -220,10 +220,20 @@ description: "Онлайн-игры по настольным ролевым с�
      ========================================================= */
   .gm-review-carousel__shell {
     position: relative;
+    width: min(calc(100% - 64px), 1540px);
+    max-width: 1540px;
   }
 
   .gm-review-carousel__heading {
-    margin-bottom: clamp(20px, 3dvh, 34px);
+    display: block;
+    max-width: none;
+    margin: 0 auto clamp(24px, 3.2dvh, 38px);
+    text-align: center;
+  }
+
+  .gm-review-carousel__heading h2 {
+    max-width: none;
+    margin-inline: auto;
   }
 
   .gm-review-carousel__stage {
@@ -231,7 +241,7 @@ description: "Онлайн-игры по настольным ролевым с�
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    gap: clamp(12px, 1.8vw, 24px);
+    gap: clamp(14px, 1.5vw, 22px);
   }
 
   .gm-review-carousel__viewport {
@@ -268,8 +278,8 @@ description: "Онлайн-игры по настольным ролевым с�
     flex: 0 0 100%;
     width: 100%;
     min-width: 100%;
-    min-height: clamp(320px, 44dvh, 470px);
-    padding: clamp(34px, 4vw, 66px);
+    min-height: clamp(430px, 54dvh, 560px);
+    padding: clamp(48px, 4.6vw, 78px);
     border: 0;
     background:
       radial-gradient(circle at 88% 16%, var(--gm-gold-a08), var(--gm-transparent) 24%),
@@ -289,9 +299,9 @@ description: "Онлайн-игры по настольным ролевым с�
   }
 
   .gm-review-slide > p {
-    max-width: 980px;
-    margin-bottom: clamp(36px, 6dvh, 74px);
-    font-size: clamp(1.65rem, min(2.35vw, 4dvh), 2.45rem);
+    max-width: 1120px;
+    margin-bottom: clamp(42px, 7dvh, 82px);
+    font-size: clamp(1.75rem, min(2.55vw, 4.2dvh), 2.7rem);
   }
 
   .gm-review-slide footer {
@@ -313,12 +323,22 @@ description: "Онлайн-игры по настольным ролевым с�
     color: var(--gm-text);
     font-family: var(--gm-font-display);
     font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1;
     cursor: pointer;
     transition:
       border-color .2s ease,
       color .2s ease,
       background-color .2s ease,
       transform .2s ease;
+  }
+
+  .gm-review-carousel__button > span {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    transform: translateY(-0.08em);
   }
 
   .gm-review-carousel__button:hover,
@@ -393,26 +413,24 @@ description: "Онлайн-игры по настольным ролевым с�
   }
 
   @media (max-width: 960px) {
+    .gm-review-carousel__shell {
+      width: min(calc(100% - 36px), var(--gm-max));
+    }
+
     .gm-review-carousel__stage {
       grid-template-columns: 44px minmax(0, 1fr) 44px;
       gap: 10px;
     }
 
     .gm-review-slide {
-      min-height: 360px;
-      padding: 34px 30px;
+      min-height: 380px;
+      padding: 36px 32px;
     }
   }
 
   @media (max-width: 680px) {
     .gm-review-carousel__heading {
-      display: block;
-      text-align: left;
-    }
-
-    .gm-review-carousel__heading > p:last-child {
-      max-width: none;
-      margin-top: 12px;
+      text-align: center;
     }
 
     .gm-review-carousel__stage {
@@ -512,11 +530,8 @@ description: "Онлайн-игры по настольным ролевым с�
   data-project-carousel
 >
   <div class="gm-container gm-review-carousel__shell">
-    <div class="gm-section__heading gm-review-carousel__heading">
-      <div>
-        <h2 id="reviews-title">Как это ощущается за столом</h2>
-      </div>
-      <p>Сюда пойдут реальные отзывы участников прежних игр. До публикации коммерческих кейсов не называем их «отзывами клиентов».</p>
+    <div class="gm-section__heading gm-section__heading--stacked gm-review-carousel__heading">
+      <h2 id="reviews-title">Как это ощущается за столом</h2>
     </div>
 
     <div class="gm-review-carousel__stage">
