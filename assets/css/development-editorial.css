@@ -1726,8 +1726,8 @@ body.dlmt-page {
 /* Full-bleed project stage; heading and slide copy share the same left axis. */
 @media (min-width: 961px) {
   .dlmt-project-carousel {
-    width: calc(100% + var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space));
-    margin-left: calc(-1 * (var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space)));
+    width: 100%;
+    margin-left: 0;
     padding: 0;
   }
 
