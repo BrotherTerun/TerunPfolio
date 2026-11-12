@@ -1769,10 +1769,9 @@ body.dlmt-page {
 /* Widen the contacts composition towards the left without changing mobile gutters. */
 @media (min-width: 961px) {
   .dlmt-contact {
-    width: calc(100% + 10vw);
-    margin-left: -10vw;
-    padding-left: var(--dlmt-gutter);
-    padding-right: var(--dlmt-gutter);
+    --dlmt-contact-shift: min(10vw, calc(var(--dlmt-section-nav-safe-space) + var(--dlmt-gutter) - 12px));
+    width: calc(100% + var(--dlmt-contact-shift));
+    margin-left: calc(-1 * var(--dlmt-contact-shift));
   }
 }
 
