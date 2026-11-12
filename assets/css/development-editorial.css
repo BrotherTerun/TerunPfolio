@@ -476,6 +476,7 @@ body.dlmt-page::before {
 }
 
 .dlmt-hero__stage {
+  grid-row: 1;
   position: relative;
   min-width: 0;
   min-height: 0;
@@ -624,6 +625,7 @@ body.dlmt-page::before {
 
 /* Compact facts row below the hero */
 .dlmt-hero__profile {
+  grid-row: 2;
   align-self: end;
   width: 100%;
   min-height: 0;
