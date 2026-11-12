@@ -1,0 +1,135 @@
+/* =================================================================
+   GAME DESIGN FIT LEVELS
+   Applied per section by gamedesign-adaptive-fit.js.
+   ================================================================= */
+
+@media (min-width: 961px) {
+  .gd-screen[data-fit-level="1"] {
+    padding-top: var(--gd-fit1-section-pad-y) !important;
+    padding-bottom: var(--gd-fit1-section-pad-y) !important;
+  }
+  .gd-screen[data-fit-level="2"] {
+    padding-top: var(--gd-fit2-section-pad-y) !important;
+    padding-bottom: var(--gd-fit2-section-pad-y) !important;
+  }
+  .gd-screen[data-fit-level="3"] {
+    padding-top: var(--gd-fit3-section-pad-y) !important;
+    padding-bottom: var(--gd-fit3-section-pad-y) !important;
+  }
+
+  .gd-screen[data-fit-level="1"] :where(.gd-section__header, .gd-section__header--compact) {
+    margin-bottom: var(--gd-fit1-section-header-gap) !important;
+  }
+  .gd-screen[data-fit-level="2"] :where(.gd-section__header, .gd-section__header--compact) {
+    margin-bottom: var(--gd-fit2-section-header-gap) !important;
+  }
+  .gd-screen[data-fit-level="3"] :where(.gd-section__header, .gd-section__header--compact) {
+    margin-bottom: var(--gd-fit3-section-header-gap) !important;
+  }
+
+  .gd-screen[data-fit-level="1"] :where(.gd-background-card, .gd-skill-card, .gd-contact-card) {
+    padding: var(--gd-fit1-card-pad-y) var(--gd-fit1-card-pad-x) !important;
+    gap: var(--gd-fit1-card-gap) !important;
+  }
+  .gd-screen[data-fit-level="2"] :where(.gd-background-card, .gd-skill-card, .gd-contact-card) {
+    padding: var(--gd-fit2-card-pad-y) var(--gd-fit2-card-pad-x) !important;
+    gap: var(--gd-fit2-card-gap) !important;
+  }
+  .gd-screen[data-fit-level="3"] :where(.gd-background-card, .gd-skill-card, .gd-contact-card) {
+    padding: var(--gd-fit3-card-pad-y) var(--gd-fit3-card-pad-x) !important;
+    gap: var(--gd-fit3-card-gap) !important;
+  }
+
+  .gd-screen[data-fit-level="1"] :where(.gd-background-layout, .gd-background-stack, .gd-background-secondary-grid, .gd-skill-grid, .gd-contact-grid) {
+    gap: var(--gd-fit1-grid-gap) !important;
+  }
+  .gd-screen[data-fit-level="2"] :where(.gd-background-layout, .gd-background-stack, .gd-background-secondary-grid, .gd-skill-grid, .gd-contact-grid) {
+    gap: var(--gd-fit2-grid-gap) !important;
+  }
+  .gd-screen[data-fit-level="3"] :where(.gd-background-layout, .gd-background-stack, .gd-background-secondary-grid, .gd-skill-grid, .gd-contact-grid) {
+    gap: var(--gd-fit3-grid-gap) !important;
+  }
+
+  .gd-screen[data-fit-level="1"] :where(.gd-background-card p, .gd-contact-intro > p:last-child, .gd-skill-card ul) {
+    font-size: var(--gd-fit1-body) !important;
+    line-height: var(--gd-fit1-body-line) !important;
+  }
+  .gd-screen[data-fit-level="2"] :where(.gd-background-card p, .gd-contact-intro > p:last-child, .gd-skill-card ul) {
+    font-size: var(--gd-fit2-body) !important;
+    line-height: var(--gd-fit2-body-line) !important;
+  }
+  .gd-screen[data-fit-level="3"] :where(.gd-background-card p, .gd-contact-intro > p:last-child, .gd-skill-card ul) {
+    font-size: var(--gd-fit3-body) !important;
+    line-height: var(--gd-fit3-body-line) !important;
+  }
+
+  .gd-screen[data-fit-level="1"] :where(.gd-label, .gd-section-index) { font-size: var(--gd-fit1-label) !important; }
+  .gd-screen[data-fit-level="2"] :where(.gd-label, .gd-section-index) { font-size: var(--gd-fit2-label) !important; }
+  .gd-screen[data-fit-level="3"] :where(.gd-label, .gd-section-index) { font-size: var(--gd-fit3-label) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-background-card h3 { font-size: var(--gd-fit1-card-title) !important; }
+  .gd-screen[data-fit-level="2"] .gd-background-card h3 { font-size: var(--gd-fit2-card-title) !important; }
+  .gd-screen[data-fit-level="3"] .gd-background-card h3 { font-size: var(--gd-fit3-card-title) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-background-card__facts span { font-size: var(--gd-fit1-tag) !important; }
+  .gd-screen[data-fit-level="2"] .gd-background-card__facts span { font-size: var(--gd-fit2-tag) !important; }
+  .gd-screen[data-fit-level="3"] .gd-background-card__facts span { font-size: var(--gd-fit3-tag) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-background-stack {
+    grid-template-rows: minmax(0, 1fr) minmax(0, 0.82fr) !important;
+  }
+  .gd-screen[data-fit-level="2"] .gd-background-stack {
+    grid-template-rows: minmax(0, 0.94fr) minmax(0, 0.76fr) !important;
+  }
+  .gd-screen[data-fit-level="3"] .gd-background-stack {
+    grid-template-rows: minmax(0, 0.9fr) minmax(0, 0.7fr) !important;
+  }
+
+  .gd-screen[data-fit-level="1"] .gd-reading-list > div { padding: 6px 8px !important; }
+  .gd-screen[data-fit-level="2"] .gd-reading-list > div { padding: 5px 7px !important; }
+  .gd-screen[data-fit-level="3"] .gd-reading-list > div { padding: 4px 6px !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-heading { margin-bottom: 12px !important; gap: 34px !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-heading { margin-bottom: 9px !important; gap: 28px !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-heading { margin-bottom: 6px !important; gap: 22px !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-heading h2 { font-size: var(--gd-fit1-workflow-title) !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-heading h2 { font-size: var(--gd-fit2-workflow-title) !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-heading h2 { font-size: var(--gd-fit3-workflow-title) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-heading__lead { font-size: var(--gd-fit1-workflow-lead) !important; line-height: 1.42 !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-heading__lead { font-size: var(--gd-fit2-workflow-lead) !important; line-height: 1.36 !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-heading__lead { font-size: var(--gd-fit3-workflow-lead) !important; line-height: 1.32 !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-stage { padding: var(--gd-fit1-stage-pad-y) var(--gd-fit1-stage-pad-x) !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-stage { padding: var(--gd-fit2-stage-pad-y) var(--gd-fit2-stage-pad-x) !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-stage { padding: var(--gd-fit3-stage-pad-y) var(--gd-fit3-stage-pad-x) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-stage h3 { margin: 10px 0 7px !important; font-size: var(--gd-fit1-stage-title) !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-stage h3 { margin: 8px 0 6px !important; font-size: var(--gd-fit2-stage-title) !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-stage h3 { margin: 6px 0 4px !important; font-size: var(--gd-fit3-stage-title) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-stage__description { min-height: 0 !important; font-size: var(--gd-fit1-stage-body) !important; line-height: 1.36 !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-stage__description { min-height: 0 !important; font-size: var(--gd-fit2-stage-body) !important; line-height: 1.31 !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-stage__description { min-height: 0 !important; font-size: var(--gd-fit3-stage-body) !important; line-height: 1.27 !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-stage__result { margin-top: var(--gd-fit1-stage-result-gap) !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-stage__result { margin-top: var(--gd-fit2-stage-result-gap) !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-stage__result { margin-top: var(--gd-fit3-stage-result-gap) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-stage__result strong { font-size: var(--gd-fit1-stage-result) !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-stage__result strong { font-size: var(--gd-fit2-stage-result) !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-stage__result strong { font-size: var(--gd-fit3-stage-result) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-stage__tags { margin-top: 8px !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-stage__tags { margin-top: 6px !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-stage__tags { margin-top: 4px !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-stage__tags span { padding: 4px 7px !important; font-size: var(--gd-fit1-stage-tag) !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-stage__tags span { padding: 3px 6px !important; font-size: var(--gd-fit2-stage-tag) !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-stage__tags span { padding: 3px 5px !important; font-size: var(--gd-fit3-stage-tag) !important; }
+
+  .gd-screen[data-fit-level="1"] .gd-workflow-principle { margin-top: 8px !important; padding-top: 7px !important; }
+  .gd-screen[data-fit-level="2"] .gd-workflow-principle { margin-top: 6px !important; padding-top: 5px !important; }
+  .gd-screen[data-fit-level="3"] .gd-workflow-principle { margin-top: 4px !important; padding-top: 4px !important; }
+}
