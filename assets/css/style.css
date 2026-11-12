@@ -39,7 +39,7 @@ body{
   color:var(--text);
 
   height: 100%;
-  background-image: url('../images/Background_1.png' );
+  background-image: url('../images/Background.png' );
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

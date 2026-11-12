@@ -50,7 +50,7 @@ description: "Портфолио — геймдизайн, сценаристи�
 
   <div class="hero-content">
     <div class="panel active" id="photo">
-        <img src="{{ '/assets/images/avatar_1_1.png' | relative_url }}" 
+        <img src="{{ '/assets/images/avatar_1_2.png' | relative_url }}" 
             alt="Аватар" 
             class="avatar">
     </div>
