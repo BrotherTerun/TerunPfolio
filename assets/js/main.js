@@ -1,107 +1,74 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".content-wrapper");
+  if (!wrapper) return;
 
-    const cards = document.querySelectorAll('.menu-deck .card');
-    cards.forEach((card, idx) => {
-        card.addEventListener('mouseenter', () => {
-            cards.forEach((c, i) => {
-            c.style.transform = i <= idx ? `translateX(${i*30}px)` : `translateX(${i*60}px)`;
-            });
-        });
-        card.addEventListener('mouseleave', () => {
-            cards.forEach((c, i) => c.style.transform = `translateX(${i*30}px)`);
-        });
-    });
-});
+  const panels = Array.from(wrapper.querySelectorAll(".content"));
+  if (panels.length < 2) return;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const wrapper = document.querySelector('.content-wrapper');
-    if (!wrapper) return;
+  let currentIndex = panels.findIndex(panel => panel.classList.contains("active"));
+  if (currentIndex < 0) currentIndex = 0;
 
-    const panels = Array.from(wrapper.querySelectorAll('.content'));
-    let currentIndex = panels.findIndex(p => p.classList.contains('active'));
-    if (currentIndex === -1) currentIndex = 0, panels[0].classList.add('active');
+  let isAnimating = false;
+  const durationFallback = 800;
 
-    let isAnimating = false;
+  function showPanel(nextIndex, direction = "down") {
+    if (isAnimating || nextIndex === currentIndex) return;
+    if (nextIndex < 0 || nextIndex >= panels.length) return;
 
-    // helper: найти индекс панели по name
-    function findIndexByName(name) {
-        return panels.findIndex(p => p.dataset.panel === name);
+    isAnimating = true;
+    const current = panels[currentIndex];
+    const next = panels[nextIndex];
+
+    next.classList.remove("active", "slide-in", "slide-in-down");
+    current.classList.remove("slide-out", "slide-out-down");
+
+    if (direction === "down") {
+      current.classList.add("slide-out");
+      next.classList.add("slide-in");
+    } else {
+      current.classList.add("slide-out-down");
+      next.classList.add("slide-in-down");
     }
 
-    function showPanel(nextIndex, direction = "down") {
-        if (isAnimating) return;
-        if (nextIndex === currentIndex) return;
-        if (nextIndex < 0 || nextIndex >= panels.length) return;
+    let finished = false;
+    function finish() {
+      if (finished) return;
+      finished = true;
+      current.classList.remove("slide-out", "slide-out-down", "active");
+      next.classList.remove("slide-in", "slide-in-down");
+      next.classList.add("active");
+      current.setAttribute("aria-hidden", "true");
+      next.removeAttribute("aria-hidden");
+      current.removeEventListener("animationend", onAnimationEnd);
+      window.clearTimeout(fallbackTimer);
+      currentIndex = nextIndex;
+      isAnimating = false;
 
-        isAnimating = true;
-        const current = panels[currentIndex];
-        const next = panels[nextIndex];
-
-        // стартовые состояния — гарантируем корректный z-index и pointer-events
-        next.classList.remove('active');
-        next.classList.remove('slide-in','slide-out');
-        current.classList.remove('slide-in','slide-out');
-
-        // 1) запустить анимацию: текущая уезжает вверх, новая заезжает снизу
-        if (direction === "down") {
-            current.classList.add('slide-out');
-            next.classList.add('slide-in');
-        } else {
-            current.classList.add('slide-out-down');
-            next.classList.add('slide-in-down');
-        }
-
-        // по завершении анимаций убираем временные классы и выставляем active
-        const onAnimEnd = (ev) => {
-        // очистка
-        current.classList.remove('slide-out','slide-out-down','active');
-        next.classList.remove('slide-in','slide-in-down');
-        next.classList.add('active');
-
-        // aria-hidden для доступности
-        current.setAttribute('aria-hidden', 'true');
-        next.removeAttribute('aria-hidden');
-
-        // перенос фокуса внутрь новой панели (первый фокусируемый элемент)
-        const focusable = next.querySelector('button, a, input, textarea, [tabindex]:not([tabindex="-1"])');
-        if (focusable) focusable.focus();
-
-        current.removeEventListener('animationend', onAnimEnd);
-        isAnimating = false;
-        };
-
-        current.addEventListener('animationend', onAnimEnd);
-        currentIndex = nextIndex;
+      const focusTarget = next.querySelector("a, button");
+      if (focusTarget) focusTarget.focus({ preventScroll: true });
     }
 
-    // делегируем клики по кнопкам
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-target]');
-        if (!btn) return;
+    function onAnimationEnd(event) {
+      if (event.target === current) finish();
+    }
 
-        const target = btn.dataset.target;
-        if (!target) return;
+    current.addEventListener("animationend", onAnimationEnd);
+    const fallbackTimer = window.setTimeout(finish, durationFallback);
+  }
 
-        // special tokens
-        if (target === 'next' || target === 'down') {
-            const nextIndex = Math.min(currentIndex + 1, panels.length - 1);
-            showPanel(nextIndex, "down");
-            return;
-        }
+  wrapper.addEventListener("click", event => {
+    const button = event.target.closest("button[data-target]");
+    if (!button || !wrapper.contains(button)) return;
 
-        if (target === 'prev' || target === 'top') {
-            const prevIndex = Math.max(currentIndex - 1, 0);
-            showPanel(prevIndex, "up");
-            return;
-        }
+    if (button.dataset.target === "next") {
+      showPanel(currentIndex + 1, "down");
+    } else if (button.dataset.target === "prev") {
+      showPanel(currentIndex - 1, "up");
+    }
+  });
 
-        // otherwise treat as name
-        const idx = findIndexByName(target);
-        if (idx !== -1) showPanel(idx);
-    });
-
-    // Инициализация aria-hidden
-    panels.forEach((p, i) => {
-        if (!p.classList.contains('active')) p.setAttribute('aria-hidden', 'true');
-    });
+  panels.forEach((panel, index) => {
+    if (index !== currentIndex) panel.setAttribute("aria-hidden", "true");
+    else panel.removeAttribute("aria-hidden");
+  });
 });
