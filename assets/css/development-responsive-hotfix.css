@@ -1,0 +1,210 @@
+/* ================================================================
+   RESPONSIVE HOTFIX: project carousel mobile composition + desktop avatar
+   Loaded after gamedesign-responsive.css.
+   ================================================================ */
+
+/*
+  Desktop / laptop avatar:
+  keep the intentional oversized portrait crop used before the
+  responsive pass. The generic `.gd-page img { max-width: 100%; }`
+  rule would otherwise constrain the portrait to the visual column.
+*/
+@media (min-width: 961px) {
+  .gd-page .gd-hero__avatar {
+    width: auto;
+    height: 96%;
+
+    max-width: none !important;
+    max-height: none;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    transform: translateX(5%);
+  }
+}
+
+/*
+  PHONE-ONLY PROJECT CAROUSEL
+  ---------------------------
+  The desktop slide composition is deliberately replaced on phones.
+  A 3:4 portrait card gives the project art and title enough vertical
+  room without forcing supporting copy into the image.
+
+  Everything in this block is capped at 640px, so tablets, laptops and
+  desktop monitors keep their existing layout untouched.
+*/
+@media (max-width: 640px) {
+  .gd-section--projects {
+    padding: 0 0 28px !important;
+  }
+
+  .gd-project-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    height: auto;
+    min-height: 0;
+
+    overflow: hidden;
+  }
+
+  /* Portrait mobile presentation. Background art is cropped by cover. */
+  .gd-project-viewport {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3 / 4;
+
+    overflow: hidden;
+  }
+
+  .gd-project-card {
+    aspect-ratio: 3 / 4;
+  }
+
+  .gd-project-card__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 14, 10, 0.96) 0%,
+        rgba(8, 14, 10, 0.72) 44%,
+        rgba(8, 14, 10, 0.18) 80%,
+        rgba(8, 14, 10, 0.06) 100%
+      ),
+      linear-gradient(
+        to top,
+        rgba(8, 13, 10, 0.98) 0%,
+        rgba(8, 13, 10, 0.48) 38%,
+        rgba(8, 13, 10, 0.10) 76%,
+        rgba(8, 13, 10, 0.04) 100%
+      );
+  }
+
+  /* Section heading: + roughly 1–2 typographic points from prior mobile pass. */
+  .gd-project-heading {
+    top: 15px;
+    left: 16px;
+
+    max-width: calc(100% - 32px);
+  }
+
+  .gd-project-heading .gd-section-index {
+    font-size: clamp(0.5rem, 2.2vw, 0.6rem);
+    line-height: 1;
+  }
+
+  .gd-project-heading h2 {
+    margin-top: 6px;
+
+    font-size: clamp(1.14rem, 5.35vw, 1.42rem);
+    line-height: 1;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+  }
+
+  .gd-project-card__content {
+    width: min(82%, 310px);
+
+    padding:
+      14px
+      38px
+      24px
+      16px;
+  }
+
+  /* Project type becomes supporting metadata, not a competing headline. */
+  .gd-project-card__type {
+    margin: 0 0 5px;
+
+    font-size: clamp(0.38rem, 1.72vw, 0.48rem);
+    line-height: 1.15;
+    letter-spacing: 0.045em;
+
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  /* Keep project-name scale exactly as in the previous mobile pass. */
+  .gd-project-card h3 {
+    margin: 3px 0 6px;
+
+    font-size: clamp(1.05rem, 4.8vw, 1.32rem);
+    line-height: 1;
+    letter-spacing: -0.025em;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+  }
+
+  /* Supporting description is intentionally omitted on phone slides. */
+  .gd-project-card__content > p:not(
+    .gd-project-card__type,
+    .gd-project-card__stack
+  ) {
+    display: none !important;
+  }
+
+  /* Technology stack remains tertiary and hidden on phones. */
+  .gd-project-card__stack {
+    display: none;
+  }
+
+  .gd-project-card a {
+    margin-top: 3px;
+  }
+
+  /* Pagination stays outside the image so it never competes with copy. */
+  .gd-project-pagination {
+    position: relative;
+    left: auto;
+    bottom: auto;
+
+    align-self: center;
+
+    margin: 12px auto 0;
+
+    transform: none;
+  }
+
+  .gd-carousel-button {
+    top: calc(50% - 22px);
+  }
+}
+
+@media (max-width: 420px) {
+  .gd-project-heading {
+    top: 13px;
+    left: 13px;
+  }
+
+  .gd-project-heading h2 {
+    font-size: clamp(1.08rem, 5.15vw, 1.28rem);
+  }
+
+  .gd-project-card__content {
+    width: 84%;
+
+    padding:
+      11px
+      32px
+      20px
+      13px;
+  }
+
+  .gd-project-card__type {
+    font-size: clamp(0.36rem, 1.65vw, 0.44rem);
+  }
+
+  /* Keep the previous narrow-phone project-name scale unchanged. */
+  .gd-project-card h3 {
+    font-size: clamp(0.98rem, 4.45vw, 1.16rem);
+  }
+
+  .gd-project-pagination {
+    margin-top: 10px;
+  }
+}
