@@ -1,16 +1,16 @@
 /* ================================================================
    RESPONSIVE HOTFIX: project carousel mobile composition + desktop avatar
-   Loaded after gamedesign-responsive.css.
+   Loaded after development-responsive.css.
    ================================================================ */
 
 /*
   Desktop / laptop avatar:
   keep the intentional oversized portrait crop used before the
-  responsive pass. The generic `.gd-page img { max-width: 100%; }`
+  responsive pass. The generic `.dlmt-page img { max-width: 100%; }`
   rule would otherwise constrain the portrait to the visual column.
 */
 @media (min-width: 961px) {
-  .gd-page .gd-hero__avatar {
+  .dlmt-page .dlmt-hero__avatar {
     width: auto;
     height: 96%;
 
@@ -35,11 +35,11 @@
   desktop monitors keep their existing layout untouched.
 */
 @media (max-width: 640px) {
-  .gd-section--projects {
+  .dlmt-section--projects {
     padding: 0 0 28px !important;
   }
 
-  .gd-project-carousel {
+  .dlmt-project-carousel {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -51,7 +51,7 @@
   }
 
   /* Portrait mobile presentation. Background art is cropped by cover. */
-  .gd-project-viewport {
+  .dlmt-project-viewport {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 3 / 4;
@@ -59,11 +59,11 @@
     overflow: hidden;
   }
 
-  .gd-project-card {
+  .dlmt-project-card {
     aspect-ratio: 3 / 4;
   }
 
-  .gd-project-card__overlay {
+  .dlmt-project-card__overlay {
     background:
       linear-gradient(
         90deg,
@@ -82,19 +82,19 @@
   }
 
   /* Section heading: + roughly 1–2 typographic points from prior mobile pass. */
-  .gd-project-heading {
+  .dlmt-project-heading {
     top: 15px;
     left: 16px;
 
     max-width: calc(100% - 32px);
   }
 
-  .gd-project-heading .gd-section-index {
+  .dlmt-project-heading .dlmt-section-index {
     font-size: clamp(0.5rem, 2.2vw, 0.6rem);
     line-height: 1;
   }
 
-  .gd-project-heading h2 {
+  .dlmt-project-heading h2 {
     margin-top: 6px;
 
     font-size: clamp(1.14rem, 5.35vw, 1.42rem);
@@ -105,7 +105,7 @@
     white-space: nowrap;
   }
 
-  .gd-project-card__content {
+  .dlmt-project-card__content {
     width: min(82%, 310px);
 
     padding:
@@ -116,7 +116,7 @@
   }
 
   /* Project type becomes supporting metadata, not a competing headline. */
-  .gd-project-card__type {
+  .dlmt-project-card__type {
     margin: 0 0 5px;
 
     font-size: clamp(0.38rem, 1.72vw, 0.48rem);
@@ -128,7 +128,7 @@
   }
 
   /* Keep project-name scale exactly as in the previous mobile pass. */
-  .gd-project-card h3 {
+  .dlmt-project-card h3 {
     margin: 3px 0 6px;
 
     font-size: clamp(1.05rem, 4.8vw, 1.32rem);
@@ -141,24 +141,24 @@
   }
 
   /* Supporting description is intentionally omitted on phone slides. */
-  .gd-project-card__content > p:not(
-    .gd-project-card__type,
-    .gd-project-card__stack
+  .dlmt-project-card__content > p:not(
+    .dlmt-project-card__type,
+    .dlmt-project-card__stack
   ) {
     display: none !important;
   }
 
   /* Technology stack remains tertiary and hidden on phones. */
-  .gd-project-card__stack {
+  .dlmt-project-card__stack {
     display: none;
   }
 
-  .gd-project-card a {
+  .dlmt-project-card a {
     margin-top: 3px;
   }
 
   /* Pagination stays outside the image so it never competes with copy. */
-  .gd-project-pagination {
+  .dlmt-project-pagination {
     position: relative;
     left: auto;
     bottom: auto;
@@ -170,22 +170,22 @@
     transform: none;
   }
 
-  .gd-carousel-button {
+  .dlmt-carousel-button {
     top: calc(50% - 22px);
   }
 }
 
 @media (max-width: 420px) {
-  .gd-project-heading {
+  .dlmt-project-heading {
     top: 13px;
     left: 13px;
   }
 
-  .gd-project-heading h2 {
+  .dlmt-project-heading h2 {
     font-size: clamp(1.08rem, 5.15vw, 1.28rem);
   }
 
-  .gd-project-card__content {
+  .dlmt-project-card__content {
     width: 84%;
 
     padding:
@@ -195,16 +195,16 @@
       13px;
   }
 
-  .gd-project-card__type {
+  .dlmt-project-card__type {
     font-size: clamp(0.36rem, 1.65vw, 0.44rem);
   }
 
   /* Keep the previous narrow-phone project-name scale unchanged. */
-  .gd-project-card h3 {
+  .dlmt-project-card h3 {
     font-size: clamp(0.98rem, 4.45vw, 1.16rem);
   }
 
-  .gd-project-pagination {
+  .dlmt-project-pagination {
     margin-top: 10px;
   }
 }
