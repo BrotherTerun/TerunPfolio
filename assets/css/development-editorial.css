@@ -1968,3 +1968,176 @@ body.dlmt-page {
     padding: 48px 0 !important;
   }
 }
+
+
+/* ================================================================
+   PROJECT STAGE — FULL BLEED BACKDROP + TOP PROGRESS
+   ================================================================ */
+
+/* The carousel viewport is the full-screen image layer. The title,
+   controls and progress remain independent overlays above it. */
+.dlmt-section--projects {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.dlmt-section--projects .dlmt-project-carousel {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dlmt-section--projects .dlmt-project-viewport {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+
+.dlmt-section--projects .dlmt-project-track,
+.dlmt-section--projects .dlmt-project-card {
+  height: 100%;
+  min-height: 0;
+}
+
+.dlmt-section--projects .dlmt-project-heading {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 8;
+  width: 100%;
+  margin: 0;
+  padding:
+    clamp(24px, 3.4vh, 42px)
+    var(--dlmt-gutter)
+    clamp(14px, 2vh, 22px)
+    calc(var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space));
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 13, 15, 0.94) 0%,
+    rgba(8, 13, 15, 0.78) 72%,
+    rgba(8, 13, 15, 0.20) 100%
+  );
+}
+
+.dlmt-section--projects .dlmt-project-heading > * {
+  pointer-events: auto;
+}
+
+.dlmt-section--projects .dlmt-project-card__content {
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+  width: min(780px, 72%);
+  margin-left: 0;
+  padding-left: calc(var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space));
+  padding-right: var(--dlmt-gutter);
+}
+
+.dlmt-section--projects .dlmt-project-progress {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  height: 4px;
+  border-radius: 0;
+}
+
+/* Remove the obsolete translucent rail on the left edge. */
+.dlmt-side-nav::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* The old base stylesheet gives the page body a flex layout and
+   legacy spacing. Explicitly neutralize those root-level leftovers. */
+html,
+body.dlmt-page {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #080d0f;
+}
+
+body.dlmt-page {
+  min-height: 100vh;
+  height: auto;
+  overflow-x: clip;
+}
+
+.dlmt-main {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keep navigation marks as deliberate straight strokes, not pills. */
+.dlmt-side-nav a span,
+.dlmt-side-nav__marker {
+  box-sizing: border-box;
+  flex: 0 0 3px;
+  width: 3px !important;
+  min-width: 3px;
+  height: 28px !important;
+  min-height: 28px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  transform: none !important;
+}
+
+.dlmt-side-nav a.is-active span,
+.dlmt-side-nav a.is-active .dlmt-side-nav__marker {
+  height: 38px !important;
+  min-height: 38px;
+  background: var(--dlmt-accent) !important;
+  box-shadow: 0 0 8px var(--dlmt-accent-glow);
+}
+
+@media (max-width: 960px) {
+  .dlmt-section--projects {
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .dlmt-section--projects .dlmt-project-carousel {
+    display: flex;
+    height: auto;
+    min-height: 0;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .dlmt-section--projects .dlmt-project-heading {
+    position: relative;
+    inset: auto;
+    padding: 0;
+    background: none;
+  }
+
+  .dlmt-section--projects .dlmt-project-viewport {
+    position: relative;
+    inset: auto;
+    flex: none;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+
+  .dlmt-section--projects .dlmt-project-progress {
+    top: 0;
+  }
+}
