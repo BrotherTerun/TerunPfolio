@@ -1,0 +1,89 @@
+/* =================================================================
+   GAME DESIGN ADAPTIVE CONFIG
+   =================================================================
+
+   Ручная настройка адаптации desktop-экранов.
+
+   LEVEL 1 = лёгкое уплотнение
+   LEVEL 2 = заметное уплотнение
+   LEVEL 3 = аварийный компактный режим
+
+   JavaScript выбирает минимальный уровень, при котором секция перестаёт
+   переполняться. Проектная карусель сюда не входит: у неё отдельная
+   адаптивная композиция.
+   ================================================================= */
+
+:root {
+  --gd-adapt-desktop-min-width: 961;
+  --gd-adapt-desktop-min-height: 540;
+  --gd-adapt-overflow-tolerance: 3;
+  --gd-adapt-max-level: 3;
+  --gd-adapt-recheck-ms: 120;
+  --gd-adapt-debug: 0;
+
+  /* LEVEL 1 */
+  --gd-fit1-section-pad-y: 14px;
+  --gd-fit1-section-header-gap: 8px;
+  --gd-fit1-card-pad-y: 15px;
+  --gd-fit1-card-pad-x: 18px;
+  --gd-fit1-card-gap: 8px;
+  --gd-fit1-grid-gap: 10px;
+  --gd-fit1-body: 0.82rem;
+  --gd-fit1-body-line: 1.38;
+  --gd-fit1-label: 0.68rem;
+  --gd-fit1-card-title: 1.18rem;
+  --gd-fit1-tag: 0.60rem;
+  --gd-fit1-workflow-title: 2.75rem;
+  --gd-fit1-workflow-lead: 0.84rem;
+  --gd-fit1-stage-title: 1.03rem;
+  --gd-fit1-stage-body: 0.80rem;
+  --gd-fit1-stage-result: 0.96rem;
+  --gd-fit1-stage-tag: 0.62rem;
+  --gd-fit1-stage-pad-y: 13px;
+  --gd-fit1-stage-pad-x: 15px;
+  --gd-fit1-stage-result-gap: 11px;
+
+  /* LEVEL 2 */
+  --gd-fit2-section-pad-y: 11px;
+  --gd-fit2-section-header-gap: 6px;
+  --gd-fit2-card-pad-y: 12px;
+  --gd-fit2-card-pad-x: 14px;
+  --gd-fit2-card-gap: 6px;
+  --gd-fit2-grid-gap: 8px;
+  --gd-fit2-body: 0.75rem;
+  --gd-fit2-body-line: 1.32;
+  --gd-fit2-label: 0.62rem;
+  --gd-fit2-card-title: 1.08rem;
+  --gd-fit2-tag: 0.55rem;
+  --gd-fit2-workflow-title: 2.45rem;
+  --gd-fit2-workflow-lead: 0.78rem;
+  --gd-fit2-stage-title: 0.96rem;
+  --gd-fit2-stage-body: 0.73rem;
+  --gd-fit2-stage-result: 0.88rem;
+  --gd-fit2-stage-tag: 0.56rem;
+  --gd-fit2-stage-pad-y: 10px;
+  --gd-fit2-stage-pad-x: 12px;
+  --gd-fit2-stage-result-gap: 8px;
+
+  /* LEVEL 3 */
+  --gd-fit3-section-pad-y: 8px;
+  --gd-fit3-section-header-gap: 4px;
+  --gd-fit3-card-pad-y: 9px;
+  --gd-fit3-card-pad-x: 11px;
+  --gd-fit3-card-gap: 4px;
+  --gd-fit3-grid-gap: 6px;
+  --gd-fit3-body: 0.69rem;
+  --gd-fit3-body-line: 1.27;
+  --gd-fit3-label: 0.58rem;
+  --gd-fit3-card-title: 0.98rem;
+  --gd-fit3-tag: 0.51rem;
+  --gd-fit3-workflow-title: 2.18rem;
+  --gd-fit3-workflow-lead: 0.72rem;
+  --gd-fit3-stage-title: 0.90rem;
+  --gd-fit3-stage-body: 0.67rem;
+  --gd-fit3-stage-result: 0.82rem;
+  --gd-fit3-stage-tag: 0.51rem;
+  --gd-fit3-stage-pad-y: 8px;
+  --gd-fit3-stage-pad-x: 10px;
+  --gd-fit3-stage-result-gap: 6px;
+}
