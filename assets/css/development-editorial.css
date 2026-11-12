@@ -6,9 +6,9 @@
    ================================================================ */
 
 :root {
-  --dlmt-bg: #101719;
-  --dlmt-surface: #192326;
-  --dlmt-surface-strong: #192326;
+  --dlmt-bg: #080d0f;
+  --dlmt-surface: #131b1d;
+  --dlmt-surface-strong: #131b1d;
   --dlmt-text: #E3EAE6;
   --dlmt-text-secondary: #839186;
   --dlmt-text-muted: #839186;
@@ -29,7 +29,7 @@
   --dlmt-font-mono: "IBM Plex Mono", monospace;
   --dlmt-gutter: clamp(22px, 4.2vw, 76px);
   --dlmt-header-height: 72px;
-  --dlmt-section-nav-safe-space: 92px;
+  --dlmt-section-nav-safe-space: 164px;
   --dlmt-radius: 0;
 }
 
@@ -109,7 +109,7 @@ body.dlmt-page::before {
   z-index: 100;
   height: var(--dlmt-header-height);
   border-bottom: 1px solid var(--dlmt-border);
-  background: rgba(16, 23, 25, 0.96);
+  background: rgba(8, 13, 15, 0.96);
   backdrop-filter: blur(14px);
 }
 
@@ -890,8 +890,8 @@ body.dlmt-page::before {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(16, 23, 25, 0.98) 0%, rgba(16, 23, 25, 0.88) 48%, rgba(16, 23, 25, 0.34) 100%),
-    linear-gradient(0deg, rgba(16, 23, 25, 0.68), rgba(16, 23, 25, 0.08));
+    linear-gradient(90deg, rgba(8, 13, 15, 0.98) 0%, rgba(8, 13, 15, 0.88) 48%, rgba(8, 13, 15, 0.34) 100%),
+    linear-gradient(0deg, rgba(8, 13, 15, 0.68), rgba(8, 13, 15, 0.08));
 }
 
 .dlmt-project-card__content {
@@ -1661,5 +1661,158 @@ button.dlmt-contact-card {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ================================================================
+   REVISION 02 — layout refinements
+   ================================================================ */
+
+/* Prevent the legacy base stylesheet from showing through at the viewport edge. */
+html,
+body.dlmt-page {
+  width: 100%;
+  min-height: 100%;
+  background-color: #080d0f;
+}
+
+body.dlmt-page {
+  min-height: 100vh;
+  height: auto;
+  overflow-x: clip;
+}
+
+/* The profile facts strip was removed from the hero markup. */
+.dlmt-hero {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.dlmt-hero__stage {
+  grid-row: 1;
+}
+
+/* Larger section navigator: retain its fixed, hover-revealed behavior. */
+.dlmt-side-nav {
+  left: 22px;
+  width: 136px;
+}
+
+.dlmt-side-nav__panel nav {
+  gap: 18px;
+}
+
+.dlmt-side-nav a {
+  min-height: 48px;
+  grid-template-columns: minmax(0, 1fr) 3px;
+  gap: 12px;
+  padding: 5px 0;
+}
+
+.dlmt-side-nav a strong {
+  font-size: 0.92rem;
+  letter-spacing: 0.055em;
+}
+
+.dlmt-side-nav a span {
+  width: 3px;
+  height: 28px;
+}
+
+.dlmt-side-nav a.is-active span {
+  height: 38px;
+}
+
+/* Full-bleed project stage; heading and slide copy share the same left axis. */
+@media (min-width: 961px) {
+  .dlmt-project-carousel {
+    width: calc(100% + var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space));
+    margin-left: calc(-1 * (var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space)));
+    padding: 0;
+  }
+
+  .dlmt-project-heading {
+    padding-left: calc(var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space));
+    padding-right: var(--dlmt-gutter);
+  }
+
+  .dlmt-project-viewport {
+    width: 100% !important;
+    max-width: none;
+    max-height: none;
+    aspect-ratio: auto;
+    flex: 1 1 auto;
+    align-self: stretch;
+  }
+
+  .dlmt-project-card__content {
+    width: min(780px, 72%);
+    padding: clamp(24px, 3.8vw, 58px) var(--dlmt-gutter) clamp(24px, 3.8vw, 58px) calc(var(--dlmt-gutter) + var(--dlmt-section-nav-safe-space));
+  }
+}
+
+/* Combined experience and education page. */
+.dlmt-background-layout--combined {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(36px, 7vw, 112px);
+}
+
+.dlmt-background-layout--combined > .dlmt-background-card {
+  justify-content: center;
+  padding: clamp(20px, 3vh, 38px) 0;
+}
+
+.dlmt-background-layout--combined .dlmt-background-card__facts {
+  margin-top: 8px;
+}
+
+/* Widen the contacts composition towards the left without changing mobile gutters. */
+@media (min-width: 961px) {
+  .dlmt-contact {
+    width: calc(100% + 10vw);
+    margin-left: -10vw;
+    padding-left: var(--dlmt-gutter);
+    padding-right: var(--dlmt-gutter);
+  }
+}
+
+@media (max-width: 960px) {
+  :root {
+    --dlmt-section-nav-safe-space: 0px;
+  }
+
+  .dlmt-side-nav {
+    display: none;
+  }
+
+  .dlmt-project-carousel {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .dlmt-project-heading {
+    padding-inline: var(--dlmt-gutter);
+  }
+
+  .dlmt-project-card__content {
+    padding-left: clamp(22px, 5vw, 46px);
+  }
+
+  .dlmt-background-layout--combined {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .dlmt-contact {
+    width: 100%;
+    margin-left: 0;
+    padding-inline: var(--dlmt-gutter);
+  }
+}
+
+@media (max-width: 640px) {
+  .dlmt-project-heading {
+    padding-inline: var(--dlmt-gutter);
   }
 }
