@@ -119,7 +119,7 @@ function setupProjectCarousel() {
   progressFill.className = "dlmt-project-progress__fill";
 
   progress.append(progressFill);
-  viewport.append(progress);
+  root.append(progress);
 
   const transitionDuration = 1200;
   const dwellDuration = 7000;
